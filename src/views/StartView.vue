@@ -4,7 +4,7 @@
          v-on:click="toggleNav">
     </div>
     <div class="logo">
-      <img src="/img/logo.png">
+      <img src="/img/gangsterbob.jpg">
       Polly polling tool 
       <img src="../assets/logo.svg">
     </div>
