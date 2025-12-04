@@ -1,11 +1,13 @@
 <template>
-    <section id =starViewSection>
+    <section id =startViewTopSection>
         <div id="logo"> <!-- Här ska loggan finnas-->
             Are you smarter than a connect 4th grader
         </div>
         <div> <!--Här finns språkknappen-->
-          <button id="languageButton" :on-click="switchLanguage"> </button>
-        </div>
+            <LanguageButton/>
+         </div>
+      </section>
+      <section id="gameButtons">
         <div> <!--Knappen för att hosta-->
           <button id="hostButton" :on-click="hostGame"></button>
         </div>
@@ -17,9 +19,12 @@
 </template>
 
 <script>
+  import LanguageButton from '../components/LanguageButton.vue';
+  
   export default {
     name: 'StartView',
-    compoments: {
+    compoments: { 
+      LanguageButton
 
     },
     data: function () {
@@ -29,16 +34,7 @@
       }
     },
     methods: {
-      switchLanguage: function() {
-      if (this.lang === "en") {
-        this.lang = "sv"
-      }
-      else {
-        this.lang = "en"
-      }
-      localStorage.setItem( "lang", this.lang );
-      socket.emit( "getUILabels", this.lang );
-      },
+      
     }
   }
 
@@ -46,25 +42,37 @@
 
 
 <style scoped>
-#starViewSection{
+#startViewSection{
     
 }
 
 #logo {
-
-}
-
-hostButton {
-
-}
-
-languageButton {
+  color: red;
+  font: bold 3em Arial, sans-serif;
+  text-align: center;
   
 }
 
-joinButton {
+#startViewTopSection {
+  height: 30vh;
+}
+
+#gameButtons {
+  height: 70vh;
+}
+
+
+#hostButton {
 
 }
+
+
+#joinButton {
+
+}
+
+
+
 
 </style>
 
