@@ -102,3 +102,5 @@ _kan kanske ligga som en komponent på lobbyn_
 
 - [ ] Frågor
 - [ ] Översättningar
+
+## Global CSS

@@ -1,19 +1,18 @@
 <template>
     <section id =startViewTopSection>
-        <div id="logo"> <!-- Här ska loggan finnas-->
-            Are you smarter than a connect 4th grader
+        <div id="logoBox"> <!-- Här ska loggan finnas-->
         </div>
         <div> <!--Här finns språkknappen-->
             <LanguageButton/>
          </div>
       </section>
       <section id="gameButtons">
-        <div> <!--Knappen för att hosta-->
-          <button id="hostButton" :on-click="hostGame"></button>
-        </div>
-        <div> <!--Knappen för att joina-->
-          <input type="text" id="roomCode" v-model="roomCode" placeholder="Room code"> 
-          <button id="joinButton" :on-click="joinGame"></button>
+        <div class="wrapper"> <!--Knappen för att hosta-->
+
+          <button id="hostButton" :on-click="hostGame">HOST</button>
+          <input id="roomCodeField" type="text" v-model="roomCode" placeholder="Room code"> 
+          <button id="joinButton" :on-click="joinGame"> JOIN</button>
+
         </div>
     </section>
 </template>
@@ -42,14 +41,14 @@
 
 
 <style scoped>
-#startViewSection{
-    
+
+:global(body) {
+  background-color: rgb(15, 15, 15);
 }
 
-#logo {
-  color: red;
-  font: bold 3em Arial, sans-serif;
-  text-align: center;
+#logoBox{
+  height: 90%;
+  width: 90%;
   
 }
 
@@ -61,22 +60,110 @@
   height: 70vh;
 }
 
+@media (orientation: landscape) {
+  #logoBox{
+    background-image: url(/public/img/AmongUs.png);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .wrapper {
+    width: 35vw;
+    grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw ;
+    margin-top: 20vh;
+    margin-left: 32.5vw ;
+    margin-right: 32.5vw ; 
+    height: 10vh;
+    grid-template-rows: 5vh 5vh ;
+  }
+
+  #hostButton {
+    grid-column: 1 / 4;
+    grid-row: 1 / 3;
+  }
+
+
+  #roomCodeField {
+    grid-column: 5 / 7;
+    grid-row: 1 / 3;
+  }
+
+  #joinButton {
+    grid-column: 7;
+    grid-row: 1 / 3;
+  }
+  
+}
+
+@media (orientation: portrait) {
+  .wrapper {
+    width: 60vw;
+    grid-template-columns: 20vw 20vw 20vw  ;
+    margin-left: 20vw ;
+    margin-right: 20vw ;
+    height: 60vh;
+    grid-template-rows: 12vh 12vh 12vh 12vh 12vh;
+  } 
+
+  #hostButton {
+    grid-column: 1 / 4;
+    grid-row: 1 / 3;
+    border-radius: 100%;
+  }
+
+
+  #roomCodeField {
+    grid-column: 1 / 3;
+    grid-row: 4 / 6;
+  }
+
+  #joinButton {
+    grid-column: 3 / 4;
+    grid-row:  4 / 6;
+  }
+
+}
+  
+
+.wrapper {
+  display: grid;
+}
+
+.wrapper * {
+  color: white;
+  font: bold Arial, sans-serif;
+}
+
 
 #hostButton {
-  height: 100%;
-  width: 100%;
+  background-color: green;
+  font: bold Arial, sans-serif;
+  border-radius: 10px;
+  border: solid 4px grey;
+  font-size: 200%;
+  
+}
+
+
+#roomCodeField {
+  color: grey;
+  border-radius: 10px 0px 0px 10px;
+  border: solid 4px grey;
+  border-right: none;
 }
 
 
 #joinButton {
+  background-color: orange;
+  border-radius: 0px 10px 10px 0px;
+  border: solid 4px grey;
+}
 
+#logoBox {
+  margin: 5vh;;
 }
 
 
-
-
 </style>
-
-
 
 
