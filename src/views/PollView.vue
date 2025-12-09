@@ -82,7 +82,8 @@ export default {
   }
 }
 </script>
-<style>
+
+<style scoped> /* verkar som man ändå borde ha scoped. Tolkade som att denna css kan påverka andra komponenter i så fall?? */
 
 #spelPlan{  
   width: fit-content; 
