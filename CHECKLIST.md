@@ -34,7 +34,7 @@ _kan kanske ligga som en komponent på lobbyn_
 - [ ] Join code display
   - [ ] QR-kod knapp (Optional)
 - [ ] Your turn/opp turn visare
-- [ ] 4 in rad display
+- [x] 4 in rad display
 - [ ] Motståndare fick rätt eller fel visare
 - [ ] knappar för att "släppa" marker i kolonn
   - [ ] light up :hover css
