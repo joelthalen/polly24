@@ -1,24 +1,28 @@
 <template>
+  <main>
     <section id =startViewTopSection>
-        <div id="logoBox"> <!-- Här ska loggan finnas-->
+      <div id="logoBox"> <!-- Här ska loggan finnas-->
         </div>
         <div> <!--Här finns språkknappen-->
             <LanguageButton/>
-         </div>
+        </div>
       </section>
       <section id="gameButtons">
         <div class="wrapper"> <!--Knappen för att hosta-->
 
-          <button id="hostButton" :on-click="hostGame">HOST</button>
+          <button id="hostButton" @click="hostGame">HOST</button>
           <input id="roomCodeField" type="text" v-model="roomCode" placeholder="Room code"> 
-          <button id="joinButton" :on-click="joinGame"> JOIN</button>
+          <button id="joinButton" @click="joinGame">JOIN</button>
 
         </div>
     </section>
+  </main>
 </template>
 
 <script>
   import LanguageButton from '../components/LanguageButton.vue';
+  import io from 'socket.io-client';
+  const socket = io("localhost:3000");  
   
   export default {
     name: 'StartView',
@@ -33,7 +37,15 @@
       }
     },
     methods: {
-      
+      hostGame: function() {
+        socket.emit("createLobby")
+        console.log("hostGame clicked")
+      },
+      joinGame: function() {
+        socket.emit("joinLobby",{id: this.roomCode})
+        console.log("joinGame clicked")
+      }
+
     }
   }
 
@@ -41,6 +53,10 @@
 
 
 <style scoped>
+
+  button:hover{
+      cursor: pointer;
+  }
 
 :global(body) {
   background-color: rgb(15, 15, 15);
@@ -61,6 +77,16 @@
 }
 
 @media (orientation: landscape) {
+main {
+    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-position: center;
+   background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
   #logoBox{
     background-image: url(/public/img/AmongUs.png);
     background-position: center;
