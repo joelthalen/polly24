@@ -1,8 +1,8 @@
 <template>
   
   
-  <div>
-    {{pollId}}
+  <div> <!-- Ta bort denna div senare då den inte tillhör vår kod och lär inte behövas? Någon komponent kanske kan användas?-->
+    {{pollId}} 
     <QuestionComponent v-bind:question="question"
               v-on:answer="submitAnswer($event)"/>
     <hr>
@@ -82,7 +82,8 @@ export default {
   }
 }
 </script>
-<style>
+
+<style scoped> /* verkar som man ändå borde ha scoped. Tolkade som att denna css kan påverka andra komponenter i så fall?? */
 
 #spelPlan{  
   width: fit-content; 
@@ -101,11 +102,26 @@ export default {
   line-height: 4em;  /* gör så att texten hamnar längre ned i rutan... kanske ändra till relativa storlekar också, kanske storleken av divven/ cellen */
   border-radius: 50%;
   margin: 0.5em;
+  
 }
 
 .column{  
   display: inline-block;  /* ändra till grid eller felx*/ 
+  :hover {
+    cursor: pointer;
+    
+  }
    
+}
+
+h1{  
+  text-align: center;
+  color: white
+}
+
+h2{  
+  text-align: center;  
+  color: white;  
 }
 
 </style>  
