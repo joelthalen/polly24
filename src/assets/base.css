@@ -1,8 +1,10 @@
 :root {
   --foreground-color: red;
   --background-color: green;
+  --light-blue-color: rgb(4, 162, 242);
 }
 body {
+  color: white;
   margin: 0;
   padding: 0;
 }
