@@ -66,10 +66,7 @@
 
 
 .logoBox{
-  height: 90%;
-  width: 90%;
   margin: 5vh;
-  max-width: 100%; 
 }
 
 .topSection {
@@ -87,18 +84,30 @@
   }*/
 
   img {
-    content:url(/public/img/AmongUs.png)
+    content:url(/public/img/AmongUs.png);
+    align-self: center;
   }
 
+  /* Det här är den gamla wrapper-cssen
+  
   .wrapper {
-    width: 35vw;
     grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw ;
     margin-top: 20vh;
     margin-left: 32.5vw ;
     margin-right: 32.5vw ; 
     height: 10vh;
     grid-template-rows: 5vh 5vh ;
+  }*/
+
+    .wrapper {
+      grid-template-columns: repeat(7, 50px); 
+      grid-template-rows: repeat(2, 30px);
+
+      width: 350px; 
+      margin: 20vh auto 0 auto; 
+      height: 10vh;
   }
+
 
   #hostButton {
     grid-column: 1 / 4;
@@ -119,10 +128,16 @@
 }
 
 @media (orientation: portrait) {
-  .logoBox{
+  /*.logoBox{
     background-image: url(/public/img/AmongUsPortrait.png);
+  }*/
+
+  img {
+    content:url(/public/img/AmongUsPortrait.png);
+    align-self: center;
   }
 
+  
   .wrapper {
     width: 60vw;
     grid-template-columns: 20vw 20vw 20vw  ;
@@ -131,6 +146,17 @@
     height: 60vh;
     grid-template-rows: 12vh 12vh 12vh 12vh 12vh;
   } 
+
+  /* Det här är den gamla wrapper-cssen
+  .wrapper {
+    grid-template-columns: repeat(3, 50px); 
+    grid-template-rows: repeat(5, 5px);
+
+    width: 350px; 
+    margin: 20vh auto 0 auto; 
+    height: 150px;
+  } 
+  */
 
   #hostButton {
     grid-column: 1 / 4;
@@ -158,11 +184,13 @@ main {
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+    align-items: center;
 }
   
 
 .wrapper {
   display: grid;
+  align-self: center;
 }
 
 .wrapper * {
