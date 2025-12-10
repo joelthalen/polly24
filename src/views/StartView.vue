@@ -38,14 +38,15 @@
         lang: localStorage.getItem("lang") || "en"
       }
     },
+    created: function() {
+      socket.on("createdLobby", (e) => this.$router.push(`/lobby/${e.lobbyID}`));
+    },
     methods: {
       hostGame: function() {
-        socket.emit("createLobby")
-        console.log("hostGame clicked")
+        socket.emit("createLobby");
       },
       joinGame: function() {
-        socket.emit("joinLobby",{id: this.roomCode})
-        console.log("joinGame clicked")
+        this.$router.push(`/lobby/${this.roomCode}`);
       }
 
     }

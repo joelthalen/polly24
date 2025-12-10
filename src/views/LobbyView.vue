@@ -1,5 +1,8 @@
 <template>
   <main>
+      <p>
+        {{ lobbyState }}
+      </p>
     <section class = "topSection">
       <div class="logoBox"></div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
@@ -40,7 +43,8 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       participants: [],
       isHost: false,
-      isReady: false
+      isReady: false,
+      lobbyState: {},
     }
   },
   created: function () {
@@ -48,7 +52,12 @@ export default {
     socket.on( "uiLabels", labels => this.uiLabels = labels );
     socket.on( "participantsUpdate", p => this.participants = p );
     socket.on( "startPoll", () => this.$router.push("/poll/" + this.pollId) );
+    socket.on("lobbyUpdate", (event) => {
+      console.log(event.message);
+      this.lobbyState = event.lobbyState;
+    });
     socket.emit( "joinPoll", this.pollId );
+    socket.emit("joinLobby", this.pollId);
     socket.emit( "getUILabels", this.lang );
   },
   methods: {

@@ -11,9 +11,9 @@ class Lobby {
     this.players = [];
     // TODO: HARDCODED
     this.slots = 2;
+    this.playerCount = 0;
 
-    const owner = this.addParticipant(ownerSocket);
-    this.owner_token = owner.auth_token;
+    this.owner_token = randomCharString(10);
     LOBBIES[this.ID] = this;
   }
 
@@ -27,24 +27,30 @@ class Lobby {
   }
 
   addParticipant(playerSocket) {
+    this.playerCount = this.playerCount + 1;
     playerSocket.join(this.ID);
     const player = {
-      username: "",
+      username: "Player " + this.playerCount,
       auth_token: randomCharString(10),
       socket: playerSocket,
     };
     this.players.push(player);
 
-    playerSocket.on("updateProfile", (p) => {
-      player.username = p.username || player.username;
-      this.updateLobby();
-    });
+    this.registerPlayerSockets(playerSocket);
     playerSocket.emit("joinedLobby", {
       success: "true",
       auth_token: player.auth_token,
     });
-    this.io.to(this.ID).emit("lobbyUpdate", this.lobbyInfo());
+    this.updateLobby(`${player.username} joined the lobby.`, 1);
     return player;
+  }
+
+  updateLobby(msg, announceLevel = 0) {
+    this.io.to(this.ID).emit("lobbyUpdate", {
+      announceLevel: 0, // Higher means more important!
+      message: msg,
+      lobbyState: this.lobbyInfo()
+    })
   }
 
   removeParticipant(token) {
@@ -53,10 +59,6 @@ class Lobby {
         this.players.remove(i);
       }
     }
-  }
-
-  updateLobby() {
-    this.io.to(this.ID).emit("lobbyUpdate", this.lobbyInfo());
   }
 
   static getLobby(ID) {
@@ -68,12 +70,18 @@ class Lobby {
   }
 
   static tryJoiningLobby(socket, ID) {
-    console.log(LOBBIES);
     if (ID in LOBBIES) {
       LOBBIES[ID].addParticipant(socket);
     } else {
-      socket.emit("joinedLobby", { success: false, msg: "Not a hosted lobby" });
+      socket.emit("lobbyUpdate", { announceLevel: 4, message: "Could not find lobby.", lobbyState: {} });
     }
+  }
+
+  registerPlayerSockets(socket) {
+    socket.on("updateProfile", (p) => {
+      player.username = p.username || player.username;
+      this.updateLobby();
+    });
   }
 }
 
