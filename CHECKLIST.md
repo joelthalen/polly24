@@ -71,8 +71,8 @@ _kan kanske ligga som en komponent på lobbyn_
 
 ## Globala komponenter
 
-- [ ] Language
-  - Flagga
+- [ ] Language (alla texter ska referrera till language-dokument)
+- [ ] Flagga för language
 - [ ] Regler dialog box
 - [ ] Visa Regler knapp
 

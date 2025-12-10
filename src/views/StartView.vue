@@ -1,7 +1,9 @@
 <template>
   <main>
     <section class = "topSection">
-      <div class="logoBox"></div> <!-- Här ska loggan finnas-->
+      <div class="logoBox">
+        <img alt="Logo">
+      </div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
       </div>
@@ -21,6 +23,7 @@
 <script>
   import LanguageButton from '../components/LanguageButton.vue';
   import io from 'socket.io-client';
+  import LobbyView from './LobbyView.vue';
   const socket = io("localhost:3000");  
   
   export default {
@@ -57,16 +60,16 @@
       cursor: pointer;
   }
 
+  img {
+    max-width: 100%;
+  }
 
 
 .logoBox{
   height: 90%;
   width: 90%;
   margin: 5vh;
-  max-width: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;  
+  max-width: 100%; 
 }
 
 .topSection {
@@ -79,9 +82,12 @@
 
 @media (orientation: landscape) {
 
-  .logoBox{
+  /*.logoBox{
     background-image: url(/public/img/AmongUs.png);
-    
+  }*/
+
+  img {
+    content:url(/public/img/AmongUs.png)
   }
 
   .wrapper {
