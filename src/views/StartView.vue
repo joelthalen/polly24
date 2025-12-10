@@ -75,15 +75,6 @@
 }
 
 @media (orientation: landscape) {
-main {
-    background-image: url(/public/img/AmongUsWallPaper.png);
-    background-position: center;
-   background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-}
 
   #logoBox{
     background-image: url(/public/img/AmongUs.png);
@@ -146,6 +137,16 @@ main {
     grid-row:  4 / 6;
   }
 
+}
+
+main {
+    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
   
 
