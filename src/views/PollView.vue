@@ -9,36 +9,29 @@
     <hr />
     <span>{{ submittedAnswers }}</span>
   </div>
-
+<main>  
   <header>
     <h1>{{ pollId }}</h1>
   </header>
   <section>
-    <div id="spelPlan">
-      <div
-        v-on:click="placeBrick(col - 1)"
-        v-for="col in size.cols"
-        :key="col"
-        class="column"
-      >
-        <div
-          v-bind:style="{ 'background-color': boardData[col - 1][row - 1] }"
-          v-for="row in size.rows"
-          :key="row"
-          class="cell"
-        ></div>
-      </div>
-    </div>
+    <SpelPlan
+      v-bind:size="size"
+      v-bind:boardData="boardData"
+      v-bind:currentPlayer="currentPlayer"
+      v-on:placeBrick="changePlayer()"
+    />
     <h2>
       {{ currentPlayer + "'s: turn" }}
       <!-- ändra så den kan variera -->
     </h2>
   </section>
+  </main>
 </template>
 
 <script>
 // @ is an alias to /src
 import QuestionComponent from "@/components/QuestionComponent.vue";
+import SpelPlan from "@/components/SpelPlan.vue"; 
 import io from "socket.io-client";
 const socket = io("localhost:3000");
 
@@ -46,6 +39,7 @@ export default {
   name: "PollView",
   components: {
     QuestionComponent,
+    SpelPlan
   },
   data: function () {
     return {
@@ -53,8 +47,8 @@ export default {
         q: "",
         a: [],
       },
-      size: { rows: 7, cols: 7 }, //ändra senare
       pollId: "inactive poll",
+      size: { rows: 7, cols: 7 }, //ändra senare
       submittedAnswers: {},
       boardData: [[], [], [], [], [], [], []], //ändra senare
       currentPlayer: true, //ändra senare
@@ -80,15 +74,8 @@ export default {
     submitAnswer: function (answer) {
       socket.emit("submitAnswer", { pollId: this.pollId, answer: answer });
     },
-    placeBrick: function (col) {
-      for (let cell = this.size.rows - 1; cell >= 0; cell--) {
-        if (this.boardData[col][cell] === "white") {
-          this.boardData[col][cell] =
-            this.currentPlayer === true ? "red" : "blue";
-          break;
-        }
-      }
-      this.currentPlayer = !this.currentPlayer; //ändra senare så att surven hanterar skirftet av spalre dvs all spellogik
+    changePlayer: function () {
+      this.currentPlayer = !this.currentPlayer; //ändra senare så det blir spelarnamn och att serven hanterar detta
     },
   },
 };
@@ -97,31 +84,14 @@ export default {
 <style scoped>
 /* verkar som man ändå borde ha scoped. Tolkade som att denna css kan påverka andra komponenter i så fall?? */
 
-#spelPlan {
-  width: fit-content;
-  margin: auto;
-  height: fit-content;
-  background-color: var(--light-blue-color);
-  border: 1px solid black;
-  border-radius: 5%;
-  line-height: 0em; /**Spelplan object is too big if not here */
-  overflow: hidden;
+main {
+    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
 
-.cell {
-  width: 4em; /* ändra till relativa storlekar */
-  height: 4em;
-  border: 1px solid black;
-  text-align: center;
-  line-height: 4em; /* gör så att texten hamnar längre ned i rutan... kanske ändra till relativa storlekar också, kanske storleken av divven/ cellen */
-  border-radius: 50%;
-  margin: 0.5em;
-}
-
-.column {
-  display: inline-block; /* ändra till grid eller felx*/
-}
-.column:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
 </style>
