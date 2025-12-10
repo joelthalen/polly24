@@ -1,4 +1,5 @@
 <template>
+  <div class="logoBox"> </div>
   <div>
     {{pollId}}
     <div v-if="!joined">
@@ -27,7 +28,8 @@ export default {
       uiLabels: {},
       joined: false,
       lang: localStorage.getItem("lang") || "en",
-      participants: []
+      participants: [],
+      isHost: false
     }
   },
   created: function () {
@@ -46,3 +48,25 @@ export default {
   }
 }
 </script>
+
+<style scoped> 
+  .logoBox{
+    height: 10vh;
+    width: 90vw;
+    margin: 5vh;
+  }
+
+  @media (orientation: landscape){
+    .logoBox{
+      background-image: url(/public/img/AmongUs.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: red;
+    }
+  }
+
+  @media (orientation: portrait){
+
+  }
+
+</style>

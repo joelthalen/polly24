@@ -1,14 +1,14 @@
 <template>
   <main>
     <section id =startViewTopSection>
-      <div id="logoBox"> <!-- Här ska loggan finnas-->
-        </div>
-        <div> <!--Här finns språkknappen-->
-            <LanguageButton/>
-        </div>
-      </section>
+      <div id="logoBox"></div> <!-- Här ska loggan finnas-->
+      
+      <div> <!--Här finns språkknappen-->
+          <LanguageButton/>
+      </div>
+    </section>
       <section id="gameButtons">
-        <div class="wrapper"> <!--Knappen för att hosta-->
+        <div class="wrapper"> 
 
           <button id="hostButton" @click="hostGame">HOST</button>
           <input id="roomCodeField" type="text" v-model="roomCode" placeholder="Room code"> 
@@ -58,14 +58,12 @@
       cursor: pointer;
   }
 
-:global(body) {
-  background-color: rgb(15, 15, 15);
-}
+
 
 #logoBox{
   height: 90%;
   width: 90%;
-  
+  margin: 5vh;
 }
 
 #startViewTopSection {
@@ -184,11 +182,6 @@ main {
   border-radius: 0px 10px 10px 0px;
   border: solid 4px grey;
 }
-
-#logoBox {
-  margin: 5vh;;
-}
-
 
 </style>
 

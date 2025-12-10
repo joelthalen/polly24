@@ -2,10 +2,11 @@
 
 ## Hemskärm
 
-- [ ] Logga
-- [ ] Host knapp
-- [ ] join Code input
-- [ ] Join Game knapp
+- [x] Logga
+- [x] Host knapp
+- [x] join Code input
+- [x] Join Game knapp
+- [ ] Grafik
 
 ## Username view (Optional)
 
