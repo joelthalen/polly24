@@ -1,7 +1,11 @@
 <template>
   <main>
-    <div class="logoBox"> </div>
-    <div class="lobbyBox">
+    <section class = "topSection">
+      <div class="logoBox"></div> <!-- Här ska loggan finnas-->
+      <div> <!--Här finns språkknappen-->
+          <LanguageButton/>
+      </div>
+    </section>
       Joining lobby {{pollId}}
       <div v-if="!joined">
         <input type="text" v-model="userName">
@@ -13,7 +17,6 @@
         <p>Waiting for host to start poll</p>
         {{ participants }}
       </div>
-    </div>>
   </main>
 </template>
 
@@ -53,21 +56,29 @@ export default {
 
 <style scoped> 
   .logoBox{
-    height: 10vh;
-    width: 90vw;
+    height: 90%;
+    width: 90%;
     margin: 5vh;
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
   }
+
+  .topSection {
+  height: 30vh;
+}
+
 
   @media (orientation: landscape){
     .logoBox{
       background-image: url(/public/img/AmongUs.png);
-      background-position: center;
-      background-repeat: no-repeat;
     }
   }
 
   @media (orientation: portrait){
-
+    .logoBox{
+      background-image: url(/public/img/AmongUsPortrait.png);
+    }
   }
 
 main {

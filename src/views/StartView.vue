@@ -1,8 +1,7 @@
 <template>
   <main>
-    <section id =startViewTopSection>
-      <div id="logoBox"></div> <!-- Här ska loggan finnas-->
-      
+    <section class = "topSection">
+      <div class="logoBox"></div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
       </div>
@@ -60,13 +59,17 @@
 
 
 
-#logoBox{
+.logoBox{
   height: 90%;
   width: 90%;
   margin: 5vh;
+  max-width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;  
 }
 
-#startViewTopSection {
+.topSection {
   height: 30vh;
 }
 
@@ -76,10 +79,9 @@
 
 @media (orientation: landscape) {
 
-  #logoBox{
+  .logoBox{
     background-image: url(/public/img/AmongUs.png);
-    background-position: center;
-    background-repeat: no-repeat;
+    
   }
 
   .wrapper {
@@ -111,6 +113,10 @@
 }
 
 @media (orientation: portrait) {
+  .logoBox{
+    background-image: url(/public/img/AmongUsPortrait.png);
+  }
+
   .wrapper {
     width: 60vw;
     grid-template-columns: 20vw 20vw 20vw  ;
@@ -140,10 +146,9 @@
 }
 
 main {
-    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-image: url(/public/img/connect4wallpaper.png);
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 40%;
     overflow: hidden;
     height: 100vh;
     width: 100vw;
