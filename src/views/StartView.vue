@@ -147,7 +147,7 @@
     grid-template-rows: 12vh 12vh 12vh 12vh 12vh;
   } 
 
-  /* Det här är den gamla wrapper-cssen
+  /* Försökte göra en liknande "låsning" av knappstorlek som i landscape, men lyckades inte helt
   .wrapper {
     grid-template-columns: repeat(3, 50px); 
     grid-template-rows: repeat(5, 5px);
@@ -205,7 +205,6 @@ main {
   border-radius: 10px;
   border: solid 4px grey;
   font-size: 200%;
-  
 }
 
 
@@ -214,6 +213,7 @@ main {
   border-radius: 10px 0px 0px 10px;
   border: solid 4px grey;
   border-right: none;
+  font-size: 100%;
 }
 
 
