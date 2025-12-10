@@ -16,6 +16,11 @@
       <div v-if="joined">
         <p>Waiting for host to start poll</p>
         {{ participants }}
+        <button class="readyButton" @click="changeReady">
+          <div v-if="isReady">Un-ready!</div>
+          <div v-else>Ready!</div> <!--Vad ska vi skriva här för att man ska fatta vilket läge man är i?-->
+        </button>
+
       </div>
   </main>
 </template>
@@ -34,7 +39,8 @@ export default {
       joined: false,
       lang: localStorage.getItem("lang") || "en",
       participants: [],
-      isHost: false
+      isHost: false,
+      isReady: false
     }
   },
   created: function () {
@@ -49,7 +55,13 @@ export default {
     participateInPoll: function () {
       socket.emit( "participateInPoll", {pollId: this.pollId, name: this.userName} )
       this.joined = true;
+    },
+    changeReady: function () {
+      this.isReady = !this.isReady;
+      socket.emit( "changeReadyStatus", {pollId: this.pollId, name: this.userName, isReady: this.isReady})
+      console.log("Ready status changed to " + this.isReady);
     }
+
   }
 }
 </script>
@@ -97,7 +109,10 @@ main {
     margin: 5vh;
     background-color: rgba(255, 255, 255, 0.8);
   }
-  
 
-
+.readyButton {
+    background-color: white;
+    height: 5vh;
+    width: 10vw;
+}
 </style>
