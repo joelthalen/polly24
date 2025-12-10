@@ -26,14 +26,19 @@
 
       </div>
   </main>
+  <EmojiChatComponent @sendEmoji="sendEmoji()" :counter="emojiCounter" ></EmojiChatComponent>
 </template>
 
 <script>
+import EmojiChatComponent from '@/components/EmojiChatComponent.vue';
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
 export default {
   name: 'LobbyView',
+  components: {
+    EmojiChatComponent,
+  },
   data: function () {
     return {
       userName: "",
@@ -45,6 +50,7 @@ export default {
       isHost: false,
       isReady: false,
       lobbyState: {},
+      emojiCounter: 0,
     }
   },
   created: function () {
@@ -56,6 +62,9 @@ export default {
       console.log(event.message);
       this.lobbyState = event.lobbyState;
     });
+    socket.on("sendEmoji", () => {
+      this.emojiCounter += 1
+    })
     socket.emit( "joinPoll", this.pollId );
     socket.emit("joinLobby", this.pollId);
     socket.emit( "getUILabels", this.lang );
@@ -69,7 +78,10 @@ export default {
       this.isReady = !this.isReady;
       socket.emit( "changeReadyStatus", {pollId: this.pollId, name: this.userName, isReady: this.isReady})
       console.log("Ready status changed to " + this.isReady);
-    }
+    },
+    sendEmoji: function() {
+      socket.emit("sendEmoji");
+    },
 
   }
 }

@@ -82,6 +82,9 @@ class Lobby {
       player.username = p.username || player.username;
       this.updateLobby();
     });
+    socket.on("sendEmoji", (p) => {
+      this.io.to(this.ID).emit("sendEmoji");
+    });
   }
 }
 
