@@ -7,7 +7,7 @@
       v-on:answer="submitAnswer($event)"
     />
     <hr />
-    <span>{{ submittedAnswers }}</span>
+    <span style="color: black;">{{ submittedAnswers }}</span>
   </div>
 <main>  
   <header>
@@ -46,6 +46,7 @@ export default {
       question: {
         q: "",
         a: [],
+        correctAnswer: "",
       },
       pollId: "inactive poll",
       size: { rows: 7, cols: 7 }, //ändra senare
