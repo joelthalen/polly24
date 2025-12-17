@@ -7,11 +7,13 @@ function Data() {
   this.polls['test'] = {
     lang: "en",
     questions: [
-      {q: "How old are you?", 
-       a: ["0-13", "14-18", "19-25", "26-35", "36-45","45-"]
+      {q: "Är Christoffer Lundh Bäst?", 
+       a: ["JA", "NEJ", "KANSKE"],
+       correctAnswer: "JA"
       },
-      {q: "How much do you enjoy coding?", 
-       a: ["1", "2", "3", "4", "5"]
+      {q: "Vem skapade Gustav Vasas Bibel?", 
+       a: ["Gustav Vasa", "Carl den tredje", "GUD", "Christoffer Lundh"],
+       correctAnswer: "GUD"
       }
     ],
     answers: [],
