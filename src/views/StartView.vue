@@ -22,9 +22,7 @@
 
 <script>
   import LanguageButton from '../components/LanguageButton.vue';
-  import io from 'socket.io-client';
-  import LobbyView from './LobbyView.vue';
-  const socket = io("localhost:3000");  
+  import { socket } from '../socket';
   
   export default {
     name: 'StartView',

@@ -3,6 +3,10 @@ import { Lobby } from "./lobby.js";
 function sockets(io, socket, data) {
   console.log(`User connected with ID ${socket.id}`);
 
+  socket.on("disconnect", () => {
+    console.log("Client Disconnected");
+  })
+
   socket.on("getUILabels", function (lang) {
     socket.emit("uiLabels", data.getUILabels(lang));
   });

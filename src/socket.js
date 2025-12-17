@@ -11,7 +11,15 @@ export const state = reactive({
     gameBoard: [[]],
     participants: [],
   },
-  gameBoard: [["white"]],
+  gameBoard: [
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+    ["white", "white", "white", "white", "white", "white"],
+],
 });
 
 // "undefined" means the URL will be computed from the `window.location` object
