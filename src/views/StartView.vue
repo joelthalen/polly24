@@ -1,8 +1,9 @@
 <template>
   <main>
-    <section id =startViewTopSection>
-      <div id="logoBox"></div> <!-- Här ska loggan finnas-->
-      
+    <section class = "topSection">
+      <div class="logoBox">
+        <img alt="Logo">
+      </div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
       </div>
@@ -22,6 +23,7 @@
 <script>
   import LanguageButton from '../components/LanguageButton.vue';
   import io from 'socket.io-client';
+  import LobbyView from './LobbyView.vue';
   const socket = io("localhost:3000");  
   
   export default {
@@ -36,14 +38,15 @@
         lang: localStorage.getItem("lang") || "en"
       }
     },
+    created: function() {
+      socket.on("createdLobby", (e) => this.$router.push(`/lobby/${e.lobbyID}`));
+    },
     methods: {
       hostGame: function() {
-        socket.emit("createLobby")
-        console.log("hostGame clicked")
+        socket.emit("createLobby");
       },
       joinGame: function() {
-        socket.emit("joinLobby",{id: this.roomCode})
-        console.log("joinGame clicked")
+        this.$router.push(`/lobby/${this.roomCode}`);
       }
 
     }
@@ -58,15 +61,16 @@
       cursor: pointer;
   }
 
+  img {
+    max-width: 100%;
+  }
 
 
-#logoBox{
-  height: 90%;
-  width: 90%;
+.logoBox{
   margin: 5vh;
 }
 
-#startViewTopSection {
+.topSection {
   height: 30vh;
 }
 
@@ -76,21 +80,35 @@
 
 @media (orientation: landscape) {
 
-  #logoBox{
+  /*.logoBox{
     background-image: url(/public/img/AmongUs.png);
-    background-position: center;
-    background-repeat: no-repeat;
+  }*/
+
+  img {
+    content:url(/public/img/AmongUs.png);
+    align-self: center;
   }
 
+  /* Det här är den gamla wrapper-cssen
+  
   .wrapper {
-    width: 35vw;
     grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw ;
     margin-top: 20vh;
     margin-left: 32.5vw ;
     margin-right: 32.5vw ; 
     height: 10vh;
     grid-template-rows: 5vh 5vh ;
+  }*/
+
+    .wrapper {
+      grid-template-columns: repeat(7, 50px); 
+      grid-template-rows: repeat(2, 30px);
+
+      width: 350px; 
+      margin: 20vh auto 0 auto; 
+      height: 10vh;
   }
+
 
   #hostButton {
     grid-column: 1 / 4;
@@ -111,6 +129,16 @@
 }
 
 @media (orientation: portrait) {
+  /*.logoBox{
+    background-image: url(/public/img/AmongUsPortrait.png);
+  }*/
+
+  img {
+    content:url(/public/img/AmongUsPortrait.png);
+    align-self: center;
+  }
+
+  
   .wrapper {
     width: 60vw;
     grid-template-columns: 20vw 20vw 20vw  ;
@@ -119,6 +147,17 @@
     height: 60vh;
     grid-template-rows: 12vh 12vh 12vh 12vh 12vh;
   } 
+
+  /* Försökte göra en liknande "låsning" av knappstorlek som i landscape, men lyckades inte helt
+  .wrapper {
+    grid-template-columns: repeat(3, 50px); 
+    grid-template-rows: repeat(5, 5px);
+
+    width: 350px; 
+    margin: 20vh auto 0 auto; 
+    height: 150px;
+  } 
+  */
 
   #hostButton {
     grid-column: 1 / 4;
@@ -140,18 +179,19 @@
 }
 
 main {
-    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-image: url(/public/img/connect4wallpaper.png);
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 40%;
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+    align-items: center;
 }
   
 
 .wrapper {
   display: grid;
+  align-self: center;
 }
 
 .wrapper * {
@@ -166,7 +206,6 @@ main {
   border-radius: 10px;
   border: solid 4px grey;
   font-size: 200%;
-  
 }
 
 
@@ -175,6 +214,7 @@ main {
   border-radius: 10px 0px 0px 10px;
   border: solid 4px grey;
   border-right: none;
+  font-size: 100%;
 }
 
 

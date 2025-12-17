@@ -49,11 +49,12 @@ function sockets(io, socket, data) {
   socket.on("createLobby", (e) => {
     console.log("A player has created a lobby");
     const lobby = new Lobby(io, socket);
+    socket.emit("createdLobby", {lobbyID: lobby.ID, ownerToken: lobby.owner_token})
   });
 
-  socket.on("joinLobby", (e) => {
-    console.log("A player is trying to join a lobby", e);
-    Lobby.tryJoiningLobby(socket, e.id);
+  socket.on("joinLobby", (id) => {
+    console.log("A player is trying to join a lobby", id);
+    Lobby.tryJoiningLobby(socket, id);
   });
 }
 
