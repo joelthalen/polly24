@@ -1,6 +1,8 @@
 import { Lobby } from "./lobby.js";
 
 function sockets(io, socket, data) {
+  console.log(`User connected with ID ${socket.id}`);
+
   socket.on("getUILabels", function (lang) {
     socket.emit("uiLabels", data.getUILabels(lang));
   });
@@ -49,12 +51,28 @@ function sockets(io, socket, data) {
   socket.on("createLobby", (e) => {
     console.log("A player has created a lobby");
     const lobby = new Lobby(io, socket);
-    socket.emit("createdLobby", {lobbyID: lobby.ID, ownerToken: lobby.owner_token});
+    socket.emit("createdLobby", {
+      lobbyID: lobby.ID,
+      ownerToken: lobby.owner_token,
+    });
   });
 
-  socket.on("joinLobby", (id) => {
+  socket.on("joinLobby", function (id) {
     console.log("A player is trying to join a lobby", id);
-    Lobby.tryJoiningLobby(socket, id);
+    //Lobby.tryJoiningLobby(socket, id);
+    const lobby = Lobby.getLobby(id);
+    console.log(this.lobby);
+    if (lobby) lobby.addParticipant(socket);
+  });
+
+  /**
+   * Req {id: string, column: int}
+   */
+  socket.on("placeMarker", (e) => {
+    const lobby = Lobby.getLobby(e.id);
+    if (lobby && lobby.game) {
+      lobby.game.placeMarker(e.column);
+    }
   });
 }
 
