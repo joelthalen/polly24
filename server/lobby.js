@@ -13,7 +13,7 @@ class Lobby {
     this.slots = 2;
     this.playerCount = 0;
 
-    this.owner_token = randomCharString(10);
+    this.owner_token = randomCharString(20);
     LOBBIES[this.ID] = this;
   }
 
@@ -33,7 +33,11 @@ class Lobby {
       username: "Player " + this.playerCount,
       auth_token: randomCharString(10),
       socket: playerSocket,
+      isHost: false,      
     };
+    if (this.players.length === 1) {
+      player.isHost = true;
+    }
     this.players.push(player);
 
     this.registerPlayerSockets(playerSocket);

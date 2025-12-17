@@ -49,7 +49,7 @@ function sockets(io, socket, data) {
   socket.on("createLobby", (e) => {
     console.log("A player has created a lobby");
     const lobby = new Lobby(io, socket);
-    socket.emit("createdLobby", {lobbyID: lobby.ID, ownerToken: lobby.owner_token})
+    socket.emit("createdLobby", {lobbyID: lobby.ID, ownerToken: lobby.owner_token});
   });
 
   socket.on("joinLobby", (id) => {
