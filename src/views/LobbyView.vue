@@ -9,22 +9,40 @@
           <LanguageButton/>
       </div>
     </section>
-      Joining lobby {{pollId}}
+      <p class="codeBox">
+        Lobby Code: {{ pollId }}
+      </p>
       <div v-if="!joined">
         <input type="text" v-model="userName">
         <button v-on:click="participateInPoll">
           {{ this.uiLabels.participateInPoll }}
         </button>
       </div>
+
       <div v-if="joined">
+        <div class="wrapper">
+          <div class="settingsBox">
+            <h3>Settings</h3>
+
+          </div>
+          <div class="statusBox">
+            <h3>Status</h3>
+
+            <button class="readyButton" @click="changeReady" v-if="!isHost">
+              <div v-if="isReady">Un-ready!</div>
+              <div v-else>Ready!</div> <!--Vad ska vi skriva här för att man ska fatta vilket läge man är i?-->
+            </button>
+
+            <button class="startButton" v-if="isHost">Start Game</button>
+
+          </div>
+        </div>
         <p>Waiting for host to start poll</p>
         {{ participants }}
-        <button class="readyButton" @click="changeReady">
-          <div v-if="isReady">Un-ready!</div>
-          <div v-else>Ready!</div> <!--Vad ska vi skriva här för att man ska fatta vilket läge man är i?-->
-        </button>
+        
 
       </div>
+
   </main>
   <EmojiChatComponent @sendEmoji="sendEmoji()" :counter="emojiCounter" ></EmojiChatComponent>
 </template>
@@ -98,7 +116,7 @@ export default {
   }
 
   .topSection {
-  height: 30vh;
+  height: 20vh;
 }
 
 
@@ -122,6 +140,43 @@ main {
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+}
+
+.codeBox {
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 35vw 10vw 35vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  height: 40vh;
+}
+
+.wrapper div {
+  box-shadow: 0 0 10px rgb(219, 219, 219);
+  background-color: rgb(0,0,0,0.5);
+  border-radius: 10px;
+  border: solid 4px grey;
+}
+
+.settingsBox {
+  
+  grid-column: 1;
+}
+
+.statusBox {
+
+  grid-column: 3;
+
+}
+
+h3 {
+    color: white;
+    
 }
 
 .lobbyBox {
