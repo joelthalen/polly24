@@ -86,7 +86,7 @@ export default {
 /* verkar som man ändå borde ha scoped. Tolkade som att denna css kan påverka andra komponenter i så fall?? */
 
 main {
-    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-image: url(/img/AmongUsWallPaper.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

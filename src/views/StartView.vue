@@ -81,11 +81,11 @@
 @media (orientation: landscape) {
 
   /*.logoBox{
-    background-image: url(/public/img/AmongUs.png);
+    background-image: url(/img/AmongUs.png);
   }*/
 
   img {
-    content:url(/public/img/AmongUs.png);
+    content:url(/img/AmongUs.png);
     align-self: center;
   }
 
@@ -130,11 +130,11 @@
 
 @media (orientation: portrait) {
   /*.logoBox{
-    background-image: url(/public/img/AmongUsPortrait.png);
+    background-image: url(/img/AmongUsPortrait.png);
   }*/
 
   img {
-    content:url(/public/img/AmongUsPortrait.png);
+    content:url(/img/AmongUsPortrait.png);
     align-self: center;
   }
 
@@ -179,7 +179,7 @@
 }
 
 main {
-    background-image: url(/public/img/connect4wallpaper.png);
+    background-image: url(/img/connect4wallpaper.png);
     background-position: center;
     background-size: 40%;
     overflow: hidden;

@@ -122,18 +122,18 @@ export default {
 
   @media (orientation: landscape){
     .logoBox{
-      background-image: url(/public/img/AmongUs.png);
+      background-image: url(/img/AmongUs.png);
     }
   }
 
   @media (orientation: portrait){
     .logoBox{
-      background-image: url(/public/img/AmongUsPortrait.png);
+      background-image: url(/img/AmongUsPortrait.png);
     }
   }
 
 main {
-    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-image: url(/img/AmongUsWallPaper.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

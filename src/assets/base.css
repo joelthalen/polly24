@@ -1,10 +1,11 @@
 :root {
-  --foreground-color: red;
-  --background-color: green;
+  --foreground-color: white;
+  --background-color: black;
   --light-blue-color: rgb(4, 162, 242);
 }
 body {
-  color: white;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
   margin: 0;
   padding: 0;
 }
