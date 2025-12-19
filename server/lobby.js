@@ -1,6 +1,10 @@
+import { Game } from "./Game.js";
+
 const LOBBIES = {};
 
 class Lobby {
+  game;
+
   constructor(io, ownerSocket, lang = "en") {
     this.io = io;
     // TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
@@ -21,8 +25,12 @@ class Lobby {
     return {
       ID: this.ID,
       participants: this.players.map((p) => {
-        return { username: p.username };
+        return { username: p.username, ready: p.ready };
       }),
+      gameBoard: () => {
+        if (this.game) return this.game.gameBoard;
+        else return undefined;
+      },
     };
   }
 
@@ -31,6 +39,7 @@ class Lobby {
     playerSocket.join(this.ID);
     const player = {
       username: "Player " + this.playerCount,
+      ready: false,
       auth_token: randomCharString(10),
       socket: playerSocket,
       isHost: false,      
@@ -41,6 +50,14 @@ class Lobby {
     this.players.push(player);
 
     this.registerPlayerSockets(playerSocket);
+    playerSocket.on("updateProfile", (p) => {
+      player.username = p.username || player.username;
+      if ("ready" in p) {
+        player.ready = p.ready;
+        this.onPlayerReady();
+      }
+      this.updateLobby();
+    });
     playerSocket.emit("joinedLobby", {
       success: "true",
       auth_token: player.auth_token,
@@ -53,8 +70,8 @@ class Lobby {
     this.io.to(this.ID).emit("lobbyUpdate", {
       announceLevel: 0, // Higher means more important!
       message: msg,
-      lobbyState: this.lobbyInfo()
-    })
+      lobbyState: this.lobbyInfo(),
+    });
   }
 
   removeParticipant(token) {
@@ -77,18 +94,43 @@ class Lobby {
     if (ID in LOBBIES) {
       LOBBIES[ID].addParticipant(socket);
     } else {
-      socket.emit("lobbyUpdate", { announceLevel: 4, message: "Could not find lobby.", lobbyState: {} });
+      socket.emit("lobbyUpdate", {
+        announceLevel: 4,
+        message: "Could not find lobby.",
+        lobbyState: {},
+      });
     }
   }
 
   registerPlayerSockets(socket) {
-    socket.on("updateProfile", (p) => {
-      player.username = p.username || player.username;
-      this.updateLobby();
-    });
     socket.on("sendEmoji", (p) => {
       this.io.to(this.ID).emit("sendEmoji");
     });
+  }
+
+  onPlayerReady() {
+    for (const p of this.players) {
+      if (!p.ready) {
+        return;
+      }
+    }
+    this.createGame();
+    console.log(`Created Game on lobby ${this.ID}`);
+  }
+
+  createGame() {
+    // TODO: Fix hardcoded columns and rows settings
+    this.game = new Game(this.io, this, 7, 7, this.players);
+    this.updateLobby("Created Game");
+    this.io.to(this.ID).emit("gameStart");
+  }
+
+  getGameBoard() {
+    if (this.game) {
+      return this.game.gameBoard;
+    } else {
+      return undefined;
+    }
   }
 }
 

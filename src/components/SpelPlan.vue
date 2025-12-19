@@ -40,21 +40,21 @@ export default {
   emits: ["placeBrick"],
   methods: {
     placeBrick: function (col) {
-      for (let cell = this.size.rows - 1; cell >= 0; cell--) {
+      /*for (let cell = this.size.rows - 1; cell >= 0; cell--) {
         if (this.boardData[col][cell] === "white") {
           this.boardData[col][cell] =
             this.currentPlayer === true ? "red" : "blue";
           break;
         }
-      }
-      this.$emit("placeBrick")
+      }*/
+      this.$emit("placeBrick", col)
     },
   },
 };
 
 </script>
 
-<style>
+<style scoped>
 
 #spelPlan { /* Måste ändra så den skalas med att sidan blir mindre och så att inte en kolumn kastas ned är webpagen blir mindre än vad spelplandens width är */
   width: fit-content;

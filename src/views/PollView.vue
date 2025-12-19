@@ -18,7 +18,7 @@
       v-bind:size="size"
       v-bind:boardData="boardData"
       v-bind:currentPlayer="currentPlayer"
-      v-on:placeBrick="changePlayer()"
+      v-on:placeBrick="changePlayer"
     />
     <h2>
       {{ currentPlayer + "'s: turn" }}
@@ -32,14 +32,21 @@
 // @ is an alias to /src
 import QuestionComponent from "@/components/QuestionComponent.vue";
 import SpelPlan from "@/components/SpelPlan.vue"; 
-import io from "socket.io-client";
-const socket = io("localhost:3000");
+import { socket, state } from "../socket";
 
 export default {
   name: "PollView",
   components: {
     QuestionComponent,
     SpelPlan
+  },
+  computed: {
+    boardData() {
+      return state.gameBoard;
+    },
+    size() {
+      return {rows: state.gameBoard[0].length, cols: state.gameBoard.length}
+    }
   },
   data: function () {
     return {
@@ -49,9 +56,7 @@ export default {
         correctAnswer: "",
       },
       pollId: "inactive poll",
-      size: { rows: 7, cols: 7 }, //ändra senare
       submittedAnswers: {},
-      boardData: [[], [], [], [], [], [], []], //ändra senare
       currentPlayer: true, //ändra senare
     };
   },
@@ -75,8 +80,9 @@ export default {
     submitAnswer: function (answer) {
       socket.emit("submitAnswer", { pollId: this.pollId, answer: answer });
     },
-    changePlayer: function () {
+    changePlayer: function (col) {
       this.currentPlayer = !this.currentPlayer; //ändra senare så det blir spelarnamn och att serven hanterar detta
+      socket.emit("placeMarker", {id: this.pollId, column: col})
     },
   },
 };
@@ -86,7 +92,7 @@ export default {
 /* verkar som man ändå borde ha scoped. Tolkade som att denna css kan påverka andra komponenter i så fall?? */
 
 main {
-    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-image: url(/img/AmongUsWallPaper.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

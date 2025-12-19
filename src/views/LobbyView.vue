@@ -4,6 +4,7 @@
         {{ lobbyState }}
       </p>
     <section class = "topSection">
+      <RouterLink to="/">Leave Lobby</RouterLink>
       <div class="logoBox"></div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
@@ -31,6 +32,7 @@
             <button class="readyButton" @click="changeReady" v-if="!isHost">
               <div v-if="isReady">Un-ready!</div>
               <div v-else>Ready!</div> <!--Vad ska vi skriva här för att man ska fatta vilket läge man är i?-->
+              <!-- Kanske ändra till en checkbox? mindre oklart -->
             </button>
 
             <button class="startButton" v-if="isHost">Start Game</button>
@@ -48,14 +50,20 @@
 </template>
 
 <script>
+import LanguageButton from '../components/LanguageButton.vue';
 import EmojiChatComponent from '@/components/EmojiChatComponent.vue';
-import io from 'socket.io-client';
-const socket = io("localhost:3000");
+import { socket, state } from '../socket';
 
 export default {
   name: 'LobbyView',
   components: {
     EmojiChatComponent,
+    LanguageButton,
+  },
+  computed: {
+    lobbyState() {
+      return state.lobby;
+    }
   },
   data: function () {
     return {
@@ -67,7 +75,6 @@ export default {
       participants: [],
       isHost: false,
       isReady: false,
-      lobbyState: {},
       emojiCounter: 0,
     }
   },
@@ -80,6 +87,7 @@ export default {
       console.log(event.message);
       this.lobbyState = event.lobbyState;
     });
+    socket.on("gameStart", () => this.$router.push(`/poll/${this.pollId}`))
     socket.on("sendEmoji", () => {
       this.emojiCounter += 1
     })
@@ -94,7 +102,7 @@ export default {
     },
     changeReady: function () {
       this.isReady = !this.isReady;
-      socket.emit( "changeReadyStatus", {pollId: this.pollId, name: this.userName, isReady: this.isReady})
+      socket.emit( "updateProfile", {pollId: this.pollId, username: this.userName, ready: this.isReady})
       console.log("Ready status changed to " + this.isReady);
     },
     sendEmoji: function() {
@@ -122,18 +130,18 @@ export default {
 
   @media (orientation: landscape){
     .logoBox{
-      background-image: url(/public/img/AmongUs.png);
+      background-image: url(/img/AmongUs.png);
     }
   }
 
   @media (orientation: portrait){
     .logoBox{
-      background-image: url(/public/img/AmongUsPortrait.png);
+      background-image: url(/img/AmongUsPortrait.png);
     }
   }
 
 main {
-    background-image: url(/public/img/AmongUsWallPaper.png);
+    background-image: url(/img/AmongUsWallPaper.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
