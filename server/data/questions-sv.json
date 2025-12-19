@@ -1,0 +1,12 @@
+[
+  {
+    "q": "Är Christoffer Lundh bäst?",
+    "a": ["JA", "NEJ", "KANSKE"],
+    "correctAnswer": "JA"
+  },
+  {
+    "q": "Vem skapade Gustav Vasas Bibel?",
+    "a": ["Gustav Vasa", "Carl den tredje", "GUD", "Christoffer Lundh"],
+    "correctAnswer": "GUD"
+  }
+]

@@ -1,6 +1,12 @@
 import { Lobby } from "./lobby.js";
 
 function sockets(io, socket, data) {
+  
+  
+  
+  
+  
+  //här under är alla gamla sockets vi fick från kodsklettet. Kan även vara någon lobby socket också
   socket.on("getUILabels", function (lang) {
     socket.emit("uiLabels", data.getUILabels(lang));
   });
@@ -10,7 +16,7 @@ function sockets(io, socket, data) {
     socket.emit("pollData", data.getPoll(d.pollId));
   });
 
-  socket.on("addQuestion", function (d) {
+   socket.on("addQuestion", function (d) {
     data.addQuestion(d.pollId, { q: d.q, a: d.a });
     socket.emit("questionUpdate", data.activateQuestion(d.pollId));
   });

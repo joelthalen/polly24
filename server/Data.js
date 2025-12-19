@@ -3,19 +3,17 @@ import {readFileSync} from "fs";
 
 // Store data in an object to keep the global namespace clean. In an actual implementation this would be interfacing a database...
 function Data() {
+  this.games = {} // Vi borde ändra så det inte är polls utan spel
+  
+
+
+
+
+  
   this.polls = {};
   this.polls['test'] = {
     lang: "en",
-    questions: [
-      {q: "Är Christoffer Lundh Bäst?", 
-       a: ["JA", "NEJ", "KANSKE"],
-       correctAnswer: "JA"
-      },
-      {q: "Vem skapade Gustav Vasas Bibel?", 
-       a: ["Gustav Vasa", "Carl den tredje", "GUD", "Christoffer Lundh"],
-       correctAnswer: "GUD"
-      }
-    ],
+    questions: JSON.parse(readFileSync("./server/data/questions-en.json")),
     answers: [],
     currentQuestion: 0,
     participants: []
@@ -27,6 +25,15 @@ For performance reasons, methods are added to the
 prototype of the Data object/class
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 ***********************************************/
+
+
+
+
+Data.prototype.retriveQuestionsFromFile = function(lang) {
+  return JSON.parse(readFileSync("./server/data/questions-" + lang + ".json"));
+}
+
+/*  Här under är alla datafunktioner som vi fick av kodsklettet */
 
 Data.prototype.pollExists = function (pollId) {
   return typeof this.polls[pollId] !== "undefined"

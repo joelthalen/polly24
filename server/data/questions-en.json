@@ -1,0 +1,12 @@
+[
+  {
+    "q": "Is Christoffer Lundh the best?",
+    "a": ["YES", "NO", "MAYBE"],
+    "correctAnswer": "YES"
+  },
+  {
+    "q": "Who created Gustav Vasa's Bible?",
+    "a": ["Gustav Vasa", "Carl the Third", "GOD", "Christoffer Lundh"],
+    "correctAnswer": "GOD"
+  }
+]
