@@ -4,7 +4,8 @@ import {readFileSync} from "fs";
 // Store data in an object to keep the global namespace clean. In an actual implementation this would be interfacing a database...
 function Data() {
   this.games = {} // Vi borde ändra så det inte är polls utan spel
-  
+  this.questionsEn = JSON.parse(readFileSync("./server/data/questions-en.json"));
+  this.questionsSv = JSON.parse(readFileSync("./server/data/questions-sv.json"));
 
 
 
@@ -29,8 +30,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
 
 
-Data.prototype.retriveQuestionsFromFile = function(lang) {
-  return JSON.parse(readFileSync("./server/data/questions-" + lang + ".json"));
+Data.prototype.retriveQuestions = function(lang) {
+  if (lang === "sv") {
+    return this.questionsSv;
+  }
+  return this.questionsEn;
 }
 
 /*  Här under är alla datafunktioner som vi fick av kodsklettet */

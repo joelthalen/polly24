@@ -76,6 +76,14 @@ function sockets(io, socket, data) {
       lobby.game.placeMarker(obj.column);
     }
   });
-}
 
+  socket.on("submitAnswer", (obj) => { 
+    const lobby = Lobby.getLobby(obj.id);
+    if (lobby && lobby.game) {
+      
+      lobby.game.checkAnswer(obj.answer);
+      
+    }
+  });
+}
 export { sockets };
