@@ -75,7 +75,5 @@ socket.on("wrongAnswer", () => {
 }); 
 
 socket.on("currentPlayerUpdate", (username) => {
-  console.log("Currentplayer set to"+username)
   state.currentPlayer = username;
-  console.log("Currentplayer set to"+username)
 })
