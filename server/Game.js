@@ -12,6 +12,7 @@ export class Game {
     this.data = data;
     this.questions = data.retriveQuestions(lobby.lang).slice();
     this.currentQuestion = null;
+    this.placeMarkerAllowed = false;
     for (let i = 0; i < players.length; i++) {
       players[i]["color"] = COLORS[i % COLORS.length];
     }
@@ -39,23 +40,24 @@ export class Game {
   }
 
   placeMarker(col) {
-    
-    // CHECK IF COL IS VALID
-    if (col < 0 || col > this.gameBoard.length) return;
+    if (!this.placeMarkerAllowed) return;
+      // CHECK IF COL IS VALID
+      if (col < 0 || col > this.gameBoard.length) return;
 
-    const emptyCellIndex = this.getIndexOfFirstWhiteInCol(col);
-    if (typeof emptyCellIndex === undefined) {
-      // Column is full, emit this to the placing player
-      //player.emitFullColumn();
-    } else {
-      const player = this.players[this.currentPlayer];
-      this.gameBoard[col][emptyCellIndex] = player.color;
-      this.setCurrentPlayer(this.getNextPlayer());
-      this.updateGameBoard();
-      //lobby.updateLobby(
-      //  `${player.username} placed a marker on [${col},${emptyCellIndex}]`
-      //);
-    }
+      const emptyCellIndex = this.getIndexOfFirstWhiteInCol(col);
+      if (typeof emptyCellIndex === undefined) {
+        // Column is full, emit this to the placing player
+        //player.emitFullColumn();
+      } else {
+        const player = this.players[this.currentPlayer];
+        this.gameBoard[col][emptyCellIndex] = player.color;
+        this.setCurrentPlayer(this.getNextPlayer());
+        this.updateGameBoard();
+        //lobby.updateLobby(
+        //  `${player.username} placed a marker on [${col},${emptyCellIndex}]`
+        //);
+        this.placeMarkerAllowed = false;
+      }
   }
 
   getNextPlayer() {
@@ -179,6 +181,7 @@ export class Game {
   checkAnswer(answer) {
     if (this.currentQuestion.correctAnswer === answer) {
       this.io.to(this.lobby.ID).emit("correctAnswer");
+      this.placeMarkerAllowed = true;
       this.updateQuestion();
     }
     else {
