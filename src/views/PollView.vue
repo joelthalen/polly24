@@ -77,6 +77,7 @@ export default {
       socket.emit("submitAnswer", { pollId: this.pollId, answer: answer });
     },
     placeMarker: function (col) {
+      
       socket.emit("placeMarker", {id: this.pollId, column: col})
     },
   },

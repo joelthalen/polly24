@@ -12,7 +12,7 @@ export class Game {
       players[i]["color"] = COLORS[i % COLORS.length];
     }
 
-    this.currentPlayer = 0; // Which player's turn is it anyway?
+    this.setCurrentPlayer(0); // Which player's turn is it anyway?
     // Create an gameboard 2d array[cols][rows]
     const gameBoard = new Array(this.columns);
     for (let i = 0; i < this.columns; i++) {
@@ -68,5 +68,13 @@ export class Game {
     this.currentPlayer = playerIndex;
     this.io.to(this.lobby.ID).emit("currentPlayerUpdate",this.players[playerIndex].username)
     console.log("setcurreentplayer"+this.players[playerIndex].username)
+  }
+
+  isCurrentPlayer(id) {
+    const player = this.players[this.currentPlayer];
+    if (player) {
+      return player.socket.id === id;
+    }
+    return false;
   }
 }

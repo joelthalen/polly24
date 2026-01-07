@@ -72,7 +72,7 @@ function sockets(io, socket, data) {
   // id: this.pollId, column: col
   socket.on("placeMarker", (obj) => {
     const lobby = Lobby.getLobby(obj.id);
-    if (lobby && lobby.game) {
+    if (lobby && lobby.game && lobby.game.isCurrentPlayer(socket.id)) {
       lobby.game.placeMarker(obj.column);
     }
   });
