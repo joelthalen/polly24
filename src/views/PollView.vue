@@ -46,15 +46,18 @@ export default {
     },
     size() {
       return {rows: state.gameBoard[0].length, cols: state.gameBoard.length}
-    }
+    },
+    question() {
+      return state.currentQuestion;
+    },
   },
   data: function () {
     return {
-      question: {
+      /*question: {
         q: "",
         a: [],
         correctAnswer: "",
-      },
+      },*/
       pollId: "inactive poll",
       submittedAnswers: {},
       currentPlayer: true, //ändra senare
@@ -72,8 +75,8 @@ export default {
     socket.emit("joinPoll", this.pollId);
   },
   methods: {
-    submitAnswer: function (answer) {
-      socket.emit("submitAnswer", { pollId: this.pollId, answer: answer });
+    submitAnswer: function (ans) {
+      socket.emit("submitAnswer", {id: this.pollId, answer: ans });
     },
     changePlayer: function (col) {
       this.currentPlayer = !this.currentPlayer; //ändra senare så det blir spelarnamn och att serven hanterar detta

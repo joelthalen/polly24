@@ -14,7 +14,9 @@ export const state = reactive({
   gameBoard: [
     ["white", "white", "white", "white", "white", "white"],
     ["white", "white", "white", "white", "white", "white"],
-],
+  ],
+  currentQuestion: {q: "test", a: ["a", "b", "c"], correctAnswer: "a"},
+
 });
 
 // "undefined" means the URL will be computed from the `window.location` object
@@ -58,3 +60,15 @@ socket.on("lobbyUpdate", (event) => {
 socket.on("gameBoardUpdate", (newGameBoard) => {
   state.gameBoard = newGameBoard;
 });
+
+socket.on("updateQuestion", (question) => {
+  state.currentQuestion = question;
+});
+
+socket.on("correctAnswer", () => {
+  console.log("Correct answer!");
+});
+
+socket.on("wrongAnswer", () => {
+  console.log("Wrong answer, try again!");
+}); 
