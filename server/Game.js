@@ -77,6 +77,87 @@ export class Game {
     this.io.to(this.lobby.ID).emit("gameBoardUpdate", this.gameBoard);
   }
 
+  /**
+   * Walks in all directions from latest placed brick to see if 4 is in a row.
+   * @param {*} row row of latest placed marker
+   * @param {*} col col of latest placed marker
+   * @param {*} playerColor colorOfPlayerWhoPlaced
+   */
+
+  //TODO Change from hard coded win condition of 4 brickor
+  checkWinCondition(row, col, playerColor) {
+
+    //vertical
+    let verticalLine = 1;
+    let over = row - 1;
+    let under = row + 1;
+    /*while (over >= 0 && this.gameBoard[col][over] === playerColor) {
+      verticalLine += 1;
+      over -= 1;
+    }*/ //We don't need to check upward right now
+    while (under < this.rows && this.gameBoard[col][under] === playerColor) {
+      verticalLine += 1;
+      under += 1;
+    }
+    if (verticalLine >= 4) {
+      return true;
+    }
+    //horizontal
+    let horizontalline = 1;
+    let left = col - 1;
+    let right = col + 1;
+    while (left >= 0 && this.gameBoard[left][row] === playerColor) {
+      horizontalline += 1;
+      left -= 1;
+    }
+    while (right < this.rows && this.gameBoard[right][row] === playerColor) {
+      horizontalline += 1;
+      right += 1;
+    }
+    if (horizontalline >= 4) {
+      return true;
+    }
+    //first diagonal
+    let firstdiagonalline = 1;
+    let upleft = [col - 1, row - 1];
+    let downright = [col + 1, row + 1]
+
+    while (upleft[0] >= 0 && upleft[1] >= 0 && this.gameBoard[upleft[0]][upleft[1]] === playerColor) {
+      firstdiagonalline += 1;
+      upleft = [upleft[0]-1, upleft[1]-1];
+    }
+    while (downright[0] < this.rows && downright[1] < this.columns && this.gameBoard[downright[0]][downright[1]] === playerColor) {
+      firstdiagonalline += 1;
+      downright = [downright[0]+1,downright[1]+1];
+    }
+    if (firstdiagonalline >= 4) {
+      return true;
+    }
+
+    let seconddiagonalline = 1;
+    let downleft = [col - 1, row + 1]
+    let upright = [col + 1, row - 1]
+    while (downleft[0] >= 0 && downleft[1] < this.rows && this.gameBoard[downleft[0]][downleft[1]] === playerColor) {
+      seconddiagonalline += 1;
+      downleft = [downleft[0]-1, upleft[1]+1];
+    }
+    while (upright[0] < this.rows && upright[1] >= 0 && this.gameBoard[upright[0]][upright[1]] === playerColor) {
+      seconddiagonalline += 1;
+      upright = [upright[0]+1,upright[1]-1];
+    }
+    if (seconddiagonalline >= 4) {
+      return true;
+    }
+
+    /*walk(col, row, direction, playerColor) {
+      let pos = [col + direction[0], row + direction[1]]
+      while (under < this.rows && this.gameBoard[pos[0]][pos[1]] === playerColor) {
+      firstdiagonalline += 1;
+      downright = [downright[0]+1,downright[1]+1];
+    }
+    }*/
+  }
+
   setCurrentPlayer(playerIndex) {
     this.currentPlayer = playerIndex;
     this.io.to(this.lobby.ID).emit("currentPlayerUpdate",this.players[playerIndex].username)

@@ -27,6 +27,7 @@ _kan kanske ligga som en komponent på lobbyn_
   - [X] knapp som skickar "updateProfile" event med nya namnet till backend
   - [ ] validera att fältet inte tomt
   - [ ] trycka enter för att skicka
+  - [ ] inte få välja samma användarnamn som nån annan
 
 ## lobby/Host settings skärm
 
