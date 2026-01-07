@@ -9,5 +9,271 @@
     "a": ["Gustav Vasa", "Carl den tredje", "GUD", "Christoffer Lundh"],
     "correctAnswer": "GUD"
   },
-  { "q": "Hur många minuter går det på en timme?", "a": ["30", "45", "60", "100"], "correctAnswer": "60" }, { "q": "Vilken planet ligger närmast solen?", "a": ["Jorden", "Venus", "Merkurius", "Mars"], "correctAnswer": "Merkurius" }, { "q": "Vad heter Sveriges huvudstad?", "a": ["Göteborg", "Stockholm", "Uppsala", "Malmö"], "correctAnswer": "Stockholm" }, { "q": "Hur många ben har en spindel?", "a": ["6", "8", "10", "12"], "correctAnswer": "8" }, { "q": "Vilket djur är störst i världen?", "a": ["Elefant", "Blåval", "Haj", "Giraff"], "correctAnswer": "Blåval" }, { "q": "Vad blir 7 × 8?", "a": ["54", "56", "64", "48"], "correctAnswer": "56" }, { "q": "Vilket årstid kommer efter sommaren?", "a": ["Vinter", "Vår", "Höst", "Ingen"], "correctAnswer": "Höst" }, { "q": "Vad kallas vatten i fast form?", "a": ["Ånga", "Is", "Snö", "Regn"], "correctAnswer": "Is" }, { "q": "Vilken färg får man om man blandar blått och gult?", "a": ["Lila", "Grönt", "Orange", "Brunt"], "correctAnswer": "Grönt" }, { "q": "Hur många dagar finns det på ett år (utan skottår)?", "a": ["360", "364", "365", "366"], "correctAnswer": "365" }
+  {
+   "q": "Hur många minuter går det på en timme?",
+   "a": ["30", "45", "60", "100"], 
+   "correctAnswer": "60"
+  }, 
+  { 
+    "q": "Vilken planet ligger närmast solen?", "a": ["Jorden", "Venus", "Merkurius", "Mars"], "correctAnswer": "Merkurius" 
+  }, 
+  { "q": "Vad heter Sveriges huvudstad?", "a": ["Göteborg", "Stockholm", "Uppsala", "Malmö"], "correctAnswer": "Stockholm" }, 
+  { "q": "Hur många ben har en spindel?", "a": ["6", "8", "10", "12"], "correctAnswer": "8" }, 
+  { "q": "Vilket djur är störst i världen?", "a": ["Elefant", "Blåval", "Haj", "Giraff"], "correctAnswer": "Blåval" }, 
+  { "q": "Vad blir 7 × 8?", "a": ["54", "56", "64", "48"], "correctAnswer": "56" },
+  { "q": "Vilket årstid kommer efter sommaren?", "a": ["Vinter", "Vår", "Höst", "Ingen"], "correctAnswer": "Höst" }, 
+  { "q": "Vad kallas vatten i fast form?", "a": ["Ånga", "Is", "Snö", "Regn"], "correctAnswer": "Is" },
+  { "q": "Vilken färg får man om man blandar blått och gult?", "a": ["Lila", "Grönt", "Orange", "Brunt"], "correctAnswer": "Grönt" }, 
+  { "q": "Hur många dagar finns det på ett år (utan skottår)?", "a": ["360", "364", "365", "366"], "correctAnswer": "365" },
+  {
+    "q": "Vilken är den asymptotiska tidskomplexiteten för mergesort i värsta fallet?",
+    "a": [
+      "O(n)",
+      "O(n log n)",
+      "O(n²)",
+      "O(log n)"
+    ],
+    "correctAnswer": "O(n log n)"
+  },
+  {
+    "q": "Vad innebär begreppet konvergens i en iterativ numerisk metod?",
+    "a": [
+      "Att algoritmen alltid terminerar",
+      "Att lösningen divergerar över iterationer",
+      "Att approximationen närmar sig en exakt lösning",
+      "Att felet är konstant"
+    ],
+    "correctAnswer": "Att approximationen närmar sig en exakt lösning"
+  },
+
+  {
+    "q": "Vilken grammatisk nivå beskriver skillnaden mellan ytstruktur och djupstruktur?",
+    "a": [
+      "Fonetik",
+      "Morfologi",
+      "Syntax",
+      "Semantik"
+    ],
+    "correctAnswer": "Syntax"
+  },
+  {
+    "q": "Vad innebär begreppet pragmatik inom språkvetenskap?",
+    "a": [
+      "Ljudens fysik",
+      "Ordens böjning",
+      "Betydelse oberoende av kontext",
+      "Hur kontext påverkar tolkning"
+    ],
+    "correctAnswer": "Hur kontext påverkar tolkning"
+  },
+
+  {
+    "q": "Vilken projektion bevarar vinklar men inte ytor?",
+    "a": [
+      "Mercatorprojektionen",
+      "Gall–Peters",
+      "Robinson",
+      "Mollweide"
+    ],
+    "correctAnswer": "Mercatorprojektionen"
+  },
+  {
+    "q": "Vad är ett centralt problem inom geopolitik?",
+    "a": [
+      "Erosion",
+      "Resursfördelning",
+      "Plattektonik",
+      "Klimatzoner"
+    ],
+    "correctAnswer": "Resursfördelning"
+  },
+
+  {
+    "q": "Vad var en central konsekvens av den industriella revolutionen?",
+    "a": [
+      "Minskad urbanisering",
+      "Ökad självhushållning",
+      "Strukturell arbetsdelning",
+      "Feodal återgång"
+    ],
+    "correctAnswer": "Strukturell arbetsdelning"
+  },
+  {
+    "q": "Vad skiljer positivism från hermeneutik?",
+    "a": [
+      "Synen på naturvetenskap",
+      "Metod för tolkning av mening",
+      "Användning av statistik",
+      "Historisk period"
+    ],
+    "correctAnswer": "Metod för tolkning av mening"
+  },
+
+  {
+    "q": "Vilket begrepp beskriver energins spridning i ett slutet system?",
+    "a": [
+      "Entropi",
+      "Entalpi",
+      "Exergi",
+      "Temperatur"
+    ],
+    "correctAnswer": "Entropi"
+  },
+  {
+    "q": "Vad innebär Le Chateliers princip?",
+    "a": [
+      "System söker maximal entropi",
+      "Reaktioner är irreversibla",
+      "Jämvikt motverkar yttre förändringar",
+      "Reaktionshastighet ökar linjärt"
+    ],
+    "correctAnswer": "Jämvikt motverkar yttre förändringar"
+  },
+
+  {
+    "q": "Vad är funktionen hos ribosomer?",
+    "a": [
+      "DNA-replikation",
+      "Proteinsyntes",
+      "Cellandning",
+      "Lipidtransport"
+    ],
+    "correctAnswer": "Proteinsyntes"
+  },
+  {
+    "q": "Vad menas med genexpression?",
+    "a": [
+      "Mutation av DNA",
+      "Aktivering av gener till funktionella produkter",
+      "Celldelning",
+      "Proteinnedbrytning"
+    ],
+    "correctAnswer": "Aktivering av gener till funktionella produkter"
+  },
+
+  {
+    "q": "Vad beskriver Maxwells ekvationer?",
+    "a": [
+      "Gravitation",
+      "Termodynamik",
+      "Elektromagnetiska fält",
+      "Kvantmekanik"
+    ],
+    "correctAnswer": "Elektromagnetiska fält"
+  },
+  {
+    "q": "Vad innebär superposition i fysik?",
+    "a": [
+      "Att krafter alltid summeras linjärt",
+      "Att vågor kan överlagras",
+      "Att energi försvinner",
+      "Att system är instabila"
+    ],
+    "correctAnswer": "Att vågor kan överlagras"
+  },
+
+  {
+    "q": "Vad anger pH-skalan?",
+    "a": [
+      "Saltkoncentration",
+      "Hydroxidjonhalt",
+      "Vätejonaktivitet",
+      "Molekylmassa"
+    ],
+    "correctAnswer": "Vätejonaktivitet"
+  },
+  {
+    "q": "Vad är en katalysators huvudsakliga funktion?",
+    "a": [
+      "Förbrukas i reaktionen",
+      "Ökar reaktionshastigheten",
+      "Ändrar jämviktsläge",
+      "Höjer temperaturen"
+    ],
+    "correctAnswer": "Ökar reaktionshastigheten"
+  },
+
+  {
+    "q": "Vad är en central funktion hos staten enligt Weber?",
+    "a": [
+      "Ekonomisk tillväxt",
+      "Monopol på legitimt våld",
+      "Demokratisk representation",
+      "Kulturell identitet"
+    ],
+    "correctAnswer": "Monopol på legitimt våld"
+  },
+  {
+    "q": "Vad innebär begreppet governance?",
+    "a": [
+      "Lagstiftning",
+      "Hierarkisk styrning",
+      "Samspel mellan aktörer i styrning",
+      "Privatisering"
+    ],
+    "correctAnswer": "Samspel mellan aktörer i styrning"
+  },
+
+  {
+    "q": "Vad är syftet med redundans i tekniska system?",
+    "a": [
+      "Öka prestanda",
+      "Minska kostnad",
+      "Öka driftsäkerhet",
+      "Förenkla design"
+    ],
+    "correctAnswer": "Öka driftsäkerhet"
+  },
+  {
+    "q": "Vad beskriver en feedback-loop?",
+    "a": [
+      "Slumpmässig variation",
+      "Fördröjd signal",
+      "Återkoppling som påverkar systemets beteende",
+      "Extern störning"
+    ],
+    "correctAnswer": "Återkoppling som påverkar systemets beteende"
+  },
+
+  {
+    "q": "Vad menas med opportunity cost?",
+    "a": [
+      "Direkt kostnad",
+      "Alternativkostnad",
+      "Fast kostnad",
+      "Marginalkostnad"
+    ],
+    "correctAnswer": "Alternativkostnad"
+  },
+  {
+    "q": "Vad är ett exempel på ett komplext system?",
+    "a": [
+      "Pendelklocka",
+      "Enkel krets",
+      "Ekonomiskt marknadssystem",
+      "Statisk struktur"
+    ],
+    "correctAnswer": "Ekonomiskt marknadssystem"
+  },
+
+  {
+    "q": "Vad kännetecknar ett NP-fullständigt problem?",
+    "a": [
+      "Det saknar lösning",
+      "Det kan lösas polynomiskt",
+      "Alla NP-problem kan reduceras till det",
+      "Det är stokastiskt"
+    ],
+    "correctAnswer": "Alla NP-problem kan reduceras till det"
+  },
+  {
+    "q": "Vad är huvudsyftet med en dimensionsanalys?",
+    "a": [
+      "Förenkla ekvationer",
+      "Verifiera fysikalisk rimlighet",
+      "Öka noggrannhet",
+      "Eliminera variabler"
+    ],
+    "correctAnswer": "Verifiera fysikalisk rimlighet"
+  }
 ]
