@@ -26,7 +26,7 @@ class Lobby {
     return {
       ID: this.ID,
       participants: this.players.map((p) => {
-        return { username: p.username, ready: p.ready };
+        return { username: p.username, ready: p.ready, team: p.team, isHost: p.isHost };
       }),
       gameBoard: () => {
         if (this.game) return this.game.gameBoard;
@@ -57,6 +57,7 @@ class Lobby {
     this.registerPlayerSockets(playerSocket);
     playerSocket.on("updateProfile", (p) => {
       player.username = p.username || player.username;
+      player.team = p.team || player.team;
       if ("ready" in p) {
         player.ready = p.ready;
         this.onPlayerReady(); // checks if everyone is ready

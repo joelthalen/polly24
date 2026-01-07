@@ -29,13 +29,13 @@
           <div class="statusBox">
             <h3>Status</h3>
 
-            <div v-if="isHost" class="playerList">
+            <div class="playerList">
               <div class="playerRow" v-for="participant in lobbyState.participants" :key="participant.username">
                 <div class="playerStatus">{{ participant.ready }}</div>
                 <div class="playerName">{{ participant.username }}</div>
                 <div class="playerTeam">
-                  
-                  <select v-model="participant.team">
+                  <p v-if="!isHost">{{ participant.team }}</p>
+                  <select v-model="participant.team" v-if="isHost" @change="socket.emit('updateProfile', {pollId: pollId, username: participant.username, team: value})">
                     <option value="team1">Team 1</option>
                     <option value="team2">Team 2</option>
                     <option value="spectator">Spectator</option>
