@@ -32,21 +32,10 @@ export default {
       type: Array,
       required: true,
     },
-    currentPlayer: {
-      type: String,
-      required: true,
-    },
   },
   emits: ["placeBrick"],
   methods: {
     placeBrick: function (col) {
-      /*for (let cell = this.size.rows - 1; cell >= 0; cell--) {
-        if (this.boardData[col][cell] === "white") {
-          this.boardData[col][cell] =
-            this.currentPlayer === true ? "red" : "blue";
-          break;
-        }
-      }*/
       this.$emit("placeBrick", col)
     },
   },

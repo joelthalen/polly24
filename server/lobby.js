@@ -5,7 +5,7 @@ const LOBBIES = {};
 class Lobby {
   game;
 
-  constructor(io, ownerSocket, lang = "en") {
+  constructor(io, ownerSocket, data, lang = "en") {
     this.io = io;
     // TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
     const IDLENGTH = 4;
@@ -16,6 +16,7 @@ class Lobby {
     // TODO: HARDCODED
     this.slots = 2;
     this.playerCount = 0;
+    this.data = data;
 
     this.owner_token = randomCharString(20);
     LOBBIES[this.ID] = this;
@@ -36,7 +37,7 @@ class Lobby {
 
   addParticipant(playerSocket) {
     this.playerCount = this.playerCount + 1;
-    playerSocket.join(this.ID);
+    playerSocket.join(this.ID); // Join the socket.io room for this lobby
     const player = {
       username: "Player " + this.playerCount,
       ready: false,
@@ -45,17 +46,20 @@ class Lobby {
       isHost: false, 
       team: "spectator",     
     };
+    // TODO: on disconnect remove player from lobby
+    // and if host, assign new host
     if (this.players.length === 0) {
       player.isHost = true;
     }
     this.players.push(player);
 
+    // TODO: move or smth idk
     this.registerPlayerSockets(playerSocket);
     playerSocket.on("updateProfile", (p) => {
       player.username = p.username || player.username;
       if ("ready" in p) {
         player.ready = p.ready;
-        this.onPlayerReady();
+        this.onPlayerReady(); // checks if everyone is ready
       }
       this.updateLobby();
     });
@@ -79,6 +83,7 @@ class Lobby {
     });
   }
 
+  // TODO: REDO
   removeParticipant(token) {
     for (let i in this.players) {
       if (this.players[i].auth_token === token) {
@@ -125,7 +130,7 @@ class Lobby {
 
   createGame() {
     // TODO: Fix hardcoded columns and rows settings
-    this.game = new Game(this.io, this, 7, 7, this.players);
+    this.game = new Game(this.io, this, 7, 7, this.players, this.data);
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");
   }
