@@ -21,7 +21,7 @@
       </div>
 
       <div v-if="joined">
-        <div class="wrapper">
+        <div class="layoutWrapper">
           <div class="settingsBox">
             <h3>Settings</h3>
 
@@ -29,13 +29,28 @@
           <div class="statusBox">
             <h3>Status</h3>
 
+            <div class="playerList">
+              <div class="playerRow" v-for="participant in lobbyState.participants" :key="participant.username">
+                <div class="playerStatus">{{ participant.ready }}</div>
+                <div class="playerName">{{ participant.username }}</div>
+                <div class="playerTeam">
+                  <p v-if="!isHost">{{ participant.team }}</p>
+                  <select v-model="participant.team" v-if="isHost" @change="socket.emit('updateProfile', {pollId: pollId, username: participant.username, team: value})">
+                    <option value="team1">Team 1</option>
+                    <option value="team2">Team 2</option>
+                    <option value="spectator">Spectator</option>
+                  </select>
+                </div>     
+              </div>
+            </div>
+
             <button class="readyButton" @click="changeReady" v-if="!isHost">
               <div v-if="isReady">Un-ready!</div>
               <div v-else>Ready!</div> <!--Vad ska vi skriva här för att man ska fatta vilket läge man är i?-->
               <!-- Kanske ändra till en checkbox? mindre oklart -->
             </button>
-
-            <button class="startButton" v-if="isHost">Start Game</button>
+            
+            <button class="startButton" @click="startGame" v-if="isHost">Start Game</button>
 
           </div>
         </div>
@@ -80,6 +95,7 @@ export default {
   },
   created: function () {
     this.pollId = this.$route.params.id;
+
     socket.on( "uiLabels", labels => this.uiLabels = labels );
     socket.on( "participantsUpdate", p => this.participants = p );
     socket.on( "startPoll", () => this.$router.push("/poll/" + this.pollId) );
@@ -90,6 +106,9 @@ export default {
     socket.on("gameStart", () => this.$router.push(`/poll/${this.pollId}`))
     socket.on("sendEmoji", () => {
       this.emojiCounter += 1
+    })
+    socket.on("joinedLobby", (e) => {
+      this.isHost = e.isHost;
     })
     socket.emit( "joinPoll", this.pollId );
     socket.emit("joinLobby", this.pollId);
@@ -107,6 +126,11 @@ export default {
     },
     sendEmoji: function() {
       socket.emit("sendEmoji");
+    },
+    
+    // TODO: Method for everyone being ready to start the game exists, but cant be true
+    startGame: function () {
+      socket.emit("startGame", this.pollId);
     },
 
   }
@@ -156,7 +180,7 @@ main {
     text-shadow: 2px 2px 4px #000000;
 }
 
-.wrapper {
+.layoutWrapper {
   display: grid;
   grid-template-columns: 35vw 10vw 35vw;
   margin-left: 10vw;
@@ -164,22 +188,22 @@ main {
   height: 40vh;
 }
 
-.wrapper div {
-  box-shadow: 0 0 10px rgb(219, 219, 219);
-  background-color: rgb(0,0,0,0.5);
-  border-radius: 10px;
-  border: solid 4px grey;
-}
+
 
 .settingsBox {
-  
+  box-shadow: 0 0 10px rgb(219, 219, 219);
+  border-radius: 10px;
+  border: solid 4px grey;
   grid-column: 1;
+  background-color: rgb(0,0,0,0.5);
 }
 
 .statusBox {
-
+  box-shadow: 0 0 10px rgb(219, 219, 219);
+  border-radius: 10px;
+  border: solid 4px grey;
   grid-column: 3;
-
+  background-color: rgb(0,0,0,0.5);
 }
 
 h3 {
@@ -198,5 +222,24 @@ h3 {
     background-color: white;
     height: 5vh;
     width: 10vw;
+}
+
+.playerRow {
+  display: grid;
+  grid-template-columns: 15% 55% 30%;
+  margin-bottom: 5px;
+}
+
+
+.playerStatus {
+  grid-column: 1;
+}
+
+.playerName {
+  grid-column: 2;
+}
+
+.playerTeam {
+  grid-column: 3;
 }
 </style>
