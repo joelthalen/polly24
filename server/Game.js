@@ -39,7 +39,7 @@ export class Game {
     } else {
       const player = this.players[this.currentPlayer];
       this.gameBoard[col][emptyCellIndex] = player.color;
-      this.currentPlayer = this.getNextPlayer();
+      this.setCurrentPlayer(this.getNextPlayer());
       this.updateGameBoard();
       //lobby.updateLobby(
       //  `${player.username} placed a marker on [${col},${emptyCellIndex}]`
@@ -62,5 +62,11 @@ export class Game {
 
   updateGameBoard() {
     this.io.to(this.lobby.ID).emit("gameBoardUpdate", this.gameBoard);
+  }
+
+  setCurrentPlayer(playerIndex) {
+    this.currentPlayer = playerIndex;
+    this.io.to(this.lobby.ID).emit("currentPlayerUpdate",this.players[playerIndex].username)
+    console.log("setcurreentplayer"+this.players[playerIndex].username)
   }
 }

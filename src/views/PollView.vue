@@ -17,8 +17,7 @@
     <SpelPlan
       v-bind:size="size"
       v-bind:boardData="boardData"
-      v-bind:currentPlayer="currentPlayer"
-      v-on:placeBrick="changePlayer"
+      v-on:placeBrick="placeMarker"
     />
     <h2>
       {{ currentPlayer + "'s: turn" }}
@@ -46,6 +45,9 @@ export default {
     },
     size() {
       return {rows: state.gameBoard[0].length, cols: state.gameBoard.length}
+    },
+    currentPlayer() {
+      return state.currentPlayer;
     }
   },
   data: function () {
@@ -57,7 +59,6 @@ export default {
       },
       pollId: "inactive poll",
       submittedAnswers: {},
-      currentPlayer: true, //ändra senare
     };
   },
   created: function () {
@@ -75,8 +76,7 @@ export default {
     submitAnswer: function (answer) {
       socket.emit("submitAnswer", { pollId: this.pollId, answer: answer });
     },
-    changePlayer: function (col) {
-      this.currentPlayer = !this.currentPlayer; //ändra senare så det blir spelarnamn och att serven hanterar detta
+    placeMarker: function (col) {
       socket.emit("placeMarker", {id: this.pollId, column: col})
     },
   },

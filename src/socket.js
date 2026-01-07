@@ -14,7 +14,8 @@ export const state = reactive({
   gameBoard: [
     ["white", "white", "white", "white", "white", "white"],
     ["white", "white", "white", "white", "white", "white"],
-],
+  ],
+  currentPlayer: null,
 });
 
 // "undefined" means the URL will be computed from the `window.location` object
@@ -58,3 +59,9 @@ socket.on("lobbyUpdate", (event) => {
 socket.on("gameBoardUpdate", (newGameBoard) => {
   state.gameBoard = newGameBoard;
 });
+
+socket.on("currentPlayerUpdate", (username) => {
+  console.log("Currentplayer set to"+username)
+  state.currentPlayer = username;
+  console.log("Currentplayer set to"+username)
+})
