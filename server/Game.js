@@ -51,7 +51,11 @@ export class Game {
       } else {
         const player = this.players[this.currentPlayer];
         this.gameBoard[col][emptyCellIndex] = player.color;
-        this.setCurrentPlayer(this.getNextPlayer());
+        if(this.checkWinCondition(emptyCellIndex, col, this.players[this.currentPlayer].color)) 
+        {
+          console.log(this.players[this.currentPlayer].username)
+        }
+      this.setCurrentPlayer(this.getNextPlayer());
         this.updateGameBoard();
         //lobby.updateLobby(
         //  `${player.username} placed a marker on [${col},${emptyCellIndex}]`
@@ -139,7 +143,7 @@ export class Game {
     let upright = [col + 1, row - 1]
     while (downleft[0] >= 0 && downleft[1] < this.rows && this.gameBoard[downleft[0]][downleft[1]] === playerColor) {
       seconddiagonalline += 1;
-      downleft = [downleft[0]-1, upleft[1]+1];
+      downleft = [downleft[0]-1, downleft[1]+1];
     }
     while (upright[0] < this.rows && upright[1] >= 0 && this.gameBoard[upright[0]][upright[1]] === playerColor) {
       seconddiagonalline += 1;
@@ -149,6 +153,8 @@ export class Game {
       return true;
     }
 
+    console.log(horizontalline, verticalLine, firstdiagonalline, seconddiagonalline);
+    
     /*walk(col, row, direction, playerColor) {
       let pos = [col + direction[0], row + direction[1]]
       while (under < this.rows && this.gameBoard[pos[0]][pos[1]] === playerColor) {
@@ -161,7 +167,6 @@ export class Game {
   setCurrentPlayer(playerIndex) {
     this.currentPlayer = playerIndex;
     this.io.to(this.lobby.ID).emit("currentPlayerUpdate",this.players[playerIndex].username)
-    console.log("setcurreentplayer"+this.players[playerIndex].username)
   }
 
   isCurrentPlayer(id) {

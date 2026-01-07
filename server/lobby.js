@@ -50,7 +50,11 @@ class Lobby {
     // and if host, assign new host
     if (this.players.length === 0) {
       player.isHost = true;
-    }
+      player.team = "team1";
+    };
+    if(this.players.length === 1){
+      player.team = "team2";
+    };
     this.players.push(player);
 
     // TODO: move or smth idk
