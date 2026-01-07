@@ -21,49 +21,45 @@
 
 _kan kanske ligga som en komponent på lobbyn_
 
-- [ ] Choose username (Save in browser)
-  - [ ] Get default username from server and populate value
-  - [ ] Text inputfield
-  - [ ] knapp som skickar "updateProfile" event med nya namnet till backend
+- [X] Choose username
+  - [X] Get default username from server and populate value
+  - [X] Text inputfield
+  - [X] knapp som skickar "updateProfile" event med nya namnet till backend
+  - [ ] validera att fältet inte tomt
+  - [ ] trycka enter för att skicka
 
 ## lobby/Host settings skärm
 
 - [ ] Waiting for opponent label/ name of opp
   - [ ] player joined game popup
-- [ ] Ready knapp
+- [X] Ready knapp
 - [ ] Current players lista
  - [ ] Ready state of players
 - [ ] Hoster settings
   - [ ] Turn-based/real-time (Optional)
   - [ ] Spelplan-storlek (optional)
-  - [ ] Ban phase (kategorier) (optional)
-  - [ ] PowerUps (optional)
-    - [ ] Typ traps, förstöra f motstånd, livlinor, new question
-- [ ] Join code display
+- [X] Join code display
   - [ ] QR-kod knapp (Optional)
 - [ ] Emojis och vibbar 😂
 
 ### Serverlogik
 
 - [x] socket-kanal för varje separat spel
-- [ ] Skapa spel med plats för (2?) spelare
+- [X] Skapa spel
+- [ ] Flera spelare?
 
 ## Spelskärm
 
 ### Visuellt
-- [ ] Join code display
-  - [ ] QR-kod knapp (Optional)
-- [ ] Your turn/opp turn visare
+- [X] Your turn/opp turn visare
 - [x] 4 in rad display
- - [ ] Koppla till datarepresentation av spelplan som fås från servern 
+ - [x] Koppla till datarepresentation av spelplan som fås från servern 
 - [ ] Motståndare fick rätt eller fel visare
-- [ ] knappar för att "släppa" marker i kolonn
-  - [ ] light up :hover css
-  - [ ] Animation av markör som faller till rätt position
+- [x] knappar för att "släppa" marker i kolonn
+  - [x] light up :hover css
 - [ ] Ge upp knapp
 - [ ] Request draw knapp
 - [ ] Timer (Optional)
-- [ ] Alternative column selector (For too small devices) (Optional)
 
 ### Spellogik på servern
 
@@ -71,17 +67,16 @@ _kan kanske ligga som en komponent på lobbyn_
 
 - [x] Skapa (host(a)) en lobby
 - [x] Gå med i en skapad lobby
-- [ ] Ready state för alla anslutna spelare att starta spelet.
-- [ ] Datarepresentation av spelplan
+- [x] Ready state för alla anslutna spelare att starta spelet.
+- [x] Datarepresentation av spelplan
   - matris med markörpositioner?
-- [ ] Hantera när spelare placerar ut en bricka.
-- [ ] Skicka uppdateringar av spelplanen till spelarna. 
+- [x] Hantera när spelare placerar ut en bricka.
+- [x] Skicka uppdateringar av spelplanen till spelarna. 
 - [ ] **Win Condition**: Kolla om spelare har "4 i rad", ()
   - Kolla vid varje brick-uppdatering?
-- [ ] Reset bräde
+- [x] Reset bräde
 - [ ] Draw/Forfiet (optional)
 - [ ] Disconnect 
-- [ ] ELO (optional)
 
 #### Trivia
 
@@ -119,7 +114,6 @@ _kan kanske ligga som en komponent på lobbyn_
 
 - [x] Bricka för spelare 1 och 2
 - [x] spel-matris
-- [ ] Låst kolonn
 
 ## Globala komponenter
 
