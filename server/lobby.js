@@ -43,11 +43,12 @@ class Lobby {
       ready: false,
       auth_token: randomCharString(10),
       socket: playerSocket,
-      isHost: false,      
+      isHost: false, 
+      team: "spectator",     
     };
     // TODO: on disconnect remove player from lobby
     // and if host, assign new host
-    if (this.players.length === 1) {
+    if (this.players.length === 0) {
       player.isHost = true;
     }
     this.players.push(player);
@@ -62,9 +63,13 @@ class Lobby {
       }
       this.updateLobby();
     });
+    playerSocket.on("startGame", () => {
+      this.createGame();
+    });
     playerSocket.emit("joinedLobby", {
       success: "true",
       auth_token: player.auth_token,
+      isHost: player.isHost,
     });
     this.updateLobby(`${player.username} joined the lobby.`, 1);
     return player;
