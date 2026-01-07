@@ -66,13 +66,13 @@ socket.on("updateQuestion", (question) => {
   state.currentQuestion = question;
 });
 
-socket.on("correctAnswer", () => {
+/*socket.on("correctAnswer", () => {
   console.log("Correct answer!");
 });
 
 socket.on("wrongAnswer", () => {
   console.log("Wrong answer, try again!");
-}); 
+}); */
 
 socket.on("currentPlayerUpdate", (username) => {
   console.log("Currentplayer set to"+username)

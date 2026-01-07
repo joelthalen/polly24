@@ -3,7 +3,8 @@
     <!-- Ta bort denna div senare då den inte tillhör vår kod och lär inte behövas? Någon komponent kanske kan användas?-->
     {{ pollId }}
     <QuestionComponent
-      v-bind:question="question"
+      v-if= "showQuestion"
+      v-bind:question="question" 
       v-on:answer="submitAnswer($event)"
     />
     <hr />
@@ -50,21 +51,24 @@ export default {
       return state.currentPlayer;
     },
     question() {
-      return state.currentQuestion;
+      return state.currentQuestion; //ändra så att pollview endast får tillgång till frågan och frågealternativen! inte rätt svar!
     },
   },
   data: function () {
     return {
-      /*question: {
-        q: "",
-        a: [],
-        correctAnswer: "",
-      },*/
+     
       pollId: "inactive poll",
-      submittedAnswers: {},
+      showQuestion: true,
+
     };
   },
   created: function () {
+    
+    socket.on("correctAnswer", () => {
+      this.showQuestion = false;
+    });
+
+    //Från kodsklettet
     this.pollId = this.$route.params.id;
     socket.on("questionUpdate", (q) => (this.question = q));
     socket.on(
@@ -74,14 +78,16 @@ export default {
     socket.on("uiLabels", (labels) => (this.uiLabels = labels));
     socket.emit("getUILabels", this.lang);
     socket.emit("joinPoll", this.pollId);
+
+
   },
   methods: {
     submitAnswer: function (ans) {
       socket.emit("submitAnswer", {id: this.pollId, answer: ans });
     },
     placeMarker: function (col) {
-      
       socket.emit("placeMarker", {id: this.pollId, column: col})
+      this.showQuestion = true; //återställ frågan efter drag
     },
   },
 };

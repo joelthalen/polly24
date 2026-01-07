@@ -8,6 +8,62 @@
     "q": "Who created Gustav Vasa's Bible?",
     "a": ["Gustav Vasa", "Carl the Third", "GOD", "Christoffer Lundh"],
     "correctAnswer": "GOD"
-  }
+  },
+
+  {
+    "q": "How many minutes are in an hour?",
+    "a": ["30", "45", "60", "100"],
+    "correctAnswer": "60"
+  },
+  {
+    "q": "Which planet is closest to the sun?",
+    "a": ["Earth", "Venus", "Mercury", "Mars"],
+    "correctAnswer": "Mercury"
+  },
+  {
+    "q": "What is the capital of Sweden?",
+    "a": ["Gothenburg", "Stockholm", "Uppsala", "Malmö"],
+    "correctAnswer": "Stockholm"
+  },
+  {
+    "q": "How many legs does a spider have?",
+    "a": ["6", "8", "10", "12"],
+    "correctAnswer": "8"
+  },
+  {
+    "q": "What is the largest animal in the world?",
+    "a": ["Elephant", "Blue Whale", "Shark", "Giraffe"],
+    "correctAnswer": "Blue Whale"
+  },
+  {
+    "q": "What is 7 × 8?",
+    "a": ["54", "56", "64", "48"],
+    "correctAnswer": "56"
+  },
+  {
+    "q": "Which season comes after summer?",
+    "a": ["Winter", "Spring", "Autumn", "None"],
+    "correctAnswer": "Autumn"
+  },
+  {
+    "q": "What is water called in solid form?",
+    "a": ["Steam", "Ice", "Snow", "Rain"],
+    "correctAnswer": "Ice"
+  },
+  {
+    "q": "What color do you get when you mix blue and yellow?",
+    "a": ["Purple", "Green", "Orange", "Brown"],
+    "correctAnswer": "Green"
+  },
+  {
+    "q": "How many days are there in a year (without leap year)?",
+    "a": ["360", "364", "365", "366"],
+    "correctAnswer": "365"
+  },
   
+  {   
+    "q": "What is a sandpile plus a sandpile?",
+    "a": ["Two sandpiles", "Glass", "A bigger sandpile", "Sandbox"],
+    "correctAnswer": "A bigger sandpile"  
+  }
 ]

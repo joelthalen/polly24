@@ -186,6 +186,7 @@ export class Game {
     }
     else {
       this.io.to(this.lobby.ID).emit("wrongAnswer");
+      this.setCurrentPlayer(this.getNextPlayer());
     }
   }
 }
