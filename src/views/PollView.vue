@@ -70,11 +70,6 @@ export default {
     socket.on("uiLabels", (labels) => (this.uiLabels = labels));
     socket.emit("getUILabels", this.lang);
     socket.emit("joinPoll", this.pollId);
-    for (let col in this.boardData) {
-      for (let row = 0; row < this.size.rows; row++) {
-        this.boardData[col][row] = "white"; //initialisera brädets färger och ändrar beroende på vem
-      }
-    }
   },
   methods: {
     submitAnswer: function (answer) {

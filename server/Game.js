@@ -1,28 +1,34 @@
 const COLORS = ["red", "yellow", "blue", "green", "violet"];
 
 export class Game {
-  constructor(io, lobby, columns, rows, players) {
+  constructor(io, lobby, columns, rows, players, data) {
     this.io = io;
     this.lobby = lobby;
     this.columns = columns;
     this.rows = rows;
     this.players = players;
+    this.data = data;
     for (let i = 0; i < players.length; i++) {
-      players[i]["color"] = COLORS[i];
+      players[i]["color"] = COLORS[i % COLORS.length];
     }
 
-    this.currentPlayer = 0;
+    this.currentPlayer = 0; // Which player's turn is it anyway?
     // Create an gameboard 2d array[cols][rows]
-    const gameBoard = new Array(columns);
-    for (let i = 0; i < columns; i++) {
-      gameBoard[i] = new Array(rows);
+    const gameBoard = new Array(this.columns);
+    for (let i = 0; i < this.columns; i++) {
+      gameBoard[i] = new Array(this.rows);
       gameBoard[i].fill("white");
     }
     this.gameBoard = gameBoard;
     this.updateGameBoard();
   }
 
+  getQuestion() {
+    //return this.data.getPollQuestion(this.lobby.ID);
+  }
+
   placeMarker(col) {
+    
     // CHECK IF COL IS VALID
     if (col < 0 || col > this.gameBoard.length) return;
 

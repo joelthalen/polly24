@@ -60,13 +60,21 @@ function sockets(io, socket, data) {
   /* Connect4 Game specifig */
   socket.on("createLobby", (e) => {
     console.log("A player has created a lobby");
-    const lobby = new Lobby(io, socket);
+    const lobby = new Lobby(io, socket, data);
     socket.emit("createdLobby", {lobbyID: lobby.ID, ownerToken: lobby.owner_token});
   });
 
   socket.on("joinLobby", (id) => {
     console.log("A player is trying to join a lobby", id);
     Lobby.tryJoiningLobby(socket, id);
+  });
+
+  // id: this.pollId, column: col
+  socket.on("placeMarker", (obj) => {
+    const lobby = Lobby.getLobby(obj.id);
+    if (lobby && lobby.game) {
+      lobby.game.placeMarker(obj.column);
+    }
   });
 }
 

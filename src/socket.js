@@ -14,11 +14,6 @@ export const state = reactive({
   gameBoard: [
     ["white", "white", "white", "white", "white", "white"],
     ["white", "white", "white", "white", "white", "white"],
-    ["white", "white", "white", "white", "white", "white"],
-    ["white", "white", "white", "white", "white", "white"],
-    ["white", "white", "white", "white", "white", "white"],
-    ["white", "white", "white", "white", "white", "white"],
-    ["white", "white", "white", "white", "white", "white"],
 ],
 });
 
