@@ -48,15 +48,18 @@ export default {
     },
     currentPlayer() {
       return state.currentPlayer;
-    }
+    },
+    question() {
+      return state.currentQuestion;
+    },
   },
   data: function () {
     return {
-      question: {
+      /*question: {
         q: "",
         a: [],
         correctAnswer: "",
-      },
+      },*/
       pollId: "inactive poll",
       submittedAnswers: {},
     };
@@ -73,8 +76,8 @@ export default {
     socket.emit("joinPoll", this.pollId);
   },
   methods: {
-    submitAnswer: function (answer) {
-      socket.emit("submitAnswer", { pollId: this.pollId, answer: answer });
+    submitAnswer: function (ans) {
+      socket.emit("submitAnswer", {id: this.pollId, answer: ans });
     },
     placeMarker: function (col) {
       

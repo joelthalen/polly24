@@ -3,7 +3,7 @@
     <div>
       <p>{{ question.q }}</p>
     </div>
-    <div class="questionAlternative" v-for="a in question.a" v-on:click="answer(a)" v-bind:key="a">
+    <div class="questionAlternative" v-for="a in question.a" v-on:click="answer(a) " v-bind:key="a">
       <p>{{ a }}</p>
     </div>
     <p>Correct answer: {{ question.correctAnswer }}</p>

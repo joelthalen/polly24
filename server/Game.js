@@ -1,3 +1,5 @@
+import e from "express";
+
 const COLORS = ["red", "yellow", "blue", "green", "violet"];
 
 export class Game {
@@ -8,6 +10,8 @@ export class Game {
     this.rows = rows;
     this.players = players;
     this.data = data;
+    this.questions = data.retriveQuestions(lobby.lang).slice();
+    this.currentQuestion = null;
     for (let i = 0; i < players.length; i++) {
       players[i]["color"] = COLORS[i % COLORS.length];
     }
@@ -21,10 +25,17 @@ export class Game {
     }
     this.gameBoard = gameBoard;
     this.updateGameBoard();
+    this.updateQuestion();
+    
   }
 
-  getQuestion() {
-    //return this.data.getPollQuestion(this.lobby.ID);
+  getQuestion() { 
+    this.currentQuestion = this.questions[Math.floor(Math.random() * this.questions.length)];
+    return this.currentQuestion;
+  }
+
+  removeQuestion(q) {
+    this.questions = this.questions.filter((item) => item !== q);
   }
 
   placeMarker(col) {
@@ -157,5 +168,21 @@ export class Game {
       return player.socket.id === id;
     }
     return false;
+  }
+
+  updateQuestion() {
+    const question = this.getQuestion();
+    this.removeQuestion(question);
+    this.io.to(this.lobby.ID).emit("updateQuestion", question)
+  }
+
+  checkAnswer(answer) {
+    if (this.currentQuestion.correctAnswer === answer) {
+      this.io.to(this.lobby.ID).emit("correctAnswer");
+      this.updateQuestion();
+    }
+    else {
+      this.io.to(this.lobby.ID).emit("wrongAnswer");
+    }
   }
 }
