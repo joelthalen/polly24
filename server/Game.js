@@ -117,22 +117,22 @@ export class Game {
       firstdiagonalline += 1;
       downright = [downright[0]+1,downright[1]+1];
     }
-    if (verticalLine >= 4) {
+    if (firstdiagonalline >= 4) {
       return true;
     }
 
-    let rightdiagonalline = 1;
+    let seconddiagonalline = 1;
     let downleft = [col - 1, row + 1]
     let upright = [col + 1, row - 1]
     while (downleft[0] >= 0 && downleft[1] < this.rows && this.gameBoard[downleft[0]][downleft[1]] === playerColor) {
-      rightdiagonalline += 1;
+      seconddiagonalline += 1;
       downleft = [downleft[0]-1, upleft[1]+1];
     }
     while (upright[0] < this.rows && upright[1] >= 0 && this.gameBoard[upright[0]][upright[1]] === playerColor) {
-      firstdiagonalline += 1;
+      seconddiagonalline += 1;
       upright = [upright[0]+1,upright[1]-1];
     }
-    if (rightdiagonalline >= 4) {
+    if (seconddiagonalline >= 4) {
       return true;
     }
 
