@@ -50,7 +50,7 @@ _kan kanske ligga som en komponent på lobbyn_
 
 - [x] socket-kanal för varje separat spel
 - [X] Skapa spel
-- [ ] Flera spelare?
+- [x] Flera spelare?
 
 ## Spelskärm
 
@@ -76,7 +76,7 @@ _kan kanske ligga som en komponent på lobbyn_
   - matris med markörpositioner?
 - [x] Hantera när spelare placerar ut en bricka.
 - [x] Skicka uppdateringar av spelplanen till spelarna. 
-- [ ] **Win Condition**: Kolla om spelare har "4 i rad", ()
+- [X] **Win Condition**: Kolla om spelare har "4 i rad", ()
   - Kolla vid varje brick-uppdatering?
 - [x] Reset bräde
 - [ ] Draw/Forfiet (optional)
@@ -87,13 +87,11 @@ _kan kanske ligga som en komponent på lobbyn_
 - [x] Läs in data-fil(er) med triviafrågor
   - Översättningar och kategorier
   - JSON eller CSV?
-- [ ] Tilldela varje kolumn en fråga
-  - [ ] Varje kolumn representerar en kategori? (Optional) 
-- [ ] Skicka fråga och (4) svarsalternativ till rätt spelare
+- [x] Skicka fråga och (4) svarsalternativ till rätt spelare
   - Ska alla kolumner populeras med Q/A direkt eller efter behov (när spelaren klickar på kolonn)?
 - [x] Ta emot svar från spelaren och avgör om svaret stämmer.
-  - [ ] Rätt svar: Placera bricka 
-  - [ ] Fel svar: lockdown lockout locked out.
+  - [x] Rätt svar: Placera bricka 
+  - [x] Fel svar: lockdown lockout locked out.
 
 ## Vinnare/Förlorare skärm
 
@@ -105,10 +103,8 @@ _kan kanske ligga som en komponent på lobbyn_
 
 ## Frågekomponent
 
-- [ ] Fråga
-- [ ] Svarsalternativ
-- [ ] Tillbakaknapp
-- [ ] Temaenliga bakgrunder
+- [x] Fråga
+- [x] Svarsalternativ
 - [ ] Bekräftelse
   - [ ] Grönt på rätt svar
   - [ ] Konfetti
