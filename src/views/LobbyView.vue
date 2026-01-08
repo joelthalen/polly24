@@ -32,7 +32,19 @@
                 {{ lobbyState.rows }}
                 <button class="rowsPlusButton" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
               <div>Win condition:</div>
-              <div>Question difficulty:</div>
+              
+              
+              <div>
+                Question difficulty: 
+                <span v-if="lobbyState.difficulty === 0">Easy</span>
+                <span v-else-if="lobbyState.difficulty === 1">Hard</span>
+                <span v-else>Unknown</span>
+                 <button class="difficultyButton" @click="changeDifficulty(lobbyState.difficulty)">
+                  Change difficulty
+                </button>
+              
+              
+              </div>
           </div>
           <div class="statusBox">
             <h3>Status</h3>
@@ -137,7 +149,10 @@ export default {
       socket.emit("sendEmoji");
     },
     changeSettings: function(columns, rows) {
-      socket.emit("changeSettings", {pollId: this.pollId, columns: columns, rows: rows})
+      socket.emit("changeSettings", {pollId: this.pollId, columns: columns, rows: rows});
+    },
+    changeDifficulty: function(difficulty) {
+      socket.emit("changeDifficulty", {pollId: this.pollId, difficulty: difficulty});
     },
     
     // TODO: Method for everyone being ready to start the game exists, but cant be true

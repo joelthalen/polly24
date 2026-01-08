@@ -3,7 +3,7 @@ import e from "express";
 const COLORS = ["red", "yellow", "blue", "green", "violet"];
 
 export class Game {
-  constructor(io, lobby, columns, rows, players, data, level) {
+  constructor(io, lobby, columns, rows, players, data, difficulty) {
     this.io = io;
     this.lobby = lobby;
     this.columns = columns;
@@ -11,7 +11,7 @@ export class Game {
     this.players = players.filter((participant) => participant.team !== "spectator");
     this.spectators = players.filter((participant) => participant.team === "spectator");
     this.data = data;
-    this.questions = data.retriveQuestions(lobby.lang).slice();
+    this.questions = data.retriveQuestions(lobby.lang)[difficulty].slice();
     this.currentQuestion = null;
     this.placeMarkerAllowed = false;
     for (let i = 0; i < players.length; i++) {

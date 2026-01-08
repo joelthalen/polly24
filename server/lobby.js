@@ -22,6 +22,7 @@ class Lobby {
     LOBBIES[this.ID] = this;
     this.columns = 7;
     this.rows = 7;
+    this.difficulty = 0; //kanske ändra till boolean eller int istället
   }
 
   lobbyInfo() {
@@ -32,6 +33,7 @@ class Lobby {
       }),
       columns: this.columns, //Lite fult kanske att ha det här här, men det behövs innan gamet har skapats
       rows: this.rows,
+      difficulty: this.difficulty, 
       gameBoard: () => {
         if (this.game) return this.game.gameBoard;
         else return undefined;
@@ -39,7 +41,7 @@ class Lobby {
     };
   }
 
-  addParticipant(playerSocket) {
+  addParticipant(playerSocket) { //kan behövas delas upp så inte addParticipant gör allt i lobby
     this.playerCount = this.playerCount + 1;
     playerSocket.join(this.ID); // Join the socket.io room for this lobby
     const player = {
@@ -75,13 +77,21 @@ class Lobby {
     playerSocket.on("updateOtherProfiles", (p) => {
       this.updateOtherPlayer(p);
     });
-    playerSocket.on("changeSettings", (settings) => {
+    playerSocket.on("changeSettings", (settings) => { //kanske behöver ändras
       this.columns = settings.columns;
       this.rows = settings.rows;
       this.updateLobby();
     });
+    playerSocket.on("changeDifficulty", (obj) => { 
+      if (obj.difficulty === 0) {
+        this.difficulty = 1;
+      } else if (obj.difficulty === 1) { //kanske ändra till boolean eller int istället
+        this.difficulty = 0;
+      }
+      this.updateLobby();
+    });
     playerSocket.on("startGame", () => {
-      this.createGame(this.columns, this.rows);
+      this.createGame(this.columns, this.rows); //behöver ju inte skicka med colums och rows om de finns som variabler i classen?! change setting ändrar ju this.rows och så
     });
     playerSocket.emit("joinedLobby", {
       success: "true",
@@ -152,7 +162,7 @@ class Lobby {
   }
 
   createGame(columns, rows) {
-    this.game = new Game(this.io, this, columns, rows, this.players, this.data);
+    this.game = new Game(this.io, this, columns, rows, this.players, this.data, this.difficulty);
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");
   }
