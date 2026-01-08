@@ -3,7 +3,7 @@ import e from "express";
 const COLORS = ["red", "yellow", "blue", "green", "violet"];
 
 export class Game {
-  constructor(io, lobby, columns, rows, players, data) {
+  constructor(io, lobby, columns, rows, players, data, level) {
     this.io = io;
     this.lobby = lobby;
     this.columns = columns;

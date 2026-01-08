@@ -1,4 +1,5 @@
 [
+  [
   {
     "q": "Is Christoffer Lundh the best?",
     "a": ["YES", "NO", "MAYBE"],
@@ -66,4 +67,247 @@
     "a": ["Two sandpiles", "Glass", "A bigger sandpile", "Sandbox"],
     "correctAnswer": "A bigger sandpile"  
   }
+  ],
+  [
+  {
+    "q": "What is the asymptotic time complexity of mergesort in the worst case?",
+    "a": [
+      "O(n)",
+      "O(n log n)",
+      "O(n²)",
+      "O(log n)"
+    ],
+    "correctAnswer": "O(n log n)"
+  },
+  {
+  "q": "What does the concept of convergence mean in an iterative numerical method?",
+  "a": [
+    "That the algorithm always terminates",
+    "That the solution diverges over iterations",
+    "That the approximation approaches an exact solution",
+    "That the error is constant"
+  ],
+  "correctAnswer": "That the approximation approaches an exact solution"
+  },
+  {
+    "q": "Which grammatical level describes the difference between surface structure and deep structure?",
+    "a": [
+      "Phonetics",
+      "Morphology",
+      "Syntax",
+      "Semantics"
+    ],
+    "correctAnswer": "Syntax"
+  },
+  {
+    "q": "What does the concept of pragmatics mean in linguistics?",
+    "a": [
+      "The physics of sounds",
+      "Word inflection",
+      "Meaning independent of context",
+      "How context affects interpretation"
+    ],
+    "correctAnswer": "How context affects interpretation"
+  },
+  {
+    "q": "Which map projection preserves angles but not areas?",
+    "a": [
+      "The Mercator projection",
+      "Gall–Peters",
+      "Robinson",
+      "Mollweide"
+    ],
+    "correctAnswer": "The Mercator projection"
+  },
+  {
+    "q": "What is a central issue in geopolitics?",
+    "a": [
+      "Erosion",
+      "Resource distribution",
+      "Plate tectonics",
+      "Climate zones"
+    ],
+    "correctAnswer": "Resource distribution"
+  },
+  {
+    "q": "What was a central consequence of the Industrial Revolution?",
+    "a": [
+      "Decreased urbanization",
+      "Increased subsistence farming",
+      "Structural division of labor",
+      "Return to feudalism"
+    ],
+    "correctAnswer": "Structural division of labor"
+  },
+  {
+    "q": "What distinguishes positivism from hermeneutics?",
+    "a": [
+      "View of natural science",
+      "Method for interpreting meaning",
+      "Use of statistics",
+      "Historical period"
+    ],
+    "correctAnswer": "Method for interpreting meaning"
+  },
+  {
+    "q": "Which concept describes the dispersion of energy in a closed system?",
+    "a": [
+      "Entropy",
+      "Enthalpy",
+      "Exergy",
+      "Temperature"
+    ],
+    "correctAnswer": "Entropy"
+  },
+  {
+    "q": "What does Le Chatelier’s principle state?",
+    "a": [
+      "Systems seek maximum entropy",
+      "Reactions are irreversible",
+      "Equilibrium counteracts external changes",
+      "Reaction rate increases linearly"
+    ],
+    "correctAnswer": "Equilibrium counteracts external changes"
+  },
+  {
+    "q": "What is the function of ribosomes?",
+    "a": [
+      "DNA replication",
+      "Protein synthesis",
+      "Cellular respiration",
+      "Lipid transport"
+    ],
+    "correctAnswer": "Protein synthesis"
+  },
+  {
+    "q": "What is meant by gene expression?",
+    "a": [
+      "Mutation of DNA",
+      "Activation of genes into functional products",
+      "Cell division",
+      "Protein degradation"
+    ],
+    "correctAnswer": "Activation of genes into functional products"
+  },
+  {
+    "q": "What do Maxwell’s equations describe?",
+    "a": [
+      "Gravity",
+      "Thermodynamics",
+      "Electromagnetic fields",
+      "Quantum mechanics"
+    ],
+    "correctAnswer": "Electromagnetic fields"
+  },
+  {
+    "q": "What does superposition mean in physics?",
+    "a": [
+      "Forces are always added linearly",
+      "Waves can overlap",
+      "Energy disappears",
+      "Systems are unstable"
+    ],
+    "correctAnswer": "Waves can overlap"
+  },
+  {
+    "q": "What does the pH scale indicate?",
+    "a": [
+      "Salt concentration",
+      "Hydroxide ion concentration",
+      "Hydrogen ion activity",
+      "Molecular mass"
+    ],
+    "correctAnswer": "Hydrogen ion activity"
+  },
+  {
+    "q": "What is the primary function of a catalyst?",
+    "a": [
+      "It is consumed in the reaction",
+      "It increases the reaction rate",
+      "It changes the equilibrium position",
+      "It raises the temperature"
+    ],
+    "correctAnswer": "It increases the reaction rate"
+  },
+  {
+    "q": "According to Weber, what is a central function of the state?",
+    "a": [
+      "Economic growth",
+      "Monopoly on the legitimate use of force",
+      "Democratic representation",
+      "Cultural identity"
+    ],
+    "correctAnswer": "Monopoly on the legitimate use of force"
+  },
+  {
+    "q": "What does the concept of governance mean?",
+    "a": [
+      "Legislation",
+      "Hierarchical control",
+      "Interaction between actors in governance",
+      "Privatization"
+    ],
+    "correctAnswer": "Interaction between actors in governance"
+  },
+  {
+    "q": "What is the purpose of redundancy in technical systems?",
+    "a": [
+      "Increase performance",
+      "Reduce cost",
+      "Increase reliability",
+      "Simplify design"
+    ],
+    "correctAnswer": "Increase reliability"
+  },
+  {
+    "q": "What does a feedback loop describe?",
+    "a": [
+      "Random variation",
+      "Delayed signal",
+      "Feedback that influences system behavior",
+      "External disturbance"
+    ],
+    "correctAnswer": "Feedback that influences system behavior"
+  },
+  {
+    "q": "What is meant by opportunity cost?",
+    "a": [
+      "Direct cost",
+      "Alternative cost",
+      "Fixed cost",
+      "Marginal cost"
+    ],
+    "correctAnswer": "Alternative cost"
+  },
+  {
+    "q": "Which is an example of a complex system?",
+    "a": [
+      "Pendulum clock",
+      "Simple circuit",
+      "Economic market system",
+      "Static structure"
+    ],
+    "correctAnswer": "Economic market system"
+  },
+  {
+    "q": "What characterizes an NP-complete problem?",
+    "a": [
+      "It has no solution",
+      "It can be solved in polynomial time",
+      "All NP problems can be reduced to it",
+      "It is stochastic"
+    ],
+    "correctAnswer": "All NP problems can be reduced to it"
+  },
+  {
+    "q": "What is the main purpose of dimensional analysis?",
+    "a": [
+      "Simplify equations",
+      "Verify physical consistency",
+      "Increase accuracy",
+      "Eliminate variables"
+    ],
+    "correctAnswer": "Verify physical consistency"
+  }
+  ]
 ]
