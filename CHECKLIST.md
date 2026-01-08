@@ -146,3 +146,9 @@ _kan kanske ligga som en komponent på lobbyn_
 - [ ] :button - hover, färgändring typ svart opacity 10%
 - [ ] font?
 - [ ] färgtema i variabler
+
+## Checklista inför presentationen
+- [ ] An overview of the assumptions that you have made, for instance about context and users.
+- [ ] A quick look at your initial clickable prototype.
+- [ ] Live demonstrations of your different views (creating and participating in game).
+- [ ] A presentation of the results of the usability evaluation that you have conducted of your final product.
