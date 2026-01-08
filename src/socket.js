@@ -18,6 +18,7 @@ export const state = reactive({
   currentQuestion: {q: "test", a: ["a", "b", "c"], correctAnswer: "a"},
 
   currentPlayer: null,
+  spectating: false,
   
 });
 
@@ -78,3 +79,7 @@ socket.on("wrongAnswer", () => {
 socket.on("currentPlayerUpdate", (username) => {
   state.currentPlayer = username;
 })
+
+socket.on("youAreSpectating", () => {
+  state.spectating = true;
+} );

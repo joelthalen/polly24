@@ -51,6 +51,7 @@ class Lobby {
     if (this.players.length === 0) {
       player.isHost = true;
       player.team = "team1";
+      player.ready = true;
     };
     if(this.players.length === 1){
       player.team = "team2";
@@ -64,9 +65,11 @@ class Lobby {
       player.team = p.team || player.team;
       if ("ready" in p) {
         player.ready = p.ready;
-        this.onPlayerReady(); // checks if everyone is ready
       }
       this.updateLobby();
+    });
+    playerSocket.on("updateOtherProfiles", (p) => {
+      this.updateOtherPlayer(p);
     });
     playerSocket.on("startGame", () => {
       this.createGame();
@@ -131,6 +134,12 @@ class Lobby {
     }
     this.createGame();
     console.log(`Created Game on lobby ${this.ID}`);
+  }
+
+  updateOtherPlayer(p) {
+    this.players.find((player) => player.username === p.username).team = p.team;
+    this.updateLobby();
+    
   }
 
   createGame() {
