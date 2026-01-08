@@ -40,6 +40,7 @@ export class Game {
   }
 
   placeMarker(col) {
+    console.log(`Player ${this.players[this.currentPlayer].username} is placing a marker in column ${col}`);
     if (!this.placeMarkerAllowed) return;
       // CHECK IF COL IS VALID
       if (col < 0 || col > this.gameBoard.length) return;
