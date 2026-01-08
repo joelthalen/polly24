@@ -77,13 +77,13 @@ function sockets(io, socket, data) {
     }
   });
 
-  socket.on("submitAnswer", (obj) => { 
+  socket.on("submitAnswer", (obj) => {  
     const lobby = Lobby.getLobby(obj.id);
     if (lobby && lobby.game) {
-      
-      lobby.game.checkAnswer(obj.answer);
-      
-    }
+      if (lobby.game.isCurrentPlayer(socket.id)) {  
+    lobby.game.checkAnswer(obj.answer,);  
+      }
+  }
   });
 }
 export { sockets };

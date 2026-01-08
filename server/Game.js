@@ -154,14 +154,6 @@ export class Game {
     }
 
     console.log(horizontalline, verticalLine, firstdiagonalline, seconddiagonalline);
-    
-    /*walk(col, row, direction, playerColor) {
-      let pos = [col + direction[0], row + direction[1]]
-      while (under < this.rows && this.gameBoard[pos[0]][pos[1]] === playerColor) {
-      firstdiagonalline += 1;
-      downright = [downright[0]+1,downright[1]+1];
-    }
-    }*/
   }
 
   setCurrentPlayer(playerIndex) {

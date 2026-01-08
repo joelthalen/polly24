@@ -18,6 +18,7 @@ export const state = reactive({
   currentQuestion: {q: "test", a: ["a", "b", "c"], correctAnswer: "a"},
 
   currentPlayer: null,
+  
 });
 
 // "undefined" means the URL will be computed from the `window.location` object
