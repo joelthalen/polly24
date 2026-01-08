@@ -1,5 +1,3 @@
-import e from "express";
-
 const COLORS = ["red", "yellow", "blue", "green", "violet"];
 
 export class Game {
@@ -8,8 +6,7 @@ export class Game {
     this.lobby = lobby;
     this.columns = columns;
     this.rows = rows;
-    this.players = players.filter((participant) => participant.team !== "spectator");
-    this.spectators = players.filter((participant) => participant.team === "spectator");
+    this.players = players;
     this.data = data;
     this.questions = data.retriveQuestions(lobby.lang)[difficulty].slice();
     this.currentQuestion = null;
@@ -164,7 +161,7 @@ export class Game {
 
   setCurrentPlayer(playerIndex) {
     this.currentPlayer = playerIndex;
-    if (!this.players[playerIndex].username) {
+    if (!this.players[playerIndex]) {
       console.log(`ERROR: Tried to get username for player with index ${playerIndex}, from list this.players of length ${this.players.length}, only following players exists in list.`)
       for (let p of this.players) {
         console.log(p);
@@ -203,11 +200,20 @@ export class Game {
     }
   }
 
-  informSpectators() {
-    for (const spectator of this.spectators) {
-      spectator.socket.join("spectator" + this.lobby.ID);
+  addSpectators(spectators) {
+    if (Array.isArray(spectators)) {
+      for (const spectator of spectators) {
+        spectator.socket.join("spectator" + this.lobby.ID);
+      }
     }
+  }
+
+  informSpectators() {
     this.io.to("spectator" + this.lobby.ID).emit("youAreSpectating");
+  }
+
+  endGame() {
+
   }
 
 }

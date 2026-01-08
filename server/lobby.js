@@ -3,14 +3,23 @@ import { Game } from "./Game.js";
 /** @type {Map<string, Lobby>} */
 const LOBBIES = new Map();
 
+// TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
+const ID_LENGTH = 4;
+const MIN_PLAYERS = 1;
+const MAX_PLAYERS = 2;
+
+const TEAMS = {
+  PLAYER: "player",
+  SPECTATOR: "spectator"
+}
+
+
 class Lobby {
   game;
 
   constructor(io, ownerSocket, data, lang = "en") {
     this.io = io;
-    // TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
-    const IDLENGTH = 4;
-    this.ID = randomCharString(4);
+    this.ID = randomCharString(ID_LENGTH);
     // could be socket specific authentication ID generated on lobby join
     this.lang = lang;
     this.players = [];
@@ -19,7 +28,6 @@ class Lobby {
     this.playerCount = 0;
     this.data = data;
 
-    this.owner_token = randomCharString(20);
     LOBBIES.set(this.ID, this);
     this.columns = 7;
     this.rows = 7;
@@ -53,8 +61,6 @@ class Lobby {
       isHost: false, 
       team: "spectator",     
     };
-    // TODO: on disconnect remove player from lobby
-    // and if host, assign new host
     if (this.players.length === 0) {
       player.isHost = true;
       player.team = "player";
@@ -171,7 +177,13 @@ class Lobby {
   }
 
   createGame(columns, rows) {
+    // Split lobby into players and participants.
+    const {spectators, players} = Object.groupBy(this.players, 
+      (p) => p.team === TEAMS.SPECTATOR ? "spectators" : "players");
+    // Check min and max player count
+    if (!players || players.length < MIN_PLAYERS || players.length > MAX_PLAYERS) return;
     this.game = new Game(this.io, this, columns, rows, this.players, this.data, this.difficulty);
+    this.game.addSpectators(spectators);
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");
   }
