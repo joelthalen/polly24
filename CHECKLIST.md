@@ -143,6 +143,12 @@ _kan kanske ligga som en komponent på lobbyn_
 - [ ] font?
 - [ ] färgtema i variabler
 
+## Customization?
+
+- [ ] Ändra spelplanstorlek
+- [ ] Ändra win condition
+- [ ] Ändra svårhetsgrad på frågor
+
 ## Checklista inför presentationen
 - [ ] An overview of the assumptions that you have made, for instance about context and users.
 - [ ] A quick look at your initial clickable prototype.
