@@ -26,7 +26,7 @@ _kan kanske ligga som en komponent på lobbyn_
   - [X] Text inputfield
   - [X] knapp som skickar "updateProfile" event med nya namnet till backend
   - [ ] validera att fältet inte tomt
-  - [ ] trycka enter för att skicka
+  - [x] trycka enter för att skicka
   - [ ] inte få välja samma användarnamn som nån annan
 
 ## lobby/Host settings skärm
@@ -148,6 +148,11 @@ _kan kanske ligga som en komponent på lobbyn_
 - [ ] Ändra spelplanstorlek
 - [ ] Ändra win condition
 - [ ] Ändra svårhetsgrad på frågor
+
+- [ ] Rubriker för högra rutan (Status, Username, Spelarfärg)
+- [ ] Snyggare Ready-status
+- [ ] 
+- [ ] 
 
 ## Checklista inför presentationen
 - [ ] An overview of the assumptions that you have made, for instance about context and users.
