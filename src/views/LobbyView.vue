@@ -4,14 +4,14 @@
         {{ lobbyState }}
       </p>
     <section class = "topSection">
-      <button @click="leaveLobby">Leave Lobby</button>
+      <button @click="leaveLobby">{{ uiLabels.leaveLobby }}</button>
       <div class="logoBox"></div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
       </div>
     </section>
       <p class="codeBox">
-        Lobby Code: {{ pollId }}
+        {{ uiLabels.lobbyCode }}: {{ pollId }}
       </p>
       <div v-if="!joined">
         <input type="text" v-model="userName" @keyup.enter="chooseUsername">
@@ -23,31 +23,31 @@
       <div v-if="joined">
         <div class="layoutWrapper">
           <div class="settingsBox">
-            <h3>Settings</h3>
-              <div>Columns: 
+            <h3>{{ uiLabels.settings }}</h3>
+              <div>{{ uiLabels.columns }}: 
                 <button class="columnsMinusButton" :disabled="lobbyState.columns<=4" @click="changeSettings(lobbyState.columns - 1, lobbyState.rows)">-</button>
                 {{ lobbyState.columns }}
                 <button class="columnsPlusButton" :disabled="lobbyState.columns>=10" @click="changeSettings(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
-              <div>Rows: <button class="rowsMinusButton" :disabled="lobbyState.rows<=4" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
+              <div>{{uiLabels.rows}}: <button class="rowsMinusButton" :disabled="lobbyState.rows<=4" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
                 {{ lobbyState.rows }}
                 <button class="rowsPlusButton" :disabled="lobbyState.rows>=10" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
-              <div>Win condition:</div>
+              <div>{{uiLabels.winCondition}}:</div>
               
               
               <div>
-                Question difficulty: 
-                <span v-if="lobbyState.difficulty === 0">Easy</span>
-                <span v-else-if="lobbyState.difficulty === 1">Hard</span>
-                <span v-else>Unknown</span>
-                 <button class="difficultyButton" @click="changeDifficulty(lobbyState.difficulty)">
-                  Change difficulty
+                {{uiLabels.questionDifficulty}}: 
+                <span v-if="lobbyState.difficulty === 0">{{ uiLabels.easy }}</span>
+                <span v-else-if="lobbyState.difficulty === 1">{{ uiLabels.hard }}</span>
+                <span v-else>{{ uiLabels.unknown }}</span>
+                <button class="difficultyButton" @click="changeDifficulty(lobbyState.difficulty)">
+                  {{ uiLabels.changeDifficulty }}
                 </button>
               
               
               </div>
           </div>
           <div class="statusBox">
-            <h3>Status</h3>
+            <h3>{{ uiLabels.status }}</h3>
 
             <div class="playerList">
               <div class="playerRow" v-for="participant in lobbyState.participants" :key="participant.username">
@@ -56,25 +56,26 @@
                 <div class="playerTeam">
                   <p v-if="!isHost">{{ participant.team }}</p>
                   <select v-model="participant.team" v-if="isHost" @change="changeTeam(participant)">
-                    <option value="player">Player</option>
+                    <option value="player">{{ uiLabels.player }}</option>
 
-                    <option value="spectator">Spectator</option>
+                    <option value="spectator">{{ uiLabels.spectator }}</option>
                   </select>
                 </div>     
               </div>
             </div>
 
             <button class="readyButton" @click="changeReady" v-if="!isHost">
+              <!-- TODO -->
               <div v-if="isReady">Un-ready!</div>
               <div v-else>Ready!</div> <!--Vad ska vi skriva här för att man ska fatta vilket läge man är i?-->
               <!-- Kanske ändra till en checkbox? mindre oklart -->
             </button>
             
-            <button class="startButton" @click="startGame" v-if="isHost">Start Game</button>
+            <button class="startButton" @click="startGame" v-if="isHost">{{ uiLabels.startGame }}</button>
 
           </div>
         </div>
-        <p>Waiting for host to start poll</p>
+        <p>{{ uiLabels.waitingForHost}}</p>
         {{ participants }}
         
 
@@ -98,13 +99,15 @@ export default {
   computed: {
     lobbyState() {
       return state.lobby;
+    },
+    uiLabels() {
+      return state.uiLabels;
     }
   },
   data: function () {
     return {
       userName: "",
       pollId: "inactive poll",
-      uiLabels: {},
       joined: false,
       lang: localStorage.getItem("lang") || "en",
       participants: [],
@@ -117,7 +120,6 @@ export default {
     this.pollId = this.$route.params.id;
     socket.on("lobbyNotFound", () => this.$router.push({path: "/", query: {action: "lobbyNotFound"}}));
 
-    socket.on( "uiLabels", labels => this.uiLabels = labels );
     socket.on( "participantsUpdate", p => this.participants = p );
     socket.on( "startPoll", () => this.$router.push("/poll/" + this.pollId) );
     socket.on("gameStart", () => this.$router.push(`/poll/${this.pollId}`))

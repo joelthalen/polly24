@@ -14,9 +14,16 @@
       <section id="gameButtons">
         <div class="wrapper"> 
 
-          <button id="hostButton" @click="hostGame">HOST</button>
-          <input id="roomCodeField" type="text" v-model="roomCode" placeholder="Room code" @keyup.enter="joinGame"> 
-          <button id="joinButton" @click="joinGame">JOIN</button>
+          <button id="hostButton" @click="hostGame">{{ uiLabels.host || "HOST" }}</button>
+          <form @submit="joinGame" class="join-form">
+            <input id="roomCodeField" 
+              type="text" 
+              v-model="roomCode" 
+              :placeholder="this.uiLabels.roomCode"
+              required
+              minlength="4" maxlength="4"> 
+            <button id="joinButton">{{ uiLabels.join || "Join" }}</button>
+          </form>
 
         </div>
     </section>
@@ -59,6 +66,9 @@
     computed: {
       connected() {
         return !state.connected;
+      },
+      uiLabels() {
+        return state.uiLabels;
       }
     }
   }
@@ -112,18 +122,21 @@
   }*/
 
     .wrapper {
-      grid-template-columns: repeat(7, 50px); 
-      grid-template-rows: repeat(2, 30px);
+      grid-template-columns: repeat(2, 175px); 
+      grid-template-rows: repeat(1, 60px);
 
       width: 350px; 
       margin: 20vh auto 0 auto; 
       height: 10vh;
+
+    gap: 50px;
   }
 
 
   #hostButton {
-    grid-column: 1 / 4;
-    grid-row: 1 / 3;
+    grid-column: 1;
+    grid-row: 1;
+    height: inherit;
   }
 
 
@@ -135,6 +148,21 @@
   #joinButton {
     grid-column: 7;
     grid-row: 1 / 3;
+  }
+  
+  .join-form {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: row;
+
+    input {
+      width: 4em;
+      flex-grow: 2;
+    }
+    button {
+      flex-grow: 1;
+    }
   }
   
 }

@@ -16,10 +16,9 @@ export const state = reactive({
     ["white", "white", "white", "white", "white", "white"],
     ],
   currentQuestion: {q: "test", a: ["a", "b", "c"], correctAnswer: "a"},
-
   currentPlayer: null,
   spectating: false,
-  
+  uiLabels: {},
 });
 
 // "undefined" means the URL will be computed from the `window.location` object
@@ -37,6 +36,8 @@ socket.on("disconnect", () => {
   state.connected = false;
   console.log("Client disconnected from server");
 });
+
+socket.on( "uiLabels", labels => state.uiLabels = labels );
 
 /**
  * GAME Sockets
