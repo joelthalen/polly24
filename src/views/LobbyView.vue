@@ -36,10 +36,8 @@
                 <div class="playerTeam">
                   <p v-if="!isHost">{{ participant.team }}</p>
                   <select v-model="participant.team" v-if="isHost" @change="changeTeam(participant)">
-                    <option value="team1">Team 1</option>
-                    <option value="team2">Team 2</option>
-                    <option value="team3">Team 3</option>
-                    <option value="team4">Team 4</option>
+                    <option value="player">Player</option>
+
                     <option value="spectator">Spectator</option>
                   </select>
                 </div>     

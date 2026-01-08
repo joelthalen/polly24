@@ -18,7 +18,7 @@ export class Game {
       players[i]["color"] = COLORS[i % COLORS.length];
     }
 
-    this.setCurrentPlayer(0); // Which player's turn is it anyway?
+    this.setCurrentPlayer(Math.floor(Math.random()*this.players.length)); // Which player's turn is it anyway?
     // Create an gameboard 2d array[cols][rows]
     const gameBoard = new Array(this.columns);
     for (let i = 0; i < this.columns; i++) {
