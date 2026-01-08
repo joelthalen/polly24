@@ -25,12 +25,12 @@
           <div class="settingsBox">
             <h3>Settings</h3>
               <div>Columns: 
-                <button class="columnsMinusButton" @click="changeSettings(lobbyState.columns - 1, lobbyState.rows)">-</button>
+                <button class="columnsMinusButton" :disabled="lobbyState.columns<=4" @click="changeSettings(lobbyState.columns - 1, lobbyState.rows)">-</button>
                 {{ lobbyState.columns }}
-                <button class="columnsPlusButton" @click="changeSettings(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
-              <div>Rows: <button class="rowsMinusButton" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
+                <button class="columnsPlusButton" :disabled="lobbyState.columns>=10" @click="changeSettings(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
+              <div>Rows: <button class="rowsMinusButton" :disabled="lobbyState.rows<=4" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
                 {{ lobbyState.rows }}
-                <button class="rowsPlusButton" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
+                <button class="rowsPlusButton" :disabled="lobbyState.rows>=10" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
               <div>Win condition:</div>
               <div>Question difficulty:</div>
           </div>
