@@ -8,7 +8,12 @@
       v-on:answer="submitAnswer($event)"
     />
     <hr />
-    <span style="color: black;">{{ submittedAnswers }}</span>
+    <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center;">
+      Wrong answer! Next player's turn.
+    </div>
+    <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center;">
+      Correct answer! Please place your marker.
+    </div>
   </div>
 <main>  
   <header>
@@ -59,6 +64,8 @@ export default {
      
       pollId: "inactive poll",
       showQuestion: true,
+      wrongAnswer: false,
+      correctAnswer: false,
 
     };
   },
@@ -66,6 +73,17 @@ export default {
     
     socket.on("correctAnswer", () => {
       this.showQuestion = false;
+      this.correctAnswer = true;
+      setTimeout(() => {
+        this.correctAnswer = false;
+      }, 2000);
+    });
+
+    socket.on("wrongAnswer", () => {
+      this.wrongAnswer = true;
+      setTimeout(() => {
+        this.wrongAnswer = false;
+      }, 2000);
     });
 
     //Från kodsklettet

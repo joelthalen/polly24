@@ -8,7 +8,7 @@ export class Game {
     this.lobby = lobby;
     this.columns = columns;
     this.rows = rows;
-    this.players = players;
+    this.players = players.filter((participant) => participant.team !== "spectator");
     this.data = data;
     this.questions = data.retriveQuestions(lobby.lang).slice();
     this.currentQuestion = null;
@@ -173,7 +173,11 @@ export class Game {
   updateQuestion() {
     const question = this.getQuestion();
     this.removeQuestion(question);
-    this.io.to(this.lobby.ID).emit("updateQuestion", question)
+    const reducedQuestion = {
+      q: question.q,
+      a: question.a
+    }
+    this.io.to(this.lobby.ID).emit("updateQuestion", reducedQuestion)
   }
 
   checkAnswer(answer) {
