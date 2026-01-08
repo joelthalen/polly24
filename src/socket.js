@@ -30,10 +30,12 @@ export const socket = io(URL);
 
 socket.on("connect", () => {
   state.connected = true;
+
 });
 
 socket.on("disconnect", () => {
   state.connected = false;
+  console.log("Client disconnected from server");
 });
 
 /**

@@ -1,11 +1,14 @@
 <template>
+  <div v-if="connected">
+    <p>Is not connected till server</p>
+  </div>
   <main>
     <section class = "topSection">
       <div class="logoBox">
         <img alt="Logo">
       </div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
-          <LanguageButton/>
+          <LanguageButton />
       </div>
     </section>
       <section id="gameButtons">
@@ -22,11 +25,11 @@
 
 <script>
   import LanguageButton from '../components/LanguageButton.vue';
-  import { socket } from '../socket';
-  
+  import { socket, state } from '../socket';
+
   export default {
     name: 'StartView',
-    compoments: { 
+    components: { 
       LanguageButton
 
     },
@@ -39,6 +42,12 @@
     created: function() {
       socket.on("createdLobby", (e) => this.$router.push(`/lobby/${e.lobbyID}`));
     },
+    mounted: function() {
+      if (this.$route.query.action) {
+        if (this.$route.query.action === "lobbyNotFound")
+          console.log("Lobby not found");
+      }
+    },
     methods: {
       hostGame: function() {
         socket.emit("createLobby");
@@ -46,7 +55,11 @@
       joinGame: function() {
         this.$router.push(`/lobby/${this.roomCode}`);
       }
-
+    },
+    computed: {
+      connected() {
+        return !state.connected;
+      }
     }
   }
 

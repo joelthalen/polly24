@@ -4,7 +4,7 @@
         {{ lobbyState }}
       </p>
     <section class = "topSection">
-      <RouterLink to="/">Leave Lobby</RouterLink>
+      <button @click="leaveLobby">Leave Lobby</button>
       <div class="logoBox"></div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
@@ -103,6 +103,7 @@ export default {
   },
   created: function () {
     this.pollId = this.$route.params.id;
+    socket.on("lobbyNotFound", () => this.$router.push({path: "/", query: {action: "lobbyNotFound"}}));
 
     socket.on( "uiLabels", labels => this.uiLabels = labels );
     socket.on( "participantsUpdate", p => this.participants = p );
@@ -144,6 +145,10 @@ export default {
     startGame: function () {
       socket.emit("startGame", this.pollId);
     },
+    leaveLobby: function() {
+      socket.emit("leaveLobby");
+      this.$router.push({path: "/", query: {action: "leftLobby"}})
+    }
 
   }
 }
