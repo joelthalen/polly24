@@ -15,8 +15,8 @@
       </p>
       <div v-if="!joined">
         <input type="text" v-model="userName">
-        <button v-on:click="participateInPoll">
-          {{ this.uiLabels.participateInPoll }}
+        <button v-on:click="chooseUsername">
+          {{ this.uiLabels.chooseUsername }}
         </button>
       </div>
 
@@ -99,10 +99,6 @@ export default {
     socket.on( "uiLabels", labels => this.uiLabels = labels );
     socket.on( "participantsUpdate", p => this.participants = p );
     socket.on( "startPoll", () => this.$router.push("/poll/" + this.pollId) );
-    socket.on("lobbyUpdate", (event) => {
-      console.log(event.message);
-      this.lobbyState = event.lobbyState;
-    });
     socket.on("gameStart", () => this.$router.push(`/poll/${this.pollId}`))
     socket.on("sendEmoji", () => {
       this.emojiCounter += 1
@@ -115,8 +111,8 @@ export default {
     socket.emit( "getUILabels", this.lang );
   },
   methods: {
-    participateInPoll: function () {
-      socket.emit( "participateInPoll", {pollId: this.pollId, name: this.userName} )
+    chooseUsername: function () {
+      socket.emit( "updateProfile", {pollId: this.pollId, username: this.userName})
       this.joined = true;
     },
     changeReady: function () {

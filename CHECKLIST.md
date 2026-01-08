@@ -35,13 +35,16 @@ _kan kanske ligga som en komponent på lobbyn_
   - [ ] player joined game popup
 - [X] Ready knapp
 - [ ] Current players lista
- - [ ] Ready state of players
+ - [X] Ready state of players
 - [ ] Hoster settings
   - [ ] Turn-based/real-time (Optional)
   - [ ] Spelplan-storlek (optional)
 - [X] Join code display
   - [ ] QR-kod knapp (Optional)
 - [ ] Emojis och vibbar 😂
+- [ ] kicka spelare som host
+- [ ] bara starta när alla är redo
+- [ ] man lämnar spelet när man stänger fönstret
 
 ### Serverlogik
 
