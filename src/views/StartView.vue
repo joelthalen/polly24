@@ -12,7 +12,7 @@
         <div class="wrapper"> 
 
           <button id="hostButton" @click="hostGame">HOST</button>
-          <input id="roomCodeField" type="text" v-model="roomCode" placeholder="Room code"> 
+          <input id="roomCodeField" type="text" v-model="roomCode" placeholder="Room code" @keyup.enter="joinGame"> 
           <button id="joinButton" @click="joinGame">JOIN</button>
 
         </div>
