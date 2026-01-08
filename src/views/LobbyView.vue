@@ -39,7 +39,7 @@
 
             <div class="playerList">
               <div class="playerRow" v-for="participant in lobbyState.participants" :key="participant.username">
-                <div class="playerStatus"><p>{{ participant.ready }}</p></div>
+                <div class="playerStatus"><p>{{ participant.ready ? 'Ready' : 'Not Ready' }}</p></div>
                 <div class="playerName"><p>{{ participant.username }}</p></div>
                 <div class="playerTeam">
                   <p v-if="!isHost">{{ participant.team }}</p>
