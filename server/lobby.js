@@ -1,6 +1,7 @@
 import { Game } from "./Game.js";
 
-const LOBBIES = {};
+/** @type {Map<string, Lobby>} */
+const LOBBIES = new Map();
 
 class Lobby {
   game;
@@ -19,7 +20,7 @@ class Lobby {
     this.data = data;
 
     this.owner_token = randomCharString(20);
-    LOBBIES[this.ID] = this;
+    LOBBIES.set(this.ID, this);
     this.columns = 7;
     this.rows = 7;
     this.difficulty = 0; //kanske ändra till boolean eller int istället
@@ -111,27 +112,35 @@ class Lobby {
   }
 
   // TODO: REDO
-  removeParticipant(token) {
+  removeParticipant(id) {
     for (let i in this.players) {
-      if (this.players[i].auth_token === token) {
-        this.players.remove(i);
+      if (this.players[i].socket.id === id) {
+        const removedPlayerArray = this.players.splice(i, 1);
+        if (this.players.length < 1) this.remove();
+        else if (removedPlayerArray[0].isHost) {
+          this.players[0].isHost = true;
+        }
       }
     }
   }
 
+  remove() {
+    LOBBIES.delete(this.ID);
+  }
+
   static getLobby(ID) {
-    if (ID in LOBBIES) {
-      return LOBBIES[ID];
+    if (LOBBIES.has(ID)) {
+      return LOBBIES.get(ID);
     } else {
       return undefined;
     }
   }
 
   static tryJoiningLobby(socket, ID) {
-    if (ID in LOBBIES) {
-      LOBBIES[ID].addParticipant(socket);
+    if (LOBBIES.has(ID)) {
+      LOBBIES.get(ID).addParticipant(socket);
     } else {
-      socket.emit("lobbyUpdate", {
+      socket.emit("lobbyNotFound", {
         announceLevel: 4,
         message: "Could not find lobby.",
         lobbyState: {},

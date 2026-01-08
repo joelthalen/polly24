@@ -4,7 +4,7 @@
         {{ lobbyState }}
       </p>
     <section class = "topSection">
-      <RouterLink to="/">Leave Lobby</RouterLink>
+      <button @click="leaveLobby">Leave Lobby</button>
       <div class="logoBox"></div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
@@ -25,12 +25,12 @@
           <div class="settingsBox">
             <h3>Settings</h3>
               <div>Columns: 
-                <button class="columnsMinusButton" @click="changeSettings(lobbyState.columns - 1, lobbyState.rows)">-</button>
+                <button class="columnsMinusButton" :disabled="lobbyState.columns<=4" @click="changeSettings(lobbyState.columns - 1, lobbyState.rows)">-</button>
                 {{ lobbyState.columns }}
-                <button class="columnsPlusButton" @click="changeSettings(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
-              <div>Rows: <button class="rowsMinusButton" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
+                <button class="columnsPlusButton" :disabled="lobbyState.columns>=10" @click="changeSettings(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
+              <div>Rows: <button class="rowsMinusButton" :disabled="lobbyState.rows<=4" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
                 {{ lobbyState.rows }}
-                <button class="rowsPlusButton" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
+                <button class="rowsPlusButton" :disabled="lobbyState.rows>=10" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
               <div>Win condition:</div>
               
               
@@ -115,6 +115,7 @@ export default {
   },
   created: function () {
     this.pollId = this.$route.params.id;
+    socket.on("lobbyNotFound", () => this.$router.push({path: "/", query: {action: "lobbyNotFound"}}));
 
     socket.on( "uiLabels", labels => this.uiLabels = labels );
     socket.on( "participantsUpdate", p => this.participants = p );
@@ -159,6 +160,10 @@ export default {
     startGame: function () {
       socket.emit("startGame", this.pollId);
     },
+    leaveLobby: function() {
+      socket.emit("leaveLobby");
+      this.$router.push({path: "/", query: {action: "leftLobby"}})
+    }
 
   }
 }

@@ -1,16 +1,23 @@
+import { Socket } from "socket.io";
 import { Lobby } from "./lobby.js";
+import { Session } from "./Session.js";
 
+/**
+ * 
+ * @param {*} io 
+ * @param {Socket} socket 
+ * @param {*} data 
+ */
 function sockets(io, socket, data) {
-  
-  
-  
-  
-  
-  //här under är alla gamla sockets vi fick från kodsklettet. Kan även vara någon lobby socket också
+
+  new Session(socket.id);
   console.log(`User connected with ID ${socket.id}`);
+  //här under är alla gamla sockets vi fick från kodsklettet. Kan även vara någon lobby socket också
 
   socket.on("disconnect", () => {
     console.log("Client Disconnected");
+    const session = Session.getSession(socket.id);
+    if (session) session.onDisconnect();
   })
 
   socket.on("getUILabels", function (lang) {
@@ -63,6 +70,19 @@ function sockets(io, socket, data) {
   socket.on("joinLobby", (id) => {
     console.log("A player is trying to join a lobby", id);
     Lobby.tryJoiningLobby(socket, id);
+    const lobby = Lobby.getLobby(id);
+    if (lobby) {
+      const session = Session.getSession(socket.id);
+      if (session) {
+        session.joinLobby(lobby);
+      }
+    } 
+  });
+
+  socket.on("leaveLobby", () => {
+    const session = Session.getSession(socket.id);
+    if (!session) return;
+    session.leaveLobby();
   });
 
   // id: this.pollId, column: col
