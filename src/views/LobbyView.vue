@@ -35,9 +35,11 @@
                 <div class="playerName"><p>{{ participant.username }}</p></div>
                 <div class="playerTeam">
                   <p v-if="!isHost">{{ participant.team }}</p>
-                  <select v-model="participant.team" v-if="isHost" @change="socket.emit('updateProfile', {pollId: pollId, username: participant.username, team: value})">
+                  <select v-model="participant.team" v-if="isHost" @change="changeTeam(participant)">
                     <option value="team1">Team 1</option>
                     <option value="team2">Team 2</option>
+                    <option value="team3">Team 3</option>
+                    <option value="team4">Team 4</option>
                     <option value="spectator">Spectator</option>
                   </select>
                 </div>     
@@ -114,6 +116,11 @@ export default {
     chooseUsername: function () {
       socket.emit( "updateProfile", {pollId: this.pollId, username: this.userName})
       this.joined = true;
+    },
+    changeTeam: function (participant) {
+      console.log(participant);
+      socket.emit( "updateOtherProfiles", {pollId: this.pollId, username: participant.username, team: participant.team})
+
     },
     changeReady: function () {
       this.isReady = !this.isReady;
