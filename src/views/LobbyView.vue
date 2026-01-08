@@ -14,7 +14,7 @@
         Lobby Code: {{ pollId }}
       </p>
       <div v-if="!joined">
-        <input type="text" v-model="userName">
+        <input type="text" v-model="userName" @keyup.enter="chooseUsername">
         <button v-on:click="chooseUsername">
           {{ this.uiLabels.chooseUsername }}
         </button>
@@ -24,14 +24,22 @@
         <div class="layoutWrapper">
           <div class="settingsBox">
             <h3>Settings</h3>
-
+              <div>Columns: 
+                <button class="columnsMinusButton" @click="changeSettings(lobbyState.columns - 1, lobbyState.rows)">-</button>
+                {{ lobbyState.columns }}
+                <button class="columnsPlusButton" @click="changeSettings(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
+              <div>Rows: <button class="rowsMinusButton" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
+                {{ lobbyState.rows }}
+                <button class="rowsPlusButton" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
+              <div>Win condition:</div>
+              <div>Question difficulty:</div>
           </div>
           <div class="statusBox">
             <h3>Status</h3>
 
             <div class="playerList">
               <div class="playerRow" v-for="participant in lobbyState.participants" :key="participant.username">
-                <div class="playerStatus"><p>{{ participant.ready }}</p></div>
+                <div class="playerStatus"><p>{{ participant.ready ? 'Ready' : 'Not Ready' }}</p></div>
                 <div class="playerName"><p>{{ participant.username }}</p></div>
                 <div class="playerTeam">
                   <p v-if="!isHost">{{ participant.team }}</p>
@@ -127,6 +135,9 @@ export default {
     },
     sendEmoji: function() {
       socket.emit("sendEmoji");
+    },
+    changeSettings: function(columns, rows) {
+      socket.emit("changeSettings", {pollId: this.pollId, columns: columns, rows: rows})
     },
     
     // TODO: Method for everyone being ready to start the game exists, but cant be true
