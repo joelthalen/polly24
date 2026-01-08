@@ -17,8 +17,9 @@ export class Game {
     for (let i = 0; i < players.length; i++) {
       players[i]["color"] = COLORS[i % COLORS.length];
     }
-
+    console.log(this.players.length);
     this.setCurrentPlayer(Math.floor(Math.random()*this.players.length)); // Which player's turn is it anyway?
+
     // Create an gameboard 2d array[cols][rows]
     const gameBoard = new Array(this.columns);
     for (let i = 0; i < this.columns; i++) {
@@ -163,6 +164,12 @@ export class Game {
 
   setCurrentPlayer(playerIndex) {
     this.currentPlayer = playerIndex;
+    if (!this.players[playerIndex].username) {
+      console.log(`ERROR: Tried to get username for player with index ${playerIndex}, from list this.players of length ${this.players.length}, only following players exists in list.`)
+      for (let p of this.players) {
+        console.log(p);
+      }
+    }
     this.io.to(this.lobby.ID).emit("currentPlayerUpdate",this.players[playerIndex].username)
   }
 
