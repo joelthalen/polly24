@@ -20,6 +20,8 @@ class Lobby {
 
     this.owner_token = randomCharString(20);
     LOBBIES[this.ID] = this;
+    this.columns = 7;
+    this.rows = 7;
   }
 
   lobbyInfo() {
@@ -28,6 +30,8 @@ class Lobby {
       participants: this.players.map((p) => {
         return { username: p.username, ready: p.ready, team: p.team, isHost: p.isHost };
       }),
+      columns: this.columns, //Lite fult kanske att ha det här här, men det behövs innan gamet har skapats
+      rows: this.rows,
       gameBoard: () => {
         if (this.game) return this.game.gameBoard;
         else return undefined;
@@ -71,8 +75,13 @@ class Lobby {
     playerSocket.on("updateOtherProfiles", (p) => {
       this.updateOtherPlayer(p);
     });
+    playerSocket.on("changeSettings", (settings) => {
+      this.columns = settings.columns;
+      this.rows = settings.rows;
+      this.updateLobby();
+    });
     playerSocket.on("startGame", () => {
-      this.createGame();
+      this.createGame(this.columns, this.rows);
     });
     playerSocket.emit("joinedLobby", {
       success: "true",
@@ -142,9 +151,8 @@ class Lobby {
     
   }
 
-  createGame() {
-    // TODO: Fix hardcoded columns and rows settings
-    this.game = new Game(this.io, this, 7, 7, this.players, this.data);
+  createGame(columns, rows) {
+    this.game = new Game(this.io, this, columns, rows, this.players, this.data);
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");
   }

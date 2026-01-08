@@ -142,6 +142,7 @@ _kan kanske ligga som en komponent på lobbyn_
 - [ ] :button - hover, färgändring typ svart opacity 10%
 - [ ] font?
 - [ ] färgtema i variabler
+- [ ] resizeable for mobil
 
 ## Customization?
 
