@@ -14,7 +14,7 @@
         Lobby Code: {{ pollId }}
       </p>
       <div v-if="!joined">
-        <input type="text" v-model="userName">
+        <input type="text" v-model="userName" @keyup.enter="chooseUsername">
         <button v-on:click="chooseUsername">
           {{ this.uiLabels.chooseUsername }}
         </button>
