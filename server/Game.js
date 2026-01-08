@@ -9,6 +9,7 @@ export class Game {
     this.columns = columns;
     this.rows = rows;
     this.players = players.filter((participant) => participant.team !== "spectator");
+    this.spectators = players.filter((participant) => participant.team === "spectator");
     this.data = data;
     this.questions = data.retriveQuestions(lobby.lang).slice();
     this.currentQuestion = null;
@@ -27,6 +28,8 @@ export class Game {
     this.gameBoard = gameBoard;
     this.updateGameBoard();
     this.updateQuestion();
+    this.informSpectators();
+    
     
   }
 
@@ -56,12 +59,13 @@ export class Game {
         {
           console.log(this.players[this.currentPlayer].username)
         }
-      this.setCurrentPlayer(this.getNextPlayer());
+        this.setCurrentPlayer(this.getNextPlayer());
         this.updateGameBoard();
         //lobby.updateLobby(
         //  `${player.username} placed a marker on [${col},${emptyCellIndex}]`
         //);
         this.placeMarkerAllowed = false;
+        this.io.to(this.lobby.ID).emit("showQuestion");
       }
   }
 
@@ -191,4 +195,12 @@ export class Game {
       this.setCurrentPlayer(this.getNextPlayer());
     }
   }
+
+  informSpectators() {
+    for (const spectator of this.spectators) {
+      spectator.socket.join("spectator" + this.lobby.ID);
+    }
+    this.io.to("spectator" + this.lobby.ID).emit("youAreSpectating");
+  }
+
 }

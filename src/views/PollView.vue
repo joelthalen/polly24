@@ -8,6 +8,9 @@
       v-on:answer="submitAnswer($event)"
     />
     <hr />
+      <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center;"> 
+        You are spectating the game.
+      </div>
     <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center;">
       Wrong answer! Next player's turn.
     </div>
@@ -58,6 +61,10 @@ export default {
     question() {
       return state.currentQuestion; //ändra så att pollview endast får tillgång till frågan och frågealternativen! inte rätt svar!
     },
+    
+    spectating() {
+      return state.spectating;
+    },
   },
   data: function () {
     return {
@@ -85,6 +92,9 @@ export default {
         this.wrongAnswer = false;
       }, 2000);
     });
+    socket.on("showQuestion", () => {
+      this.showQuestion = true;
+    });
 
     //Från kodsklettet
     this.pollId = this.$route.params.id;
@@ -105,7 +115,6 @@ export default {
     },
     placeMarker: function (col) {
       socket.emit("placeMarker", {id: this.pollId, column: col})
-      this.showQuestion = true; //återställ frågan efter drag
     },
   },
 };
