@@ -15,8 +15,8 @@
       </p>
       <div v-if="!joined">
         <input type="text" v-model="userName">
-        <button v-on:click="participateInPoll">
-          {{ this.uiLabels.participateInPoll }}
+        <button v-on:click="chooseUsername">
+          {{ this.uiLabels.chooseUsername }}
         </button>
       </div>
 
@@ -115,8 +115,8 @@ export default {
     socket.emit( "getUILabels", this.lang );
   },
   methods: {
-    participateInPoll: function () {
-      socket.emit( "participateInPoll", {pollId: this.pollId, name: this.userName} )
+    chooseUsername: function () {
+      socket.emit( "updateProfile", {pollId: this.pollId, username: this.userName, ready: this.isReady})
       this.joined = true;
     },
     changeReady: function () {
