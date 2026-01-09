@@ -168,7 +168,7 @@ export default {
     },
     isMe(username) {
       return this.username === username;
-    }
+    },
     restartGame: function () {
       socket.emit("startNewGame", this.pollId);
     },
