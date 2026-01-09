@@ -6,7 +6,7 @@ const LOBBIES = new Map();
 // TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
 const ID_LENGTH = 4;
 const MIN_PLAYERS = 1;
-const MAX_PLAYERS = 2;
+const MAX_PLAYERS = 6;
 
 const TEAMS = {
   PLAYER: "player",
@@ -89,6 +89,9 @@ class Lobby {
     playerSocket.on("changeSize", (size) => { //kanske behöver ändras
       this.columns = size.columns;
       this.rows = size.rows;
+      if (this.wincondition > Math.max(this.columns, this.rows)) {
+        this.wincondition = Math.max(this.columns, this.rows);
+      }
       this.updateLobby();
     });
     playerSocket.on("changeDifficulty", (obj) => { 

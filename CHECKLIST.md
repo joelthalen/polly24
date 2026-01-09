@@ -151,10 +151,15 @@ _kan kanske ligga som en komponent på lobbyn_
 - [ ] Ändra win condition
 - [ ] Ändra svårhetsgrad på frågor
 
-- [ ] Rubriker för högra rutan (Status, Username, Spelarfärg)
-- [ ] Snyggare Ready-status
-- [ ] 
-- [ ] 
+## Fix i lobbyvyn
+
+- [ ] Rubriker för högra rutan
+  - [ ] Namn?  /  Name?
+  - [ ] Roll? Spelare/Åskådare  /  Role: Player/Spectator
+    - [ ] Ifall spectator: Låst från redocheck och färgval
+  - [ ] Redo? Ja/Nej  /  Ready? Yes/No  (För hosten står det bara Host/Värd)
+  - [ ] Spelarfärg  /  Player colour
+    - [ ] Färgval 6st tillräckligt distinkta
 
 ## Checklista inför presentationen
 - [ ] An overview of the assumptions that you have made, for instance about context and users.
