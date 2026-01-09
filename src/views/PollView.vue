@@ -1,8 +1,7 @@
 <template>
   <main>
+  <h1>{{ pollId }}</h1>
   <div v-if="showQuestion">
-    <!-- Ta bort denna div senare då den inte tillhör vår kod och lär inte behövas? Någon komponent kanske kan användas?-->
-    {{ pollId }}
     <QuestionComponent
       v-bind:question="question" 
       v-on:answer="submitAnswer($event)"
@@ -21,7 +20,6 @@
 
   <div class="connection">
     <div>
-      <h1>{{ pollId }}</h1>
         <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center;"> 
           You are spectating the game.
         </div>
@@ -33,6 +31,7 @@
       </div>
     </div>
     <SpelPlan
+    :bottomMargin="10"
     v-bind:boardData="boardData"
     v-on:placeBrick="placeMarker"
     />
@@ -40,6 +39,16 @@
       {{ currentPlayer + "'s: turn" }}
       <!-- ändra så den kan variera -->
     </h2>
+  </div>
+  <div class="versus">
+    <p :class="{current: isCurrent(this.players[0].username), you: isMe(this.players[0].username)}" 
+       :style="{color: this.players[0].color}">
+          {{ this.players[0].username }}
+    </p>
+    <template v-for="player in this.players.slice(1)">
+      <p>{{ uiLabels.versus || "VS." }}</p>
+      <p :class="{current: isCurrent(player.username), you: isMe(player.username)}" :style="{color: player.color, borderColor: player.color}">{{ player.username }}</p>
+    </template>
   </div>
   </main>
 </template>
@@ -60,16 +69,29 @@ export default {
     boardData() {
       return state.gameBoard;
     },
+    username() {
+      return state.username;
+    },
     currentPlayer() {
       return state.currentPlayer;
     },
     question() {
       return state.currentQuestion; //ändra så att pollview endast får tillgång till frågan och frågealternativen! inte rätt svar!
     },
-    
     spectating() {
       return state.spectating;
     },
+    players() {
+      return state.lobby.participants.filter((p) => p.team === "player")
+    },
+    uiLabels() {
+      return state.uiLabels;
+    },
+    currentPlayerColor() {
+      console.log(this.players);
+      console.log(this.currentPlayer);
+      return this.players.find((p)=>p.username === this.currentPlayer).color;
+    }
   },
   data: function () {
     return {
@@ -132,8 +154,6 @@ export default {
     socket.on("uiLabels", (labels) => (this.uiLabels = labels));
     socket.emit("getUILabels", this.lang);
     socket.emit("joinPoll", this.pollId);
-
-
   },
 
   methods: {
@@ -143,6 +163,12 @@ export default {
     placeMarker: function (col) {
       socket.emit("placeMarker", {id: this.pollId, column: col})
     },
+    isCurrent(username) {
+      return username === this.currentPlayer;
+    },
+    isMe(username) {
+      return this.username === username;
+    }
     restartGame: function () {
       socket.emit("startNewGame", this.pollId);
     },
@@ -176,5 +202,29 @@ main {
   height: auto;
   display: grid;
   grid-template-rows: 15% 75% 10%;
+}
+
+.versus {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  height: 8vh;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  justify-items: center;
+  padding-bottom: 2vh;
+
+  p {
+    margin: 0;
+  }
+
+  .current {
+    border-bottom: 0.1em solid;
+  }
+
+  .you::after {
+    content: " (You)";
+  }
 }
 </style>

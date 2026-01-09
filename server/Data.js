@@ -7,10 +7,6 @@ function Data() {
   this.questionsEn = JSON.parse(readFileSync("./server/data/questions-en.json"));
   this.questionsSv = JSON.parse(readFileSync("./server/data/questions-sv.json"));
 
-
-
-
-  
   this.polls = {};
   this.polls['test'] = {
     lang: "en",

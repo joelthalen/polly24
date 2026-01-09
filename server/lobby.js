@@ -6,7 +6,7 @@ const LOBBIES = new Map();
 // TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
 const ID_LENGTH = 4;
 const MIN_PLAYERS = 1;
-const MAX_PLAYERS = 6;
+const MAX_PLAYERS = 99;
 
 const TEAMS = {
   PLAYER: "player",
@@ -63,6 +63,7 @@ class Lobby {
       team: "spectator",
       color: this.colors.useColor()
     };
+    playerSocket.emit("newUsername", player.username);
     if (this.players.length === 0) {
       player.isHost = true;
       player.team = "player";
@@ -76,7 +77,10 @@ class Lobby {
     // TODO: move or smth idk
     this.registerPlayerSockets(playerSocket);
     playerSocket.on("updateProfile", (p) => {
-      player.username = p.username || player.username;
+      if ('username' in p && p.username.length > 3) {
+        player.username = p.username;
+        playerSocket.emit("newUsername", player.username);
+      }
       player.team = p.team || player.team;
       if ("ready" in p) {
         player.ready = p.ready;

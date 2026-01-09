@@ -37,6 +37,10 @@ export default {
       type: Array,
       required: true,
     },
+    bottomMargin: {
+      type: Number,
+      required: true
+    }
   },
   beforeMount() {
     this.height = this.defaultViewportMax;
@@ -65,7 +69,8 @@ export default {
       return {
         height: this.height+"vmin",
         width: this.width+"vmin",
-        marginLeft: "-"+this.width/2+"vmin"
+        marginLeft: "-"+this.width/2+"vmin",
+        bottom: this.bottomMargin+"vh"
       }
     }
   },

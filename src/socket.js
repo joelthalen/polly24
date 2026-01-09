@@ -6,6 +6,7 @@ import { io } from "socket.io-client";
 
 export const state = reactive({
   connected: false,
+  username: "",
   lobby: {
     ID: "0",
     gameBoard: [[]],
@@ -62,6 +63,10 @@ socket.on("lobbyUpdate", (event) => {
 
   console.log(message);
 });
+
+socket.on("newUsername", (newUsername) => {
+  state.username = newUsername;
+})
 
 socket.on("gameBoardUpdate", (newGameBoard) => {
   state.gameBoard = newGameBoard;
