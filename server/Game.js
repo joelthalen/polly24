@@ -1,5 +1,3 @@
-const COLORS = ["red", "yellow", "blue", "green", "violet"];
-
 export class Game {
   constructor(io, lobby, columns, rows, players, data, difficulty, wincondition) {
     this.io = io;
@@ -14,9 +12,6 @@ export class Game {
     this.currentQuestion = null;
     this.placeMarkerAllowed = false;
     this.stopGame = false;
-    for (let i = 0; i < players.length; i++) {
-      players[i]["color"] = COLORS[i % COLORS.length];
-    }
     console.log(this.players.length);
     this.setCurrentPlayer(Math.floor(Math.random()*this.players.length)); // Which player's turn is it anyway?
 

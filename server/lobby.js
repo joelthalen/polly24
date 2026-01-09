@@ -13,11 +13,11 @@ const TEAMS = {
   SPECTATOR: "spectator"
 }
 
-
 class Lobby {
   game; 
 
   constructor(io, ownerSocket, data, lang = "en") {
+    this.colors = new Colors();
     this.io = io;
     this.ID = randomCharString(ID_LENGTH);
     // could be socket specific authentication ID generated on lobby join
@@ -39,7 +39,7 @@ class Lobby {
     return {
       ID: this.ID,
       participants: this.players.map((p) => {
-        return { username: p.username, ready: p.ready, team: p.team, isHost: p.isHost };
+        return { username: p.username, ready: p.ready, team: p.team, isHost: p.isHost, color: p.color };
       }),
       columns: this.columns, //Lite fult kanske att ha det här här, men det behövs innan gamet har skapats
       rows: this.rows,
@@ -58,10 +58,10 @@ class Lobby {
     const player = {
       username: "Player " + this.playerCount,
       ready: false,
-      auth_token: randomCharString(10),
       socket: playerSocket,
       isHost: false, 
-      team: "spectator",     
+      team: "spectator",
+      color: this.colors.useColor()
     };
     if (this.players.length === 0) {
       player.isHost = true;
@@ -86,6 +86,12 @@ class Lobby {
     playerSocket.on("updateOtherProfiles", (p) => {
       this.updateOtherPlayer(p);
     });
+    playerSocket.on("changeColor", (newColor) => {
+      player.color = this.colors.changeColor(player.color, newColor);
+    });
+    playerSocket.on("getUnusedColors", () => {
+      playerSocket.emit("setUnusedColors", this.colors.getUnused());
+    })
     playerSocket.on("changeSize", (size) => { //kanske behöver ändras
       this.columns = size.columns;
       this.rows = size.rows;
@@ -111,7 +117,6 @@ class Lobby {
     });
     playerSocket.emit("joinedLobby", {
       success: "true",
-      auth_token: player.auth_token,
       isHost: player.isHost,
     });
     this.updateLobby(`${player.username} joined the lobby.`, 1);
@@ -224,3 +229,44 @@ function randomCharString(length) {
 }
 
 export { Lobby };
+
+class Colors {
+  constructor() {
+    this.COLORS = ["red", "yellow", "blue", "green", "violet"].reverse();
+    console.log(this.COLORS);
+    this.used = 0;
+    this.swap(0);
+  }
+
+  useColor(index = 0) {
+    // Get first color
+    const color = this.COLORS[index];
+    this.swap(index);
+    this.used += 1 % this.COLORS.length;
+    return color;
+  }
+
+  changeColor(oldColor, newColor) {
+    const newIndex = this.COLORS.findIndex((color) => color === newColor);
+    const oldIndex = this.COLORS.findIndex((color) => color === oldColor);
+    const color = this.COLORS[newIndex];
+    this.swap(newIndex, oldIndex);
+    return color;
+  }
+
+  getUnused() {
+    return this.COLORS.slice(0, this.COLORS.length - this.used);
+  }
+
+  /**
+   * Swaps position of two elements, if other index is undefined then it swaps index with last unused element.
+   * @param {number} index 
+   * @param {number} otherIndex 
+   */
+  swap(index, otherIndex = undefined) {
+    if (!otherIndex) otherIndex = this.COLORS.length - this.used - 1;
+    const a = this.COLORS[index];
+    this.COLORS[index] = this.COLORS[otherIndex];
+    this.COLORS[otherIndex] = a;
+  }
+}
