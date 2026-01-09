@@ -124,11 +124,4 @@ export default {
   cursor: pointer;
 }
 
-.circle {
-
-}
-.cross {
-
-}
-
 </style>

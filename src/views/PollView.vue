@@ -8,7 +8,9 @@
   <h1>{{ pollId }}</h1>
   <div v-if="showQuestion">
     <QuestionComponent
-      v-bind:question="question" 
+    v-bind:title="'Question for ' + this.currentPlayer"
+    v-bind:question="question" 
+    v-bind:color="currentPlayerColor"
       v-on:answer="submitAnswer($event)"
     />
   </div>
@@ -94,8 +96,6 @@ export default {
       return state.uiLabels;
     },
     currentPlayerColor() {
-      console.log(this.players);
-      console.log(this.currentPlayer);
       return this.players.find((p)=>p.username === this.currentPlayer).color;
     }
   },
