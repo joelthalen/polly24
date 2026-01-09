@@ -1,6 +1,8 @@
 <template>
-<div id="questionCard">
+<div id="questionCard" 
+  :style="{backgroundColor: 'rgb(from ' + color + ' R G B / ' + this.opacity + ')'}">
     <div>
+      <p>{{ color }}</p>
       <p>{{ question.q }}</p>
     </div>
     <div class="questionAlternative" v-for="a in question.a" v-on:click="answer(a) " v-bind:key="a">
@@ -14,13 +16,19 @@
 export default {
   name: 'QuestionComponent',
   props: {
-    question: Object
+    question: Object,
+    color: String,
   },
   emits: ["answer"],
   methods: {
     answer: function (answer) {
       this.$emit("answer", answer);
     } 
+  },
+  data() {
+    return {
+      opacity: 0.7,
+    }
   }
 }
 </script>

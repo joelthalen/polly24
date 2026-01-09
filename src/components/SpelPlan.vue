@@ -3,12 +3,12 @@
 <div id="spelPlan" :style="boardStyle">
       <div
         v-on:click="placeBrick(col - 1)"
+        :style="{width: columnWidth + 'vmin'}"
         v-for="col in size.cols"
         :key="col"
         class="column"
       >
         <div
-          :style="{ height: cellHeight+'%' }"
           v-for="row in size.rows"
           :key="row"
           class="cell"
@@ -38,6 +38,10 @@ export default {
       type: Array,
       required: true,
     },
+    bottomMargin: {
+      type: Number,
+      required: true
+    }
   },
   beforeMount() {
     this.height = this.defaultViewportMax;
@@ -56,17 +60,18 @@ export default {
         cols: this.boardData.length
       }
     },
+    columnWidth() {
+      return this.width / this.size.cols;
+    },
     cellWidth() {
       return this.height / (this.size.rows);
-    },
-    cellHeight() {
-      return Math.floor(100 / (this.size.rows));
     },
     boardStyle() {
       return {
         height: this.height+"vmin",
         width: this.width+"vmin",
-        marginLeft: "-"+this.width/2+"vmin"
+        marginLeft: "-"+this.width/2+"vmin",
+        bottom: this.bottomMargin+"vh"
       }
     }
   },
@@ -101,7 +106,7 @@ export default {
 }
 
 .cell {
-  width: auto;
+  width: 100%;
   aspect-ratio: 1;
 }
 

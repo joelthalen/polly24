@@ -6,18 +6,18 @@ const LOBBIES = new Map();
 // TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
 const ID_LENGTH = 4;
 const MIN_PLAYERS = 1;
-const MAX_PLAYERS = 6;
+const MAX_PLAYERS = 99;
 
 const TEAMS = {
   PLAYER: "player",
   SPECTATOR: "spectator"
 }
 
-
 class Lobby {
-  game;
+  game; 
 
   constructor(io, ownerSocket, data, lang = "en") {
+    this.colors = new Colors();
     this.io = io;
     this.ID = randomCharString(ID_LENGTH);
     // could be socket specific authentication ID generated on lobby join
@@ -39,7 +39,7 @@ class Lobby {
     return {
       ID: this.ID,
       participants: this.players.map((p) => {
-        return { username: p.username, ready: p.ready, team: p.team, isHost: p.isHost };
+        return { username: p.username, ready: p.ready, team: p.team, isHost: p.isHost, color: p.color };
       }),
       columns: this.columns, //Lite fult kanske att ha det här här, men det behövs innan gamet har skapats
       rows: this.rows,
@@ -58,11 +58,12 @@ class Lobby {
     const player = {
       username: "Player " + this.playerCount,
       ready: false,
-      auth_token: randomCharString(10),
       socket: playerSocket,
       isHost: false, 
-      team: "spectator",     
+      team: "spectator",
+      color: this.colors.useColor()
     };
+    playerSocket.emit("newUsername", player.username);
     if (this.players.length === 0) {
       player.isHost = true;
       player.team = "player";
@@ -76,7 +77,10 @@ class Lobby {
     // TODO: move or smth idk
     this.registerPlayerSockets(playerSocket);
     playerSocket.on("updateProfile", (p) => {
-      player.username = p.username || player.username;
+      if ('username' in p && p.username.length > 3) {
+        player.username = p.username;
+        playerSocket.emit("newUsername", player.username);
+      }
       player.team = p.team || player.team;
       if ("ready" in p) {
         player.ready = p.ready;
@@ -86,6 +90,12 @@ class Lobby {
     playerSocket.on("updateOtherProfiles", (p) => {
       this.updateOtherPlayer(p);
     });
+    playerSocket.on("changeColor", (newColor) => {
+      player.color = this.colors.changeColor(player.color, newColor);
+    });
+    playerSocket.on("getUnusedColors", () => {
+      playerSocket.emit("setUnusedColors", this.colors.getUnused());
+    })
     playerSocket.on("changeSize", (size) => { //kanske behöver ändras
       this.columns = size.columns;
       this.rows = size.rows;
@@ -111,7 +121,6 @@ class Lobby {
     });
     playerSocket.emit("joinedLobby", {
       success: "true",
-      auth_token: player.auth_token,
       isHost: player.isHost,
     });
     this.updateLobby(`${player.username} joined the lobby.`, 1);
@@ -127,14 +136,21 @@ class Lobby {
   }
 
   // TODO: REDO
-  removeParticipant(id) {
+  removeParticipant(id) { //just nu funkar det inte riktigt buggar när man ska enda gamet om gamest är igång     
     for (let i in this.players) {
       if (this.players[i].socket.id === id) {
+        if(this.game){
+          if (this.players[i].team === "player") {  
+            this.io.to(this.ID).emit("playerLeft")
+            LOBBIES.delete(this.ID)
+          }
+        }
         const removedPlayerArray = this.players.splice(i, 1);
-        if (this.players.length < 1) this.remove();
+        if (this.players.length < 1) {this.remove();}
         else if (removedPlayerArray[0].isHost) {
           this.players[0].isHost = true;
         }
+        removedPlayerArray[0].socket.leave(this.ID)
       }
     }
   }
@@ -192,7 +208,7 @@ class Lobby {
       (p) => p.team === TEAMS.SPECTATOR ? "spectators" : "players");
     // Check min and max player count
     if (!players || players.length < MIN_PLAYERS || players.length > MAX_PLAYERS) return;
-    this.game = new Game(this.io, this, this.columns, this.rows, this.players, this.data, this.difficulty, this.wincondition);
+    this.game = new Game(this.io, this, this.columns, this.rows, players, this.data, this.difficulty, this.wincondition);
     this.game.addSpectators(spectators);
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");
@@ -217,3 +233,44 @@ function randomCharString(length) {
 }
 
 export { Lobby };
+
+class Colors {
+  constructor() {
+    this.COLORS = ["red", "yellow", "blue", "green", "violet"].reverse();
+    console.log(this.COLORS);
+    this.used = 0;
+    this.swap(0);
+  }
+
+  useColor(index = 0) {
+    // Get first color
+    const color = this.COLORS[index];
+    this.swap(index);
+    this.used += 1 % this.COLORS.length;
+    return color;
+  }
+
+  changeColor(oldColor, newColor) {
+    const newIndex = this.COLORS.findIndex((color) => color === newColor);
+    const oldIndex = this.COLORS.findIndex((color) => color === oldColor);
+    const color = this.COLORS[newIndex];
+    this.swap(newIndex, oldIndex);
+    return color;
+  }
+
+  getUnused() {
+    return this.COLORS.slice(0, this.COLORS.length - this.used);
+  }
+
+  /**
+   * Swaps position of two elements, if other index is undefined then it swaps index with last unused element.
+   * @param {number} index 
+   * @param {number} otherIndex 
+   */
+  swap(index, otherIndex = undefined) {
+    if (!otherIndex) otherIndex = this.COLORS.length - this.used - 1;
+    const a = this.COLORS[index];
+    this.COLORS[index] = this.COLORS[otherIndex];
+    this.COLORS[otherIndex] = a;
+  }
+}
