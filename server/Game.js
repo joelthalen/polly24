@@ -8,6 +8,7 @@ export class Game {
     this.rows = rows;
     this.players = players;
     this.data = data;
+    this.difficulty = difficulty;
     this.questions = data.retriveQuestions(lobby.lang)[difficulty].slice();
     this.currentQuestion = null;
     this.placeMarkerAllowed = false;
@@ -32,6 +33,11 @@ export class Game {
   }
 
   getQuestion() { 
+    // Refill questions if "deck" empty
+    // TODO: Replace with deck data structure??
+    if (this.questions.length < 1) {
+      this.questions = this.data.retriveQuestions(this.lobby.lang)[this.difficulty].slice();
+    }
     this.currentQuestion = this.questions[Math.floor(Math.random() * this.questions.length)];
     return this.currentQuestion;
   }
@@ -180,6 +186,7 @@ export class Game {
 
   updateQuestion() {
     const question = this.getQuestion();
+
     this.removeQuestion(question);
     const reducedQuestion = {
       q: question.q,
@@ -216,4 +223,35 @@ export class Game {
 
   }
 
+}
+
+// Could replace some question picking code
+class QuestionDeck {
+  /**
+   * Data structure for auto shuffling deck of cards.
+   * @param {Array<any>} questions Questions array
+   */
+  constructor (deck) {
+    this.deck = deck.slice();
+    this.used = 0;
+    this.len = this.deck.length;
+  }
+
+  len() {
+    return this.deck.length - this.used;
+  }
+
+  getRandomCard() {
+    const randomIndex = Math.floor((Math.random()*this.len()));
+    const card = this.deck[randomIndex];
+    this.swapCards(randomIndex, this.len()-1);
+    this.used = this.used + 1 % this.deck.length;
+    return card;
+  }
+
+  swapCards(i, j) {
+    const a = this.deck[i];
+    this.deck[i] = this.deck[j]
+    this.deck[j] = a;
+  }
 }
