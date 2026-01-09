@@ -5,7 +5,7 @@
       </p>
     <section class = "topSection">
       <button @click="leaveLobby">{{ uiLabels.leaveLobby }}</button>
-      <div class="logoBox"></div> <!-- Här ska loggan finnas-->
+      <div class="logoBox"><img alt="Logo"></div> <!-- Här ska loggan finnas-->
       <div> <!--Här finns språkknappen-->
           <LanguageButton/>
       </div>
@@ -26,6 +26,17 @@
       <div v-if="joined">
         <div class="layoutWrapper">
           <div class="settingsBox">
+            <SettingsBox
+              :columns="lobbyState.columns"
+              :rows="lobbyState.rows"
+              :winCondition="lobbyState.wincondition"
+              :difficulty="lobbyState.difficulty"
+              @columns="changeSize($event, lobbyState.rows)"
+              @rows="changeSize(lobbyState.columns, $event)"
+              @winCondition="changeWinCondition($event)"
+              @difficulty="changeDifficulty($event)"
+            />
+            <!-- Gamla settingslådan
             <h3>{{ uiLabels.settings }}</h3>
               <div>{{ uiLabels.columns }}: 
                 <button class="columnsMinusButton" :disabled="lobbyState.columns<=4" @click="changeSize(lobbyState.columns - 1, lobbyState.rows)">-</button>
@@ -49,6 +60,7 @@
               
               
               </div>
+            -->
           </div>
           <div class="statusBox">
             <h3>{{ uiLabels.status }}</h3>
@@ -92,6 +104,7 @@
 <script>
 import LanguageButton from '../components/LanguageButton.vue';
 import EmojiChatComponent from '@/components/EmojiChatComponent.vue';
+import SettingsBox from '@/components/SettingsBox.vue';
 import { socket, state } from '../socket';
 
 export default {
@@ -99,6 +112,7 @@ export default {
   components: {
     EmojiChatComponent,
     LanguageButton,
+    SettingsBox,
   },
   computed: {
     lobbyState() {
@@ -181,33 +195,7 @@ export default {
 </script>
 
 <style scoped> 
-  .logoBox{
-    height: 90%;
-    width: 90%;
-    margin: 5vh;
-    background-size: contain; 
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .topSection {
-  height: 20vh;
-}
-
-
-  @media (orientation: landscape){
-    .logoBox{
-      background-image: url(/img/AmongUs.png);
-    }
-  }
-
-  @media (orientation: portrait){
-    .logoBox{
-      background-image: url(/img/AmongUsPortrait.png);
-    }
-  }
-
-main {
+  main {
     background-image: url(/img/AmongUsWallPaper.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -215,7 +203,42 @@ main {
     overflow: hidden;
     height: 100vh;
     width: 100vw;
+  }
+
+  .logoBox{
+  margin: 2vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    align-self: center;
+  }
+
+
+  @media (orientation: landscape){
+    img {
+      content:url(/img/AmongUs.png);
+    }
+  }
+
+  @media (orientation: portrait){
+    img {
+      content:url(/img/AmongUsPortrait.png);
+    }
+  }
+/*Ovanför är renskrivet*/
+
+
+  .topSection {
+  height: 25vh;
 }
+
+
+
+
+
 
 .codeBox {
     font-size: 2em;
