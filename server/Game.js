@@ -62,7 +62,7 @@ export class Game {
         this.gameBoard[col][emptyCellIndex] = player.color;
         if(this.checkWinCondition(emptyCellIndex, col, this.players[this.currentPlayer].color)) 
         {
-          console.log(this.players[this.currentPlayer].username)
+          console.log(this.players[this.currentPlayer].username+" has won the game!");
         }
         this.setCurrentPlayer(this.getNextPlayer());
         this.updateGameBoard();
@@ -162,8 +162,6 @@ export class Game {
     if (seconddiagonalline >= this.wincondition) {
       return true;
     }
-
-    console.log(horizontalline, verticalLine, firstdiagonalline, seconddiagonalline);
   }
 
   setCurrentPlayer(playerIndex) {
