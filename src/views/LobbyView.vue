@@ -25,15 +25,16 @@
           <div class="settingsBox">
             <h3>{{ uiLabels.settings }}</h3>
               <div>{{ uiLabels.columns }}: 
-                <button class="columnsMinusButton" :disabled="lobbyState.columns<=4" @click="changeSettings(lobbyState.columns - 1, lobbyState.rows)">-</button>
+                <button class="columnsMinusButton" :disabled="lobbyState.columns<=4" @click="changeSize(lobbyState.columns - 1, lobbyState.rows)">-</button>
                 {{ lobbyState.columns }}
-                <button class="columnsPlusButton" :disabled="lobbyState.columns>=10" @click="changeSettings(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
-              <div>{{uiLabels.rows}}: <button class="rowsMinusButton" :disabled="lobbyState.rows<=4" @click="changeSettings(lobbyState.columns, lobbyState.rows - 1)">-</button>
+                <button class="columnsPlusButton" :disabled="lobbyState.columns>=10" @click="changeSize(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
+              <div>{{uiLabels.rows}}: <button class="rowsMinusButton" :disabled="lobbyState.rows<=4" @click="changeSize(lobbyState.columns, lobbyState.rows - 1)">-</button>
                 {{ lobbyState.rows }}
-                <button class="rowsPlusButton" :disabled="lobbyState.rows>=10" @click="changeSettings(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
-              <div>{{uiLabels.winCondition}}:</div>
-              
-              
+                <button class="rowsPlusButton" :disabled="lobbyState.rows>=10" @click="changeSize(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
+              <div>{{uiLabels.winCondition}}:
+                <button class="winConditionMinusButton" :disabled="(lobbyState.wincondition<=2)" @click="changeWinCondition(lobbyState.wincondition - 1)">-</button>
+                {{ lobbyState.wincondition }}
+                <button class="winConditionPlusButton" :disabled="lobbyState.wincondition>=Math.max(lobbyState.rows, lobbyState.columns)" @click="changeWinCondition(lobbyState.wincondition + 1)">+</button></div>
               <div>
                 {{uiLabels.questionDifficulty}}: 
                 <span v-if="lobbyState.difficulty === 0">{{ uiLabels.easy }}</span>
@@ -151,13 +152,15 @@ export default {
     sendEmoji: function() {
       socket.emit("sendEmoji");
     },
-    changeSettings: function(columns, rows) {
-      socket.emit("changeSettings", {pollId: this.pollId, columns: columns, rows: rows});
+    changeSize: function(columns, rows) {
+      socket.emit("changeSize", {pollId: this.pollId, columns: columns, rows: rows});
     },
     changeDifficulty: function(difficulty) {
       socket.emit("changeDifficulty", {pollId: this.pollId, difficulty: difficulty});
     },
-    
+    changeWinCondition: function(wincondition) {
+      socket.emit("changeWinCondition", {pollId: this.pollId, wincondition: wincondition});
+    },
     // TODO: Method for everyone being ready to start the game exists, but cant be true
     startGame: function () {
       socket.emit("startGame", this.pollId);
@@ -166,7 +169,6 @@ export default {
       socket.emit("leaveLobby");
       this.$router.push({path: "/", query: {action: "leftLobby"}})
     }
-
   }
 }
 </script>

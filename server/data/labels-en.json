@@ -16,7 +16,7 @@
     "settings": "Settings",
     "columns": "Columns",
     "rows": "Rows",
-    "winCondition": "Win Condition",
+    "winCondition": "Amount in a row to win",
     "questionDifficulty": "Question Difficulty",
     "easy": "Easy",
     "hard": "Hard",

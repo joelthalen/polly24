@@ -32,6 +32,7 @@ class Lobby {
     this.columns = 7;
     this.rows = 7;
     this.difficulty = 0; //kanske ändra till boolean eller int istället
+    this.wincondition = 4; //number of markers in a row needed to win
   }
 
   lobbyInfo() {
@@ -43,6 +44,7 @@ class Lobby {
       columns: this.columns, //Lite fult kanske att ha det här här, men det behövs innan gamet har skapats
       rows: this.rows,
       difficulty: this.difficulty, 
+      wincondition: this.wincondition,
       gameBoard: () => {
         if (this.game) return this.game.gameBoard;
         else return undefined;
@@ -84,9 +86,9 @@ class Lobby {
     playerSocket.on("updateOtherProfiles", (p) => {
       this.updateOtherPlayer(p);
     });
-    playerSocket.on("changeSettings", (settings) => { //kanske behöver ändras
-      this.columns = settings.columns;
-      this.rows = settings.rows;
+    playerSocket.on("changeSize", (size) => { //kanske behöver ändras
+      this.columns = size.columns;
+      this.rows = size.rows;
       this.updateLobby();
     });
     playerSocket.on("changeDifficulty", (obj) => { 
@@ -95,6 +97,10 @@ class Lobby {
       } else if (obj.difficulty === 1) { //kanske ändra till boolean eller int istället
         this.difficulty = 0;
       }
+      this.updateLobby();
+    });
+    playerSocket.on("changeWinCondition", (obj) => { 
+      this.wincondition = obj.wincondition;
       this.updateLobby();
     });
     playerSocket.on("startGame", () => {
@@ -177,13 +183,13 @@ class Lobby {
     
   }
 
-  createGame(columns, rows) {
+  createGame() {
     // Split lobby into players and participants.
     const {spectators, players} = Object.groupBy(this.players, 
       (p) => p.team === TEAMS.SPECTATOR ? "spectators" : "players");
     // Check min and max player count
     if (!players || players.length < MIN_PLAYERS || players.length > MAX_PLAYERS) return;
-    this.game = new Game(this.io, this, columns, rows, this.players, this.data, this.difficulty);
+    this.game = new Game(this.io, this, this.columns, this.rows, this.players, this.data, this.difficulty, this.wincondition);
     this.game.addSpectators(spectators);
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");

@@ -16,7 +16,7 @@
     "settings": "Inställningar",
     "columns": "Kolumner",
     "rows": "Rader",
-    "winCondition": "winCondition",
+    "winCondition": "Antal i rad för att vinna",
     "questionDifficulty": "Svårighetsgrad på frågor",
     "easy": "Lätt",
     "hard": "Svår",
