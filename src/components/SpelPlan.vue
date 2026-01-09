@@ -1,6 +1,6 @@
 <template>
 
-<div id="spelPlan">
+<div id="spelPlan" :style="boardStyle">
       <div
         v-on:click="placeBrick(col - 1)"
         v-for="col in size.cols"
@@ -28,7 +28,9 @@ export default {
   name: "SpelPlan",
   data() {
     return {
-      height: 75,
+      defaultViewportMax: 80,
+      height: 1,
+      width: 1,
     }
   },
   props: { 
@@ -36,6 +38,16 @@ export default {
       type: Array,
       required: true,
     },
+  },
+  beforeMount() {
+    this.height = this.defaultViewportMax;
+    this.width = this.defaultViewportMax;
+    if (this.size.rows > this.size.cols) {
+      // if more rows than cols
+      this.width = Math.floor(this.width * (this.size.cols / this.size.rows));
+    } else {
+      this.height = Math.floor(this.height * (this.size.rows / this.size.cols));
+    }
   },
   computed: {
     size() {
@@ -52,7 +64,9 @@ export default {
     },
     boardStyle() {
       return {
-        height: this.height+"vh",
+        height: this.height+"vmin",
+        width: this.width+"vmin",
+        marginLeft: "-"+this.width/2+"vmin"
       }
     }
   },
@@ -69,8 +83,11 @@ export default {
 <style scoped>
 
 #spelPlan { /* Måste ändra så den skalas med att sidan blir mindre och så att inte en kolumn kastas ned är webpagen blir mindre än vad spelplandens width är */
-  height: 100%;
-  margin: auto;
+  width: 80vmin;
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: 5vmin;
   background-color: var(--light-blue-color);
   border: 1px solid black;
   border-radius: 1em;
@@ -79,14 +96,11 @@ export default {
 }
 
 .column {
-  display: inline-block; /* ändra till grid eller felx*/
+  display: inline-block;
   height: 100%;
 }
 
 .cell {
-  position: relative;
-  left: 0;
-  top: 0;
   width: auto;
   aspect-ratio: 1;
 }
@@ -105,7 +119,11 @@ export default {
   cursor: pointer;
 }
 
+.circle {
 
+}
+.cross {
 
+}
 
 </style>
