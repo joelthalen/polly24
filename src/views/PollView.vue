@@ -217,6 +217,7 @@ main {
   grid-template-columns: 1fr;
 }
 
+
 .connection {
   flex-grow: 1;
   height: auto;
