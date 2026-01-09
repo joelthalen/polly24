@@ -15,7 +15,7 @@
         <div class="wrapper"> 
 
           <button id="hostButton" @click="hostGame">{{ uiLabels.host || "HOST" }}</button>
-          <form @submit="joinGame" class="join-form">
+          <form @submit.prevent="joinGame" class="join-form">
             <input id="roomCodeField" 
               type="text" 
               v-model="roomCode" 
