@@ -1,4 +1,9 @@
 <template>
+  <div class="TESTFÖRBUTTONSATTSTARTAOMMATCHEN"> <!-- ÄNDRA SEN!!!!-->
+    <button @click="restartGame()">Start New Game</button>
+    <button @click="returnToHome()">Return to Start</button>
+  </div>
+  
   <main>
   <h1>{{ pollId }}</h1>
   <div v-if="showQuestion">
@@ -8,25 +13,26 @@
     />
   </div>
 
-  <div v-if="gameHasBeenWon" style="color: gold; font-size: 36px; font-weight: bold; text-align: center; background-color: black;">
+  <div v-if="gameHasBeenWon" style="color: gold; font-size: 36px; font-weight: bold; text-align: center; background-color: black; z-index: 2;">
     Congratulations {{ winner }}! You have won the game!
+  </div>
+  
+  <div v-if="hasRestartedGame" style="color: aquamarine; font-size: 24px; font-weight: bold; text-align:center; background-color: black; z-index: 2;">
+    NEW GAME
 
   </div>
   
-  <div class="TESTFÖRBUTTONSATTSTARTAOMMATCHEN"> <!-- ÄNDRA SEN!!!!-->
-    <button @click="restartGame()">Start New Game</button>
-    <button @click="returnToHome()">Return to Start</button>
-  </div>
+  
 
   <div class="connection">
-    <div>
+    <div style="z-index: 2;">
         <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center;"> 
           You are spectating the game.
         </div>
-      <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center;">
+      <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center; background-color: black;">
         Wrong answer! Next player's turn.
       </div>
-      <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center;">
+      <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center; background-color: black;">
         Correct answer! Please place your marker.
       </div>
     </div>
@@ -103,12 +109,14 @@ export default {
       winner: null,
       gameHasBeenWon: false,
       playerHasleft: false,
+      hasRestartedGame: false,
 
     };
   },
   created: function () {
     
     socket.on("correctAnswer", () => {
+      console.log("correctAnswer")
       this.showQuestion = false;
       this.correctAnswer = true;
       setTimeout(() => {
@@ -117,17 +125,21 @@ export default {
     });
 
     socket.on("wrongAnswer", () => {
+      console.log("wrongAnswer")
       this.wrongAnswer = true;
       setTimeout(() => {
         this.wrongAnswer = false;
       }, 2000);
     });
     socket.on("showQuestion", () => {
+      if (!this.gameHasBeenWon){ 
       this.showQuestion = true;
+      }
     });
 
     socket.on("gameOver", (winner) => {
-      alert("Game over! The winner is: " + winner); // tillfällig lösning: alert för att visa vinnaren
+      //alert("Game over! The winner is: " + winner); // tillfällig lösning: alert för att visa vinnaren
+      this.showQuestion = false;  
       this.winner = winner;
       this.gameHasBeenWon = true;
 
@@ -140,6 +152,14 @@ export default {
       this.playerHasleft = true
       }
     }); 
+
+    socket.on("gameHasRestarted", () => {
+      this.hasRestartedGame = true;
+      this.gameHasBeenWon = false;
+      this.showQuestion = true;
+      setTimeout(()=>{this.hasRestartedGame=false} , 2000)
+
+    })
       
     
 

@@ -106,6 +106,7 @@ function sockets(io, socket, data) {
     const lobby = Lobby.getLobby(lobbyID);
     if (lobby && lobby.game) {
       lobby.createGame();
+      lobby.io.to(lobbyID).emit("gameHasRestarted")
     }
   });
 
