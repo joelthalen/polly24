@@ -89,6 +89,9 @@ class Lobby {
     playerSocket.on("changeSize", (size) => { //kanske behöver ändras
       this.columns = size.columns;
       this.rows = size.rows;
+      if (this.wincondition > Math.max(this.columns, this.rows)) {
+        this.wincondition = Math.max(this.columns, this.rows);
+      }
       this.updateLobby();
     });
     playerSocket.on("changeDifficulty", (obj) => { 
