@@ -8,6 +8,7 @@
 	"changeLanguage": "Byt till svenska",
 	"about": "About",
 	"chooseUsername": "Choose username",
+    "usernameTaken": "Username already used in this lobby. Please choose another one.",
     "joinLobby": "Join lobby",
 	"host": "Host",
 	"join": "Join",

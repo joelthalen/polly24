@@ -139,13 +139,17 @@ export default {
   },
   methods: {
     chooseUsername: function () {
+      const playerIsInLobby = this.lobbyState.participants.some(p => p.username === this.userName) 
+      if (playerIsInLobby) {
+        alert(this.uiLabels.usernameTaken);
+        return;
+      };
       socket.emit( "updateProfile", {pollId: this.pollId, username: this.userName})
       this.joined = true;
     },
     changeTeam: function (participant) {
       console.log(participant);
       socket.emit( "updateOtherProfiles", {pollId: this.pollId, username: participant.username, team: participant.team})
-
     },
     changeReady: function () {
       this.isReady = !this.isReady;

@@ -8,6 +8,7 @@
 	"changeLanguage": "Change to English",
 	"about": "Om oss",
 	"chooseUsername": "Välj användarnamn",
+    "usernameTaken": "Användarnamnet är upptaget i denna lobby. Vänligen välj ett annat.",
     "joinLobby": "Gå med i lobby",
 	"host": "Skapa Spel",
 	"join": "Gå med",
