@@ -3,6 +3,7 @@
 <div id="spelPlan" :style="boardStyle">
       <div
         v-on:click="placeBrick(col - 1)"
+        :style="{width: columnWidth + 'vmin'}"
         v-for="col in size.cols"
         :key="col"
         class="column"
@@ -59,11 +60,11 @@ export default {
         cols: this.boardData.length
       }
     },
+    columnWidth() {
+      return this.width / this.size.cols;
+    },
     cellWidth() {
       return this.height / (this.size.rows);
-    },
-    cellHeight() {
-      return Math.floor(100 / (this.size.rows));
     },
     boardStyle() {
       return {
@@ -105,7 +106,7 @@ export default {
 }
 
 .cell {
-  width: auto;
+  width: 100%;
   aspect-ratio: 1;
 }
 
