@@ -6,7 +6,7 @@ const LOBBIES = new Map();
 // TODO: HARDCODED ID LENGTH MOVE TO OTHER SERVER SETTINGS
 const ID_LENGTH = 4;
 const MIN_PLAYERS = 1;
-const MAX_PLAYERS = 2;
+const MAX_PLAYERS =99;
 
 const TEAMS = {
   PLAYER: "player",
