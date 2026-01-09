@@ -11,21 +11,20 @@
           <LanguageButton />
       </div>
     </section>
-      <section id="gameButtons">
-        <div class="wrapper"> 
+    <section class="gameButtons">
+      <div class="wrapper"> 
+        <button id="hostButton" @click="hostGame">{{ uiLabels.host || "HOST" }}</button>
+        <form @submit.prevent="joinGame" class="join-form">
+          <input id="roomCodeField" 
+            type="text" 
+            v-model="roomCode" 
+            :placeholder="this.uiLabels.roomCode"
+            required
+            minlength="4" maxlength="4"> 
+          <button id="joinButton">{{ uiLabels.join || "Join" }}</button>
+        </form>
 
-          <button id="hostButton" @click="hostGame">{{ uiLabels.host || "HOST" }}</button>
-          <form @submit.prevent="joinGame" class="join-form">
-            <input id="roomCodeField" 
-              type="text" 
-              v-model="roomCode" 
-              :placeholder="this.uiLabels.roomCode"
-              required
-              minlength="4" maxlength="4"> 
-            <button id="joinButton">{{ uiLabels.join || "Join" }}</button>
-          </form>
-
-        </div>
+      </div>
     </section>
   </main>
 </template>
@@ -77,146 +76,6 @@
 
 
 <style scoped>
-
-  button:hover{
-      cursor: pointer;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-
-.logoBox{
-  margin: 5vh;
-}
-
-.topSection {
-  height: 30vh;
-}
-
-#gameButtons {
-  height: 70vh;
-}
-
-@media (orientation: landscape) {
-
-  /*.logoBox{
-    background-image: url(/img/AmongUs.png);
-  }*/
-
-  img {
-    content:url(/img/AmongUs.png);
-    align-self: center;
-  }
-
-  /* Det här är den gamla wrapper-cssen
-  
-  .wrapper {
-    grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw ;
-    margin-top: 20vh;
-    margin-left: 32.5vw ;
-    margin-right: 32.5vw ; 
-    height: 10vh;
-    grid-template-rows: 5vh 5vh ;
-  }*/
-
-    .wrapper {
-      grid-template-columns: repeat(2, 175px); 
-      grid-template-rows: repeat(1, 60px);
-
-      width: 350px; 
-      margin: 20vh auto 0 auto; 
-      height: 10vh;
-
-    gap: 50px;
-  }
-
-
-  #hostButton {
-    grid-column: 1;
-    grid-row: 1;
-    height: inherit;
-  }
-
-
-  #roomCodeField {
-    grid-column: 5 / 7;
-    grid-row: 1 / 3;
-  }
-
-  #joinButton {
-    grid-column: 7;
-    grid-row: 1 / 3;
-  }
-  
-  .join-form {
-    grid-column: 2;
-    grid-row: 1;
-    display: flex;
-    flex-direction: row;
-
-    input {
-      width: 4em;
-      flex-grow: 2;
-    }
-    button {
-      flex-grow: 1;
-    }
-  }
-  
-}
-
-@media (orientation: portrait) {
-  /*.logoBox{
-    background-image: url(/img/AmongUsPortrait.png);
-  }*/
-
-  img {
-    content:url(/img/AmongUsPortrait.png);
-    align-self: center;
-  }
-
-  
-  .wrapper {
-    width: 60vw;
-    grid-template-columns: 20vw 20vw 20vw  ;
-    margin-left: 20vw ;
-    margin-right: 20vw ;
-    height: 60vh;
-    grid-template-rows: 12vh 12vh 12vh 12vh 12vh;
-  } 
-
-  /* Försökte göra en liknande "låsning" av knappstorlek som i landscape, men lyckades inte helt
-  .wrapper {
-    grid-template-columns: repeat(3, 50px); 
-    grid-template-rows: repeat(5, 5px);
-
-    width: 350px; 
-    margin: 20vh auto 0 auto; 
-    height: 150px;
-  } 
-  */
-
-  #hostButton {
-    grid-column: 1 / 4;
-    grid-row: 1 / 3;
-    border-radius: 100%;
-  }
-
-
-  #roomCodeField {
-    grid-column: 1 / 3;
-    grid-row: 4 / 6;
-  }
-
-  #joinButton {
-    grid-column: 3 / 4;
-    grid-row:  4 / 6;
-  }
-
-}
-
 main {
     background-image: url(/img/connect4wallpaper.png);
     background-position: center;
@@ -226,7 +85,25 @@ main {
     width: 100vw;
     align-items: center;
 }
-  
+
+.topSection {
+  height: 30vh;
+}
+
+.logoBox{
+  margin: 5vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+img {
+  max-width: 100%;
+  align-self: center;
+}
+
+.gameButtons {
+  height: 70vh;
+}
 
 .wrapper {
   display: grid;
@@ -235,18 +112,34 @@ main {
 
 .wrapper * {
   color: white;
-  font: bold Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+.join-form {
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+
+  input {
+    width: 4em;
+    flex-grow: 2;
+  }
+  
+  button {
+    flex-grow: 1;
+  }
+}
+
+button:hover{
+    cursor: pointer;
+}
 
 #hostButton {
   background-color: green;
-  font: bold Arial, sans-serif;
   border-radius: 10px;
   border: solid 4px grey;
-  font-size: 200%;
+  font-size: 170%;
 }
-
 
 #roomCodeField {
   color: grey;
@@ -256,13 +149,70 @@ main {
   font-size: 100%;
 }
 
-
 #joinButton {
   background-color: orange;
   border-radius: 0px 10px 10px 0px;
   border: solid 4px grey;
+  font-size: 80%;
+  font-weight: bold;
 }
 
+@media (orientation: landscape) {
+  img {
+    content:url(/img/AmongUs.png);
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(2, 175px); 
+    grid-template-rows: repeat(1, 60px);
+
+    gap: 50px;
+
+    width: 350px; 
+    margin: 20vh auto 0 auto; 
+    height: 10vh;
+  }
+
+  #hostButton {
+    grid-column: 1;
+    grid-row: 1;
+    height: inherit;
+  }
+
+  .join-form {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (orientation: portrait) {
+  img {
+    content:url(/img/AmongUsPortrait.png);
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(1, 80vw); 
+    grid-template-rows: repeat(2, 40%);
+
+    gap: 10%;
+
+    width: 80vw; 
+    margin: 0 auto 0 auto; 
+    height: 90%;
+  }
+
+  #hostButton {
+    grid-column: 1;
+    grid-row: 1;
+    height: 100%;
+    width: 100%;
+  }
+
+  .join-form {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
 </style>
 
 
