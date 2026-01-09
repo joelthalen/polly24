@@ -1,38 +1,35 @@
 <template>
-  <div>
+  <main>
+  <div v-if="showQuestion">
     <!-- Ta bort denna div senare då den inte tillhör vår kod och lär inte behövas? Någon komponent kanske kan användas?-->
     {{ pollId }}
     <QuestionComponent
-      v-if= "showQuestion"
       v-bind:question="question" 
       v-on:answer="submitAnswer($event)"
     />
-    <hr />
-      <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center;"> 
-        You are spectating the game.
-      </div>
-    <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center;">
-      Wrong answer! Next player's turn.
-    </div>
-    <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center;">
-      Correct answer! Please place your marker.
-    </div>
   </div>
-<main>  
-  <header>
-    <h1>{{ pollId }}</h1>
-  </header>
-  <section>
+  <div class="connection">
+    <div>
+      <h1>{{ pollId }}</h1>
+        <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center;"> 
+          You are spectating the game.
+        </div>
+      <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center;">
+        Wrong answer! Next player's turn.
+      </div>
+      <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center;">
+        Correct answer! Please place your marker.
+      </div>
+    </div>
     <SpelPlan
-      v-bind:size="size"
-      v-bind:boardData="boardData"
-      v-on:placeBrick="placeMarker"
+    v-bind:boardData="boardData"
+    v-on:placeBrick="placeMarker"
     />
     <h2>
       {{ currentPlayer + "'s: turn" }}
       <!-- ändra så den kan variera -->
     </h2>
-  </section>
+  </div>
   </main>
 </template>
 
@@ -51,9 +48,6 @@ export default {
   computed: {
     boardData() {
       return state.gameBoard;
-    },
-    size() {
-      return {rows: state.gameBoard[0].length, cols: state.gameBoard.length}
     },
     currentPlayer() {
       return state.currentPlayer;
@@ -124,13 +118,22 @@ export default {
 /* verkar som man ändå borde ha scoped. Tolkade som att denna css kan påverka andra komponenter i så fall?? */
 
 main {
-    background-image: url(/img/AmongUsWallPaper.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-image: url(/img/AmongUsWallPaper.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: 1fr;
 }
 
+.connection {
+  flex-grow: 1;
+  height: auto;
+  display: grid;
+  grid-template-rows: 15% 75% 10%;
+}
 </style>

@@ -220,6 +220,8 @@ export class Game {
   }
 
   endGame() {
+    this.io.to("spectator" + this.lobby.ID).emit("youAreSpectating");
+
 
   }
 

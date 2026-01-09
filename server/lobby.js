@@ -131,6 +131,7 @@ class Lobby {
   }
 
   remove() {
+    this.io.to(this.ID).emit("lobbyClosed", this.ID);
     LOBBIES.delete(this.ID);
   }
 
