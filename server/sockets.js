@@ -101,5 +101,14 @@ function sockets(io, socket, data) {
       }
   }
   });
+
+  socket.on("startNewGame", (lobbyID) => { 
+    const lobby = Lobby.getLobby(lobbyID);
+    if (lobby && lobby.game) {
+      lobby.createGame();
+    }
+  });
+
+
 }
 export { sockets };

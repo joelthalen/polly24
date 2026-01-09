@@ -15,7 +15,7 @@ const TEAMS = {
 
 
 class Lobby {
-  game;
+  game; 
 
   constructor(io, ownerSocket, data, lang = "en") {
     this.io = io;
@@ -124,14 +124,21 @@ class Lobby {
   }
 
   // TODO: REDO
-  removeParticipant(id) {
+  removeParticipant(id) { //just nu funkar det inte riktigt buggar när man ska enda gamet om gamest är igång     
     for (let i in this.players) {
       if (this.players[i].socket.id === id) {
+        if(this.game){
+          if (this.players[i].team === "player") {  
+            this.io.to(this.ID).emit("playerLeft")
+            LOBBIES.delete(this.ID)
+          }
+        }
         const removedPlayerArray = this.players.splice(i, 1);
-        if (this.players.length < 1) this.remove();
+        if (this.players.length < 1) {this.remove();}
         else if (removedPlayerArray[0].isHost) {
           this.players[0].isHost = true;
         }
+        removedPlayerArray[0].socket.leave(this.ID)
       }
     }
   }
@@ -189,7 +196,7 @@ class Lobby {
       (p) => p.team === TEAMS.SPECTATOR ? "spectators" : "players");
     // Check min and max player count
     if (!players || players.length < MIN_PLAYERS || players.length > MAX_PLAYERS) return;
-    this.game = new Game(this.io, this, this.columns, this.rows, this.players, this.data, this.difficulty, this.wincondition);
+    this.game = new Game(this.io, this, this.columns, this.rows, players, this.data, this.difficulty, this.wincondition);
     this.game.addSpectators(spectators);
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");

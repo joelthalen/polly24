@@ -8,6 +8,17 @@
       v-on:answer="submitAnswer($event)"
     />
   </div>
+
+  <div v-if="gameHasBeenWon" style="color: gold; font-size: 36px; font-weight: bold; text-align: center; background-color: black;">
+    Congratulations {{ winner }}! You have won the game!
+
+  </div>
+  
+  <div class="TESTFÖRBUTTONSATTSTARTAOMMATCHEN"> <!-- ÄNDRA SEN!!!!-->
+    <button @click="restartGame()">Start New Game</button>
+    <button @click="returnToHome()">Return to Start</button>
+  </div>
+
   <div class="connection">
     <div>
       <h1>{{ pollId }}</h1>
@@ -67,6 +78,9 @@ export default {
       showQuestion: true,
       wrongAnswer: false,
       correctAnswer: false,
+      winner: null,
+      gameHasBeenWon: false,
+      playerHasleft: false,
 
     };
   },
@@ -90,6 +104,24 @@ export default {
       this.showQuestion = true;
     });
 
+    socket.on("gameOver", (winner) => {
+      alert("Game over! The winner is: " + winner); // tillfällig lösning: alert för att visa vinnaren
+      this.winner = winner;
+      this.gameHasBeenWon = true;
+
+    });
+
+    socket.on("playerLeft", () => { 
+      if (this.playerHasleft === false){
+      alert("A player left the game. You you will be rerouted to start page")
+      this.$router.push("/");
+      this.playerHasleft = true
+      }
+    }); 
+      
+    
+
+
     //Från kodsklettet
     this.pollId = this.$route.params.id;
     socket.on("questionUpdate", (q) => (this.question = q));
@@ -103,6 +135,7 @@ export default {
 
 
   },
+
   methods: {
     submitAnswer: function (ans) {
       socket.emit("submitAnswer", {id: this.pollId, answer: ans });
@@ -110,8 +143,16 @@ export default {
     placeMarker: function (col) {
       socket.emit("placeMarker", {id: this.pollId, column: col})
     },
+    restartGame: function () {
+      socket.emit("startNewGame", this.pollId);
+    },
+    returnToHome: function () { //just nu så uppdateras inte players i game när någon lämnar så spelet kan inte fortsätta. 
+      socket.emit("leaveLobby", this.pollId);
+      this.$router.push("/");
+      //här kan man ha ett event som säger till alla andra spelare att någon lämnat gamet
+    },
   },
-};
+}
 </script>
 
 <style scoped>

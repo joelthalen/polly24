@@ -8,7 +8,6 @@
         class="column"
       >
         <div
-          :style="{ height: cellHeight+'%' }"
           v-for="row in size.rows"
           :key="row"
           class="cell"
@@ -84,6 +83,8 @@ export default {
 }
 
 .cell {
+  width: 4em;
+  height: 4em;
   position: relative;
   left: 0;
   top: 0;

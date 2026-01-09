@@ -13,6 +13,7 @@ export class Game {
     this.questions = data.retriveQuestions(lobby.lang)[difficulty].slice();
     this.currentQuestion = null;
     this.placeMarkerAllowed = false;
+    this.stopGame = false;
     for (let i = 0; i < players.length; i++) {
       players[i]["color"] = COLORS[i % COLORS.length];
     }
@@ -49,6 +50,7 @@ export class Game {
 
   placeMarker(col) {
     console.log(`Player ${this.players[this.currentPlayer].username} is placing a marker in column ${col}`);
+    if (this.stopGame) return;
     if (!this.placeMarkerAllowed) return;
       // CHECK IF COL IS VALID
       if (col < 0 || col > this.gameBoard.length) return;
@@ -63,6 +65,8 @@ export class Game {
         if(this.checkWinCondition(emptyCellIndex, col, this.players[this.currentPlayer].color)) 
         {
           console.log(this.players[this.currentPlayer].username+" has won the game!");
+          this.io.to(this.lobby.ID).emit("gameOver", this.players[this.currentPlayer].username);
+          this.stopGame = true;
         }
         this.setCurrentPlayer(this.getNextPlayer());
         this.updateGameBoard();
@@ -195,6 +199,7 @@ export class Game {
   }
 
   checkAnswer(answer) {
+    if (this.stopGame) return;
     if (this.currentQuestion.correctAnswer === answer) {
       this.io.to(this.lobby.ID).emit("correctAnswer");
       this.placeMarkerAllowed = true;
