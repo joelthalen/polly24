@@ -51,9 +51,143 @@
 
   { "q": "Hur många dagar finns det på ett år (utan skottår)?", 
   "a": ["360", "364", "365", "366"], 
-  "correctAnswer": "365" }
+  "correctAnswer": "365" },
+
+  {
+    "q": "Vad är huvudstaden av Azerbajdzjan?",
+    "a": [
+      "Doha",
+      "Tbilisi",
+      "Toronto",
+      "Baku"
+    ],
+    "correctAnswer": "Baku"
+  },
+   {
+    "q": "I vilken sport tävlas det om Stanley Cup?",
+    "a": [
+      "Fotboll",
+      "Innebandy",
+      "Kricket",
+      "Hockey"
+    ],
+    "correctAnswer": "Hockey"
+  },
+  {
+    "q": "Vem bor under en sten?",
+    "a": [
+      "Kalle Anka",
+      "Patrik Sjöstjärna",
+      "Musse Pigg",
+      "Svampbob Fyrkant"
+    ],
+    "correctAnswer": "Patrik Sjöstjärna"
+  },
+  {
+    "q": "Vad är valutan i Thailand?",
+    "a": [
+      "Baht",
+      "Dong",
+      "Dollar",
+      "Rupee"
+    ],
+    "correctAnswer": "Baht"
+  },
+  {
+    "q": "Vilket land är Rihanna ifrån?",
+    "a": [
+      "Bahamas",
+      "Jamaica",
+      "USA",
+      "Barbados"
+    ],
+    "correctAnswer": "Barbados"
+  }
   ],
   [
+  {
+    "q": "Vad är Argentinas nationaldans?",
+    "a": [
+      "Samba",
+      "Tango",
+      "Caporales",
+      "Pasodoble"
+    ],
+    "correctAnswer": "Tango"
+  },
+  {
+    "q": "Vad kallas fobin för löss?",
+    "a": [
+      "Pediculophobia",
+      "Pendulophobia",
+      "Peninsuliphobia",
+      "Phagophobia"
+    ],
+    "correctAnswer": "Pediculophobia"
+  },
+
+  {
+    "q": "Vilket år sjönk Titanic?",
+    "a": [
+      "1891",
+      "1898",
+      "1905",
+      "1912"
+    ],
+    "correctAnswer": "1912"
+  },
+  {
+    "q": "Vilket land producerar flest förfalskade amerikanska dollar?",
+    "a": [
+      "Mexiko",
+      "USA",
+      "Peru",
+      "Colombia"
+    ],
+    "correctAnswer": "Peru"
+  },
+  {
+    "q": "Vilket land producerar flest tandproteser?",
+    "a": [
+      "Schweiz",
+      "Liechtenstein",
+      "Brasilien",
+      "Bhutan"
+    ],
+    "correctAnswer": "Liechtenstein"
+  },
+
+  {
+    "q": "Vad är en bulldogutgåva av en tidning?",
+    "a": [
+      "Satirisk kopia av tidning menad att provocera",
+      "Första upplagan av en dagstidning",
+      "Felpressad upplaga",
+      "Upplaga med propaganda"
+    ],
+    "correctAnswer": "Första upplagan av en dagstidning"
+  },
+  {
+    "q": "Hur långt mellan Uppsala och Stockholm i engelska miles?",
+    "a": [
+      "109",
+      "37",
+      "43",
+      "115"
+    ],
+    "correctAnswer": "43"
+  },
+ {
+    "q": "I vilket land uppfanns sporten bob?",
+    "a": [
+      "Schweiz",
+      "Österrike",
+      "Kanada",
+      "USA"
+    ],
+    "correctAnswer": "Schweiz"
+  },
+
   {
     "q": "Vilken är den asymptotiska tidskomplexiteten för mergesort i värsta fallet?",
     "a": [
