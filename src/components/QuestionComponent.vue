@@ -33,7 +33,11 @@ export default {
     border: 2px solid black;
     width: 40vw;
     height: 40vh;
-    background-color: rgba(255, 25, 25, 0.547);
+    position: absolute;
+    top: calc(50% - 20vh);
+    left: calc(50% - 20vw);
+    z-index: 10;
+    background-color: rgba(255, 25, 25, 0.80);
     border-radius: 15px;
   }
   .questionAlternative {

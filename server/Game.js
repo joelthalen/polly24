@@ -1,7 +1,7 @@
 const COLORS = ["red", "yellow", "blue", "green", "violet"];
 
 export class Game {
-  constructor(io, lobby, columns, rows, players, data, difficulty) {
+  constructor(io, lobby, columns, rows, players, data, difficulty, wincondition) {
     this.io = io;
     this.lobby = lobby;
     this.columns = columns;
@@ -9,6 +9,7 @@ export class Game {
     this.players = players;
     this.data = data;
     this.difficulty = difficulty;
+    this.wincondition = wincondition; //number of markers in a row needed to win
     this.questions = data.retriveQuestions(lobby.lang)[difficulty].slice();
     this.currentQuestion = null;
     this.placeMarkerAllowed = false;
@@ -61,7 +62,7 @@ export class Game {
         this.gameBoard[col][emptyCellIndex] = player.color;
         if(this.checkWinCondition(emptyCellIndex, col, this.players[this.currentPlayer].color)) 
         {
-          console.log(this.players[this.currentPlayer].username)
+          console.log(this.players[this.currentPlayer].username+" has won the game!");
         }
         this.setCurrentPlayer(this.getNextPlayer());
         this.updateGameBoard();
@@ -102,7 +103,7 @@ export class Game {
 
     //vertical
     let verticalLine = 1;
-    let over = row - 1;
+    //let over = row - 1;
     let under = row + 1;
     /*while (over >= 0 && this.gameBoard[col][over] === playerColor) {
       verticalLine += 1;
@@ -112,7 +113,7 @@ export class Game {
       verticalLine += 1;
       under += 1;
     }
-    if (verticalLine >= 4) {
+    if (verticalLine >= this.wincondition) {
       return true;
     }
     //horizontal
@@ -127,7 +128,7 @@ export class Game {
       horizontalline += 1;
       right += 1;
     }
-    if (horizontalline >= 4) {
+    if (horizontalline >= this.wincondition) {
       return true;
     }
     //first diagonal
@@ -143,7 +144,7 @@ export class Game {
       firstdiagonalline += 1;
       downright = [downright[0]+1,downright[1]+1];
     }
-    if (firstdiagonalline >= 4) {
+    if (firstdiagonalline >= this.wincondition) {
       return true;
     }
 
@@ -158,11 +159,9 @@ export class Game {
       seconddiagonalline += 1;
       upright = [upright[0]+1,upright[1]-1];
     }
-    if (seconddiagonalline >= 4) {
+    if (seconddiagonalline >= this.wincondition) {
       return true;
     }
-
-    console.log(horizontalline, verticalLine, firstdiagonalline, seconddiagonalline);
   }
 
   setCurrentPlayer(playerIndex) {
