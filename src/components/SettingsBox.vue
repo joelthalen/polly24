@@ -130,6 +130,11 @@ export default {
         height: 90%;
     }
 
+    button:hover {
+        background-color: rgba(150, 150, 150, 0.7);
+        cursor: pointer;
+    }
+
     .textP {
         grid-column: span 3;
         grid-row: 1;

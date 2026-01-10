@@ -66,9 +66,142 @@
     "q": "What is a sandpile plus a sandpile?",
     "a": ["Two sandpiles", "Glass", "A bigger sandpile", "Sandbox"],
     "correctAnswer": "A bigger sandpile"  
+  },
+
+  {
+    "q": "What is the capital of Azerbaijan?",
+    "a": [
+      "Doha",
+      "Tbilisi",
+      "Toronto",
+      "Baku"
+    ],
+    "correctAnswer": "Baku"
+  },
+   {
+    "q": "Which sport does the Stanley Cup belong to?",
+    "a": [
+      "Football",
+      "Ice Hockey",
+      "Cricket",
+      "Floorball"
+    ],
+    "correctAnswer": "Ice Hockey"
+  },
+   {
+    "q": "Who lives under a stone?",
+    "a": [
+      "Donald Duck",
+      "Patrik Seastar",
+      "Mickey Mouse",
+      "SpongeBob SquarePants"
+    ],
+    "correctAnswer": "Patrik Seastar"
+  },
+  {
+    "q": "What is the currency in Thailand?",
+    "a": [
+      "Baht",
+      "Dong",
+      "Dollar",
+      "Rupee"
+    ],
+    "correctAnswer": "Baht"
+  },
+  {
+    "q": "What country is Rihanna from?",
+    "a": [
+      "Bahamas",
+      "Jamaica",
+      "USA",
+      "Barbados"
+    ],
+    "correctAnswer": "Barbados"
   }
   ],
   [
+  {
+    "q": "What is Argentina's national dance?",
+    "a": [
+      "Samba",
+      "Tango",
+      "Caporales",
+      "Pasodoble"
+    ],
+    "correctAnswer": "Tango"
+  },
+  {
+    "q": "What is phobia of lice called?",
+    "a": [
+      "Pediculophobia",
+      "Pendulophobia",
+      "Peninsuliphobia",
+      "Phagophobia"
+    ],
+    "correctAnswer": "Pediculophobia"
+  },
+
+  {
+    "q": "What year did Titanic sink?",
+    "a": [
+      "1891",
+      "1898",
+      "1905",
+      "1912"
+    ],
+    "correctAnswer": "1912"
+  },
+  {
+    "q": "Which country produces the most fake American dollars?",
+    "a": [
+      "Mexico",
+      "USA",
+      "Peru",
+      "Colombia"
+    ],
+    "correctAnswer": "Peru"
+  },
+  {
+    "q": "Which country produces the most fake teeth?",
+    "a": [
+      "Switzerland",
+      "Liechtenstein",
+      "Brazil",
+      "Bhutan"
+    ],
+    "correctAnswer": "Liechtenstein"
+  },
+
+  {
+    "q": "What is a bulldog edition of a newspaper?",
+    "a": [
+      "Satirical copy of a newspaper meant to provoke",
+      "First edition of a daily newspaper",
+      "Misprinted edition",
+      "Edition with propaganda"
+    ],
+    "correctAnswer": "First edition of a daily newspaper"
+  },
+  {
+    "q": "How far between Uppsala and Stockholm in English miles?",
+    "a": [
+      "109",
+      "37",
+      "43",
+      "115"
+    ],
+    "correctAnswer": "43"
+  },
+  {
+    "q": "In which country was the sport of bobsleigh invented?",
+    "a": [
+      "Switzerland",
+      "Austria",
+      "Canada",
+      "USA"
+    ],
+    "correctAnswer": "Switzerland"
+  },
   {
     "q": "What is the asymptotic time complexity of mergesort in the worst case?",
     "a": [
