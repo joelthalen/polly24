@@ -24,7 +24,7 @@ export class Game {
     this.gameBoard = gameBoard;
     this.updateGameBoard();
     this.updateQuestion();
-    this.informSpectators();
+    
     
     
   }

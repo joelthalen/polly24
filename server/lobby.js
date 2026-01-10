@@ -136,13 +136,13 @@ class Lobby {
   }
 
   // TODO: REDO
-  removeParticipant(id) { //just nu funkar det inte riktigt buggar när man ska enda gamet om gamest är igång     
+  removeParticipant(id) {   
     for (let i in this.players) {
       if (this.players[i].socket.id === id) {
         if(this.game){
           if (this.players[i].team === "player") {  
             this.io.to(this.ID).emit("playerLeft")
-            for(let i in this.players){ this.players[i].socket.leave()}
+            for(let i in this.players){ this.players[i].socket.leave(this.ID); console.log("playerRemovedfrom socket")} //verkar funka nu
             LOBBIES.delete(this.ID)
           }
         }
@@ -210,7 +210,9 @@ class Lobby {
     // Check min and max player count
     if (!players || players.length < MIN_PLAYERS || players.length > MAX_PLAYERS) return;
     this.game = new Game(this.io, this, this.columns, this.rows, players, this.data, this.difficulty, this.wincondition);
+    this.io.to(this.ID).emit("resetSpectators"); //incase of a new game, reset spectators on client side, so they do not have old game data
     this.game.addSpectators(spectators);
+    this.game.informSpectators();
     this.updateLobby("Created Game");
     this.io.to(this.ID).emit("gameStart");
   }

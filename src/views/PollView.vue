@@ -15,11 +15,11 @@
     />
   </div>
 
-  <div v-if="gameHasBeenWon" style="color: gold; font-size: 36px; font-weight: bold; text-align: center; background-color: black; z-index: 2;">
+  <div v-if="gameHasBeenWon" style="color: gold; font-size: 36px; font-weight: bold; text-align: center; background-color: black; z-index: 2; width: fit-content; margin: auto;">
     Congratulations {{ winner }}! You have won the game!
-  </div>
+  </div> <!-- Vi behöver antaligen ändra dessa taggar, iaf byta till relativa storlekar.-->
   
-  <div v-if="hasRestartedGame" style="color: aquamarine; font-size: 24px; font-weight: bold; text-align:center; background-color: black; z-index: 2;">
+  <div v-if="hasRestartedGame" style="color: aquamarine; font-size: 24px; font-weight: bold; text-align:center; background-color: black; z-index: 2; width: fit-content; margin: auto;">
     NEW GAME
 
   </div>
@@ -28,13 +28,13 @@
 
   <div class="connection">
     <div style="z-index: 2;">
-        <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center;"> 
+        <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center; width: fit-content; background-color: black; opacity: 0.8; margin: auto;"> 
           You are spectating the game.
         </div>
-      <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center; background-color: black;">
+      <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center; background-color: black; width: fit-content; margin: auto;">
         Wrong answer! Next player's turn.
       </div>
-      <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center; background-color: black;">
+      <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center; background-color: black; width: fit-content; margin: auto;">
         Correct answer! Please place your marker.
       </div>
     </div>

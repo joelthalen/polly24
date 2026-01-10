@@ -76,18 +76,14 @@ socket.on("updateQuestion", (question) => {
   state.currentQuestion = question;
 });
 
-/*socket.on("correctAnswer", () => {
-  console.log("Correct answer!");
-});
-
-socket.on("wrongAnswer", () => {
-  console.log("Wrong answer, try again!");
-}); */
-
 socket.on("currentPlayerUpdate", (username) => {
   state.currentPlayer = username;
 })
 
 socket.on("youAreSpectating", () => {
   state.spectating = true;
+} );
+
+socket.on("resetSpectators", () => {
+  state.spectating = false;
 } );
