@@ -146,9 +146,9 @@ _kan kanske ligga som en komponent på lobbyn_
 ## Customization?
 
 - [x] Ändra spelplanstorlek
-- [ ] min och max caps på spelplansstorlek
-- [ ] Ändra win condition
-- [ ] Ändra svårhetsgrad på frågor
+- [x] min och max caps på spelplansstorlek
+- [x] Ändra win condition
+- [x] Ändra svårhetsgrad på frågor
 
 ## Fix i lobbyvyn
 

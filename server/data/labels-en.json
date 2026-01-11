@@ -31,5 +31,13 @@
     "waitingForHost": "Waiting for host to join start game",
     "ready":"Ready",
     "notReady":"Not ready",
-    "isHost":"Host"
+    "isHost":"Host👑",
+    "correct":"Correct answer! Please place your marker.",
+    "incorrect":"Wrong answer! Next player's turn.",
+    "spectating":"You are spectating the game.",
+    "newGame":"NEW GAME",
+    "congratulations1":"Congratulations ",
+    "congratulations2":"! You have won the game!",
+    "startNewGame":"Start new game",
+    "returnToStart":"Return to start"
 }

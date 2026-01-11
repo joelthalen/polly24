@@ -1,11 +1,11 @@
 <template>
   <div class="TESTFÖRBUTTONSATTSTARTAOMMATCHEN"> <!-- ÄNDRA SEN!!!!-->
-    <button @click="restartGame()">Start New Game</button>
-    <button @click="returnToHome()">Return to Start</button>
+    <button @click="restartGame()">{{uiLabels.startNewGame}}</button>
+    <button @click="returnToHome()">{{uiLabels.returnToStart}}</button>
   </div>
   
   <main>
-  <h1>{{ pollId }}</h1>
+  <!--<h1>{{ pollId }}</h1> Visst behöver vi inte visa lobby ID i spelet eftersom man inte kan gå tillbaka till lobbyn?-->
   <div v-if="showQuestion">
     <QuestionComponent
     v-bind:title="'Question for ' + this.currentPlayer"
@@ -16,26 +16,26 @@
   </div>
 
   <div v-if="gameHasBeenWon" style="color: gold; font-size: 36px; font-weight: bold; text-align: center; background-color: black; z-index: 2; width: fit-content; margin: auto;">
-    Congratulations {{ winner }}! You have won the game!
+    {{uiLabels.congratulations1}}{{ winner }}{{uiLabels.congratulations2}}
   </div> <!-- Vi behöver antaligen ändra dessa taggar, iaf byta till relativa storlekar.-->
   
   <div v-if="hasRestartedGame" style="color: aquamarine; font-size: 24px; font-weight: bold; text-align:center; background-color: black; z-index: 2; width: fit-content; margin: auto;">
-    NEW GAME
+    {{uiLabels.newGame}}
 
   </div>
   
   
 
   <div class="connection">
-    <div style="z-index: 2;">
+    <div style="z-index: 2;" v-if="spectating || wrongAnswer || correctAnswer">
         <div v-if="spectating" style="color: yellow; font-size: 24px; font-weight: bold; text-align: center; width: fit-content; background-color: black; opacity: 0.8; margin: auto;"> 
-          You are spectating the game.
+        {{ uiLabels.spectating }}
         </div>
       <div v-if="wrongAnswer" style="color: red; font-size: 24px; font-weight: bold; text-align: center; background-color: black; width: fit-content; margin: auto;">
-        Wrong answer! Next player's turn.
+        {{ uiLabels.incorrect }}
       </div>
       <div v-else-if="correctAnswer" style="color: green; font-size: 24px; font-weight: bold; text-align: center; background-color: black; width: fit-content; margin: auto;">
-        Correct answer! Please place your marker.
+        {{uiLabels.correct}}
       </div>
     </div>
     <SpelPlan

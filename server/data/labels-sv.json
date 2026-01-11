@@ -13,7 +13,7 @@
 	"host": "Skapa Spel",
 	"join": "Gå med",
 	"roomCode": "Kod",
-	"leaveLobby": "Lämna Lobby",
+	"leaveLobby": "Lämna lobby",
     "lobbyCode": "Spelkod",
     "settings": "Inställningar",
     "columns": "Kolumner",
@@ -31,5 +31,13 @@
     "waitingForHost": "Väntar på att spelvärden startar spelet",
     "ready":"Redo",
     "notReady":"Inte redo",
-    "isHost":"Host"
+    "isHost":"Host👑",
+    "correct":"Rätt svar! Lägg en bricka.",
+    "incorrect":"Fel svar! Nästa spelares tur.",
+    "spectating":"You är en åskådare till spelet.",
+    "newGame":"NYTT SPEL",
+    "congratulations1":"Grattis ",
+    "congratulations2":"! Du har vunnit spelet!",
+    "startNewGame":"Starta nytt spel",
+    "returnToStart":"Tillbaka till start"
 }
