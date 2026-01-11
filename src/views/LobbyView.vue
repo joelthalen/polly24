@@ -293,9 +293,25 @@ h3 {
   }
 
 .readyButton {
-    background-color: white;
     height: 5vh;
     width: 10vw;
+}
+
+.startButton {
+    height: 5vh;
+    width: 10vw;  
+}
+
+button {
+  background-color: rgba(113, 113, 113, 0.5);
+  border: solid 2px rgb(219, 219, 219);
+  color: white;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: rgba(150, 150, 150, 0.7);
+  cursor: pointer;
 }
 
 .playerRow {

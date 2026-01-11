@@ -25,7 +25,7 @@
                 <span v-if="difficulty === 0">{{ uiLabels.easy }}</span>
                 <span v-else-if="difficulty === 1">{{ uiLabels.hard }}</span>
                 <span v-else>{{ uiLabels.unknown }}</span>
-            </p>-->
+            </p> This was here when this was just one difficulty button. Leaving here in case we want to change it back-->
             <button class="difficultyButton" :disabled="this.difficulty === 0" @click="changeDifficulty(difficulty)">
                 {{ uiLabels.easy }}
             </button>
