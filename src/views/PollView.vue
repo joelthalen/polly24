@@ -248,4 +248,18 @@ main {
     content: " (You)";
   }
 }
+
+button {
+  background-color: rgba(113, 113, 113, 0.5);
+  border: solid 2px rgb(219, 219, 219);
+  color: white;
+  border-radius: 4px;
+  min-height: 3vh;
+}
+
+button:hover {
+  background-color: rgba(150, 150, 150, 0.7);
+  cursor: pointer;
+}
+
 </style>
