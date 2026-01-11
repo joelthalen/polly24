@@ -13,15 +13,15 @@
     </section>
     <section class="gameButtons">
       <div class="wrapper"> 
-        <button id="hostButton" @click="hostGame">{{ uiLabels.host || "HOST" }}</button>
-        <form @submit.prevent="joinGame" class="join-form">
-          <input id="roomCodeField" 
+        <button class="hostButton" @click="hostGame">{{ uiLabels.host || "HOST" }}</button>
+        <form @submit.prevent="joinGame" class="join-form" label="test">
+          <input class="roomCodeField" 
             type="text" 
             v-model="roomCode" 
-            :placeholder="this.uiLabels.roomCode"
+            :placeholder="uiLabels.roomCode || 'Room code'"
             required
             minlength="4" maxlength="4"> 
-          <button id="joinButton">{{ uiLabels.join || "Join" }}</button>
+          <button class="joinButton">{{ uiLabels.join || "Join" }}</button>
         </form>
 
       </div>
@@ -134,14 +134,14 @@ button:hover{
     cursor: pointer;
 }
 
-#hostButton {
+.hostButton {
   background-color: green;
   border-radius: 10px;
   border: solid 4px grey;
   font-size: 170%;
 }
 
-#roomCodeField {
+.roomCodeField {
   color: grey;
   border-radius: 10px 0px 0px 10px;
   border: solid 4px grey;
@@ -149,7 +149,7 @@ button:hover{
   font-size: 100%;
 }
 
-#joinButton {
+.joinButton {
   background-color: orange;
   border-radius: 0px 10px 10px 0px;
   border: solid 4px grey;
@@ -173,7 +173,7 @@ button:hover{
     height: 10vh;
   }
 
-  #hostButton {
+  .hostButton {
     grid-column: 1;
     grid-row: 1;
     height: inherit;
@@ -201,7 +201,7 @@ button:hover{
     height: 90%;
   }
 
-  #hostButton {
+  .hostButton {
     grid-column: 1;
     grid-row: 1;
     height: 100%;
