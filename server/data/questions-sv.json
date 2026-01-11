@@ -77,11 +77,11 @@
     "q": "Vem bor under en sten?",
     "a": [
       "Kalle Anka",
-      "Patrik Sjöstjärna",
+      "Patrik Sjärna",
       "Musse Pigg",
       "Svampbob Fyrkant"
     ],
-    "correctAnswer": "Patrik Sjöstjärna"
+    "correctAnswer": "Patrik Stjärna"
   },
   {
     "q": "Vad är valutan i Thailand?",
@@ -102,6 +102,191 @@
       "Barbados"
     ],
     "correctAnswer": "Barbados"
+  },
+  {
+  "q": "Vilket land är störst till ytan?",
+  "a": ["USA", "Ryssland", "Kanada", "Kina"],
+  "correctAnswer": "Ryssland"
+  },
+  {
+    "q": "Hur många hörn har en kvadrat?",
+    "a": ["3", "4", "5", "6"],
+    "correctAnswer": "4"
+  },
+  {
+    "q": "Vad heter världens längsta flod?",
+    "a": ["Nilen", "Amazonas", "Yangtze", "Mississippi"],
+    "correctAnswer": "Amazonas"
+  },
+  {
+    "q": "Vilket språk talas mest i världen?",
+    "a": ["Engelska", "Spanska", "Mandarin", "Hindi"],
+    "correctAnswer": "Mandarin"
+  },
+  {
+    "q": "Vad heter gasen som växter tar upp vid fotosyntesen?",
+    "a": ["Syre", "Kväve", "Koldioxid", "Väte"],
+    "correctAnswer": "Koldioxid"
+  },
+  {
+    "q": "Hur många spelare finns på planen i ett fotbollslag?",
+    "a": ["9", "10", "11", "12"],
+    "correctAnswer": "11"
+  },
+  {
+    "q": "Vilket hav är störst?",
+    "a": ["Atlanten", "Indiska oceanen", "Stilla havet", "Arktiska havet"],
+    "correctAnswer": "Stilla havet"
+  },
+  {
+    "q": "Vad heter den största planeten i vårt solsystem?",
+    "a": ["Jupiter", "Saturnus", "Uranus", "Neptunus"],
+    "correctAnswer": "Jupiter"
+  },
+  {
+    "q": "Vilket djur kallas ofta 'skogens konung'?",
+    "a": ["Varg", "Björn", "Lejon", "Älg"],
+    "correctAnswer": "Älg"
+  },
+  {
+    "q": "Hur många centimeter är en meter?",
+    "a": ["10", "50", "100", "1000"],
+    "correctAnswer": "100"
+  },
+  {
+    "q": "Vad heter den största kontinenten?",
+    "a": ["Europa", "Asien", "Afrika", "Sydamerika"],
+    "correctAnswer": "Asien"
+  },
+  {
+    "q": "Vilket ämne ger blod dess röda färg?",
+    "a": ["Hemoglobin", "Järn", "Syre", "Plasma"],
+    "correctAnswer": "Hemoglobin"
+  },
+  {
+    "q": "Vilket land uppfann pizzan?",
+    "a": ["Frankrike", "USA", "Spanien", "Italien"],
+    "correctAnswer": "Italien"
+  },
+  {
+    "q": "Hur många planeter finns i vårt solsystem?",
+    "a": ["7", "8", "9", "10"],
+    "correctAnswer": "8"
+  },
+  {
+    "q": "Vad heter världens högsta berg?",
+    "a": ["K2", "Mount Everest", "Kangchenjunga", "Mont Blanc"],
+    "correctAnswer": "Mount Everest"
+  },
+  {
+    "q": "Vilket djur kan flyga?",
+    "a": ["Pingvin", "Struts", "Örn", "Känguru"],
+    "correctAnswer": "Örn"
+  },
+  {
+    "q": "Vad heter den största sjön i Sverige?",
+    "a": ["Vättern", "Mälaren", "Vänern", "Hjälmaren"],
+    "correctAnswer": "Vänern"
+  },
+  {
+    "q": "Vilket år uppfanns glödlampan?",
+    "a": ["1879", "1890", "1910", "1830"],
+    "correctAnswer": "1879"
+  },
+  {
+    "q": "Vilken metall är magnetisk?",
+    "a": ["Guld", "Silver", "Järn", "Koppar"],
+    "correctAnswer": "Järn"
+  },
+  {
+    "q": "Vad heter den största arten av björn?",
+    "a": ["Panda", "Isbjörn", "Brunbjörn", "Kodiakbjörn"],
+    "correctAnswer": "Kodiakbjörn"
+  },
+  {
+    "q": "Vilket land kallas ofta 'soluppgångens land'?",
+    "a": ["Kina", "Japan", "Thailand", "Sydkorea"],
+    "correctAnswer": "Japan"
+  },
+  {
+    "q": "Vad heter huvudstaden i Kanada?",
+    "a": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+    "correctAnswer": "Ottawa"
+  },
+  {
+    "q": "Vilket djur kan sova stående?",
+    "a": ["Hund", "Häst", "Katt", "Kanin"],
+    "correctAnswer": "Häst"
+  },
+  {
+    "q": "Vilket ämne andas människor in för att överleva?",
+    "a": ["Koldioxid", "Syre", "Helium", "Kväve"],
+    "correctAnswer": "Syre"
+  },
+  {
+    "q": "Vad heter världens största ö?",
+    "a": ["Grönland", "Madagaskar", "Borneo", "Nya Guinea"],
+    "correctAnswer": "Grönland"
+  },
+  {
+    "q": "Vilket djur lägger ägg?",
+    "a": ["Katt", "Ko", "Höna", "Hund"],
+    "correctAnswer": "Höna"
+  },
+  {
+    "q": "Vad heter planeten som är känd för sina ringar?",
+    "a": ["Mars", "Jupiter", "Saturnus", "Uranus"],
+    "correctAnswer": "Saturnus"
+  },
+  {
+    "q": "I vilket land uppfanns sushin?",
+    "a": ["Kina", "Japan", "Vietnam", "Thailand"],
+    "correctAnswer": "Japan"
+  },
+  {
+    "q": "Hur många dagar har februari under ett skottår?",
+    "a": ["28", "29", "30", "31"],
+    "correctAnswer": "29"
+  },
+  {
+    "q": "Vilket hav ligger öster om Afrika?",
+    "a": ["Atlanten", "Indiska oceanen", "Stilla havet", "Arktiska havet"],
+    "correctAnswer": "Indiska oceanen"
+  },
+  {
+    "q": "Vad heter den största arten av kattdjur?",
+    "a": ["Lejon", "Tiger", "Gepard", "Leopard"],
+    "correctAnswer": "Tiger"
+  },
+  {
+    "q": "Vilket land vann fotbolls-VM 2018?",
+    "a": ["Tyskland", "Frankrike", "Brasilien", "Argentina"],
+    "correctAnswer": "Frankrike"
+  },
+  {
+    "q": "Vad är den kemiska beteckningen för vatten?",
+    "a": ["CO2", "H2O", "O2", "NaCl"],
+    "correctAnswer": "H2O"
+  },
+  {
+    "q": "I vilket land ligger pyramiderna i Giza?",
+    "a": ["Mexiko", "Egypten", "Indien", "Peru"],
+    "correctAnswer": "Egypten"
+  },
+  {
+    "q": "Vilken färg har en mogen banan?",
+    "a": ["Grön", "Gul", "Röd", "Blå"],
+    "correctAnswer": "Gul"
+  },
+  {
+    "q": "Vad heter världens snabbaste landdjur?",
+    "a": ["Lejon", "Gepard", "Tiger", "Antilop"],
+    "correctAnswer": "Gepard"
+  },
+  {
+    "q": "Vilket instrument har tangenter?",
+    "a": ["Gitarr", "Piano", "Trumma", "Fiol"],
+    "correctAnswer": "Piano"
   }
   ],
   [

@@ -10,7 +10,6 @@
     "a": ["Gustav Vasa", "Carl the Third", "GOD", "Christoffer Lundh"],
     "correctAnswer": "GOD"
   },
-
   {
     "q": "How many minutes are in an hour?",
     "a": ["30", "45", "60", "100"],
@@ -92,11 +91,11 @@
     "q": "Who lives under a stone?",
     "a": [
       "Donald Duck",
-      "Patrik Seastar",
+      "Patrik Star",
       "Mickey Mouse",
       "SpongeBob SquarePants"
     ],
-    "correctAnswer": "Patrik Seastar"
+    "correctAnswer": "Patrik Star"
   },
   {
     "q": "What is the currency in Thailand?",
@@ -117,7 +116,192 @@
       "Barbados"
     ],
     "correctAnswer": "Barbados"
-  }
+  },
+  {
+  "q": "Which country is the largest by area?",
+  "a": ["USA", "Russia", "Canada", "China"],
+  "correctAnswer": "Russia"
+},
+{
+  "q": "How many corners does a square have?",
+  "a": ["3", "4", "5", "6"],
+  "correctAnswer": "4"
+},
+{
+  "q": "What is the name of the longest river in the world?",
+  "a": ["Nile", "Amazon", "Yangtze", "Mississippi"],
+  "correctAnswer": "Amazon"
+},
+{
+  "q": "Which language is spoken the most in the world?",
+  "a": ["English", "Spanish", "Mandarin", "Hindi"],
+  "correctAnswer": "Mandarin"
+},
+{
+  "q": "What is the gas that plants absorb during photosynthesis?",
+  "a": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+  "correctAnswer": "Carbon dioxide"
+},
+{
+  "q": "How many players are on the field in a soccer team?",
+  "a": ["9", "10", "11", "12"],
+  "correctAnswer": "11"
+},
+{
+  "q": "Which ocean is the largest?",
+  "a": ["Atlantic", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+  "correctAnswer": "Pacific Ocean"
+},
+{
+  "q": "What is the largest planet in our solar system?",
+  "a": ["Jupiter", "Saturn", "Uranus", "Neptune"],
+  "correctAnswer": "Jupiter"
+},
+{
+  "q": "Which animal is often called 'the king of the forest'?",
+  "a": ["Wolf", "Bear", "Lion", "Moose"],
+  "correctAnswer": "Moose"
+},
+{
+  "q": "How many centimeters are in one meter?",
+  "a": ["10", "50", "100", "1000"],
+  "correctAnswer": "100"
+},
+{
+  "q": "What is the largest continent?",
+  "a": ["Europe", "Asia", "Africa", "South America"],
+  "correctAnswer": "Asia"
+},
+{
+  "q": "Which substance gives blood its red color?",
+  "a": ["Hemoglobin", "Iron", "Oxygen", "Plasma"],
+  "correctAnswer": "Hemoglobin"
+},
+{
+  "q": "Which country invented pizza?",
+  "a": ["France", "USA", "Spain", "Italy"],
+  "correctAnswer": "Italy"
+},
+{
+  "q": "How many planets are in our solar system?",
+  "a": ["7", "8", "9", "10"],
+  "correctAnswer": "8"
+},
+{
+  "q": "What is the highest mountain in the world?",
+  "a": ["K2", "Mount Everest", "Kangchenjunga", "Mont Blanc"],
+  "correctAnswer": "Mount Everest"
+},
+{
+  "q": "Which animal can fly?",
+  "a": ["Penguin", "Ostrich", "Eagle", "Kangaroo"],
+  "correctAnswer": "Eagle"
+},
+{
+  "q": "What is the largest lake in Sweden?",
+  "a": ["Vättern", "Mälaren", "Vänern", "Hjälmaren"],
+  "correctAnswer": "Vänern"
+},
+{
+  "q": "In which year was the light bulb invented?",
+  "a": ["1879", "1890", "1910", "1830"],
+  "correctAnswer": "1879"
+},
+{
+  "q": "Which metal is magnetic?",
+  "a": ["Gold", "Silver", "Iron", "Copper"],
+  "correctAnswer": "Iron"
+},
+{
+  "q": "What is the largest species of bear?",
+  "a": ["Panda", "Polar bear", "Brown bear", "Kodiak bear"],
+  "correctAnswer": "Kodiak bear"
+},
+{
+  "q": "Which country is often called 'the land of the rising sun'?",
+  "a": ["China", "Japan", "Thailand", "South Korea"],
+  "correctAnswer": "Japan"
+},
+{
+  "q": "What is the capital of Canada?",
+  "a": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+  "correctAnswer": "Ottawa"
+},
+{
+  "q": "Which animal can sleep standing up?",
+  "a": ["Dog", "Horse", "Cat", "Rabbit"],
+  "correctAnswer": "Horse"
+},
+{
+  "q": "Which gas do humans breathe in to survive?",
+  "a": ["Carbon dioxide", "Oxygen", "Helium", "Nitrogen"],
+  "correctAnswer": "Oxygen"
+},
+{
+  "q": "What is the largest island in the world?",
+  "a": ["Greenland", "Madagascar", "Borneo", "New Guinea"],
+  "correctAnswer": "Greenland"
+},
+{
+  "q": "Which animal lays eggs?",
+  "a": ["Cat", "Cow", "Hen", "Dog"],
+  "correctAnswer": "Hen"
+},
+{
+  "q": "Which planet is known for its rings?",
+  "a": ["Mars", "Jupiter", "Saturn", "Uranus"],
+  "correctAnswer": "Saturn"
+},
+{
+  "q": "In which country was sushi invented?",
+  "a": ["China", "Japan", "Vietnam", "Thailand"],
+  "correctAnswer": "Japan"
+},
+{
+  "q": "How many days does February have in a leap year?",
+  "a": ["28", "29", "30", "31"],
+  "correctAnswer": "29"
+},
+{
+  "q": "Which ocean lies east of Africa?",
+  "a": ["Atlantic", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+  "correctAnswer": "Indian Ocean"
+},
+{
+  "q": "What is the largest species of big cat?",
+  "a": ["Lion", "Tiger", "Cheetah", "Leopard"],
+  "correctAnswer": "Tiger"
+},
+{
+  "q": "Which country won the FIFA World Cup in 2018?",
+  "a": ["Germany", "France", "Brazil", "Argentina"],
+  "correctAnswer": "France"
+},
+{
+  "q": "What is the chemical formula for water?",
+  "a": ["CO2", "H2O", "O2", "NaCl"],
+  "correctAnswer": "H2O"
+},
+{
+  "q": "In which country are the Pyramids of Giza located?",
+  "a": ["Mexico", "Egypt", "India", "Peru"],
+  "correctAnswer": "Egypt"
+},
+{
+  "q": "What color is a ripe banana?",
+  "a": ["Green", "Yellow", "Red", "Blue"],
+  "correctAnswer": "Yellow"
+},
+{
+  "q": "What is the fastest land animal in the world?",
+  "a": ["Lion", "Cheetah", "Tiger", "Antelope"],
+  "correctAnswer": "Cheetah"
+},
+{
+  "q": "Which instrument has keys?",
+  "a": ["Guitar", "Piano", "Drum", "Violin"],
+  "correctAnswer": "Piano"
+}  
   ],
   [
   {

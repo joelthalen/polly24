@@ -25,9 +25,8 @@ _kan kanske ligga som en komponent på lobbyn_
   - [X] Get default username from server and populate value
   - [X] Text inputfield
   - [X] knapp som skickar "updateProfile" event med nya namnet till backend
-  - [ ] validera att fältet inte tomt
   - [x] trycka enter för att skicka
-  - [ ] inte få välja samma användarnamn som nån annan
+  - [x] inte få välja samma användarnamn som nån annan
 
 ## lobby/Host settings skärm
 
@@ -118,7 +117,7 @@ _kan kanske ligga som en komponent på lobbyn_
 ## Globala komponenter
 
 - [ ] Language (alla texter ska referrera till language-dokument)
-- [ ] Flagga för language
+- [X] Flagga för language
 - [ ] Regler dialog box (Modal)
 - [ ] Visa Regler knapp
 
@@ -160,6 +159,10 @@ _kan kanske ligga som en komponent på lobbyn_
   - [ ] Redo? Ja/Nej  /  Ready? Yes/No  (För hosten står det bara Host/Värd)
   - [ ] Spelarfärg  /  Player colour
     - [ ] Färgval 6st tillräckligt distinkta
+
+## Sista fix
+- [ ] Christoffer Lundh-frågan
+- [ ] Amongus-bakgrunden
 
 ## Checklista inför presentationen
 - [ ] An overview of the assumptions that you have made, for instance about context and users.
