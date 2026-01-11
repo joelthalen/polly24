@@ -206,13 +206,13 @@ button:hover{
 
     width: 80vw; 
     margin: 0 auto 0 auto; 
-    height: 90%;
+    height: 80%;
   }
 
   .hostButton {
     grid-column: 1;
     grid-row: 1;
-    height: 100%;
+    height: 80%;
     width: 100%;
   }
 

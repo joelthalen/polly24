@@ -307,11 +307,16 @@ button {
   border: solid 2px rgb(219, 219, 219);
   color: white;
   border-radius: 4px;
+  min-height: 4vh;
 }
 
 button:hover {
   background-color: rgba(150, 150, 150, 0.7);
   cursor: pointer;
+}
+
+input {
+ min-height: 3.4vh; 
 }
 
 .playerRow {
