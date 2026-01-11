@@ -163,6 +163,7 @@ _kan kanske ligga som en komponent på lobbyn_
 ## Sista fix
 - [ ] Christoffer Lundh-frågan
 - [ ] Amongus-bakgrunden
+- [ ] Hantera när fler spelare joinar lobbyn (både logiskt och grafiskt)
 
 ## Checklista inför presentationen
 - [ ] An overview of the assumptions that you have made, for instance about context and users.

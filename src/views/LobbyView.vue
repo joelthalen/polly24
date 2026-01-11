@@ -67,13 +67,14 @@
 
             <div class="playerList">
               <div class="playerRow" v-for="participant in lobbyState.participants" :key="participant.username">
-                <div class="playerStatus"><p>{{ participant.ready ? 'Ready' : 'Not Ready' }}</p></div>
+                <div class="playerStatus">
+                  <p v-if="participant.isHost">{{ uiLabels.isHost }}</p>
+                  <p v-if="!participant.isHost">{{ participant.ready ? uiLabels.ready : uiLabels.notReady }}</p></div>
                 <div class="playerName"><p>{{ participant.username }}</p></div>
                 <div class="playerTeam">
-                  <p v-if="!isHost">{{ participant.team }}</p>
+                  <p v-if="!isHost">{{ participant.team === 'player' ? uiLabels.player : uiLabels.spectator }}</p>
                   <select v-model="participant.team" v-if="isHost" @change="changeTeam(participant)">
                     <option value="player">{{ uiLabels.player }}</option>
-
                     <option value="spectator">{{ uiLabels.spectator }}</option>
                   </select>
                 </div>     
@@ -323,6 +324,7 @@ input {
   display: grid;
   grid-template-columns: 15% 55% 30%;
   margin-bottom: 5px;
+  align-items: center
 }
 
 
@@ -336,5 +338,18 @@ input {
 
 .playerTeam {
   grid-column: 3;
+}
+
+select {
+  background-color: rgba(113, 113, 113, 0.5);
+  border: solid 2px rgb(219, 219, 219);
+  color: white;
+  border-radius: 4px;
+  min-height: 4vh;
+}
+
+select:hover {
+  background-color: rgba(150, 150, 150, 0.7);
+  cursor: pointer;
 }
 </style>

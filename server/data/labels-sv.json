@@ -14,7 +14,7 @@
 	"join": "Gå med",
 	"roomCode": "Kod",
 	"leaveLobby": "Lämna Lobby",
-    "lobbyCode": "Kod",
+    "lobbyCode": "Spelkod",
     "settings": "Inställningar",
     "columns": "Kolumner",
     "rows": "Rader",
@@ -28,5 +28,8 @@
     "player": "Spelare",
     "spectator": "Åskådare",
     "startGame": "Starta Spel",
-    "waitingForHost": "Väntar på spelvärd"
+    "waitingForHost": "Väntar på att spelvärden startar spelet",
+    "ready":"Redo",
+    "notReady":"Inte redo",
+    "isHost":"Host"
 }
