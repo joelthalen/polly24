@@ -141,6 +141,10 @@ button:hover{
   font-size: 170%;
 }
 
+.hostButton:hover {
+    background-color: rgb(0, 175, 0);
+}
+
 .roomCodeField {
   color: grey;
   border-radius: 10px 0px 0px 10px;
@@ -150,11 +154,15 @@ button:hover{
 }
 
 .joinButton {
-  background-color: orange;
+  background-color: rgb(209, 136, 0);
   border-radius: 0px 10px 10px 0px;
   border: solid 4px grey;
   font-size: 80%;
   font-weight: bold;
+}
+
+.joinButton:hover {
+  background-color: rgb(255, 166, 0);
 }
 
 @media (orientation: landscape) {
