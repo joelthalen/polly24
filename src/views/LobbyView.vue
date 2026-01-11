@@ -258,10 +258,10 @@ export default {
   box-shadow: 0 0 10px rgb(219, 219, 219);
   border-radius: 10px;
   border: solid 4px grey;
-  margin-left: 30vw;
-  margin-right: 30vw;
-  height: 40vh;
-  background-color: rgb(0,0,0,0.5);;
+  margin-left: 35vw;
+  margin-right: 35vw;
+  height: 20vh;
+  background-color: rgba(7, 7, 7, 0.8);
 }
 
 .settingsBox {
@@ -269,7 +269,7 @@ export default {
   border-radius: 10px;
   border: solid 4px grey;
   grid-column: 1;
-  background-color: rgb(0,0,0,0.5);
+  background-color: rgba(7, 7, 7, 0.8);
 }
 
 .statusBox {
@@ -277,7 +277,7 @@ export default {
   border-radius: 10px;
   border: solid 4px grey;
   grid-column: 3;
-  background-color: rgb(0,0,0,0.5);
+  background-color: rgba(7, 7, 7, 0.8);
 }
 
 h3 {

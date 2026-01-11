@@ -21,13 +21,16 @@
         </div>
         <div class="difficultySettings">
             <p class="textP">{{ uiLabels.questionDifficulty }}</p>
-            <p>
+            <!--<p>
                 <span v-if="difficulty === 0">{{ uiLabels.easy }}</span>
                 <span v-else-if="difficulty === 1">{{ uiLabels.hard }}</span>
                 <span v-else>{{ uiLabels.unknown }}</span>
-            </p>
-            <button class="difficultyButton" @click="changeDifficulty(difficulty)">
-                {{ uiLabels.changeDifficulty }}
+            </p>-->
+            <button class="difficultyButton" :disabled="this.difficulty === 0" @click="changeDifficulty(difficulty)">
+                {{ uiLabels.easy }}
+            </button>
+            <button class="difficultyButton" :disabled="this.difficulty === 1" @click="changeDifficulty(difficulty)">
+                {{ uiLabels.hard }}
             </button>
         </div>
     </div>
@@ -169,6 +172,10 @@ export default {
         align-items: center;
         justify-content: center;
         row-gap: 20%;
+    }
+
+    button:disabled {
+        background-color: rgba(113, 113, 113, 0.1);
     }
 
 </style>
