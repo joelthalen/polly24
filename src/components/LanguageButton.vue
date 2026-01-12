@@ -1,5 +1,5 @@
 <template>
-    <button id="LanguageButton" :class="this.lang" @click="switchLanguage">{{ this.lang }}</button>
+    <button id="LanguageButton" :class="this.lang" @click="switchLanguage"></button>
 </template>
 
 <script>
@@ -41,10 +41,10 @@
         /*background: url('/img/swedenflag.jpg');*/
         background-size: cover;
     }
-    .sv {
+    .en {
         background-image: url("/img/swedenflag.jpg");
     }
-    .en {
+    .sv {
         background-image: url("/img/ukflag.png");
     }
 </style>
