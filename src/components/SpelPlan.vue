@@ -91,7 +91,6 @@ export default {
 <style scoped>
 
 #spelPlan { /* Måste ändra så den skalas med att sidan blir mindre och så att inte en kolumn kastas ned är webpagen blir mindre än vad spelplandens width är */
-  width: 80vmin;
   position: absolute;
   z-index: 0;
   left: 50%;
