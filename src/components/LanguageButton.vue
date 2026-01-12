@@ -1,5 +1,7 @@
 <template>
-    <button id="LanguageButton" :class="this.lang" @click="switchLanguage">{{ this.lang }}</button>
+    <button id="LanguageButton" :class="this.lang" @click="switchLanguage">
+        {{ lang }}
+    </button>
 </template>
 
 <script>

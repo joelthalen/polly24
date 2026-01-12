@@ -98,9 +98,6 @@ export default {
   created: function () {
     this.lobbyId = this.$route.params.id;
     socket.on("lobbyNotFound", () => this.$router.push({path: "/", query: {action: "lobbyNotFound"}}));
-
-    socket.on( "participantsUpdate", p => this.participants = p );
-    socket.on( "startPoll", () => this.$router.push("/poll/" + this.lobbyId) );
     socket.on("gameStart", () => this.$router.push(`/poll/${this.lobbyId}`))
     socket.on("sendEmoji", () => {
       this.emojiCounter += 1
@@ -111,9 +108,7 @@ export default {
     socket.on("hostAssigned", () => {
       this.isHost = true;
     })
-    socket.emit( "joinPoll", this.lobbyId );
     socket.emit("joinLobby", this.lobbyId);
-    socket.emit( "getUILabels", this.lang );
   },
   methods: {
     chooseUsername: function () {

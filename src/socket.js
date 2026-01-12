@@ -30,7 +30,7 @@ export const socket = io(URL);
 
 socket.on("connect", () => {
   state.connected = true;
-
+  socket.emit( "getUILabels", localStorage.getItem("lang") || "en" );
 });
 
 socket.on("disconnect", () => {
