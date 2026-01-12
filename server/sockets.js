@@ -23,42 +23,6 @@ function sockets(io, socket, data) {
     socket.emit("uiLabels", data.getUILabels(lang));
   });
 
-  socket.on("createPoll", function (d) {
-    data.createPoll(d.lobbyId, d.lang);
-    socket.emit("pollData", data.getPoll(d.lobbyId));
-  });
-
-  socket.on("addQuestion", function (d) {
-    data.addQuestion(d.lobbyId, { q: d.q, a: d.a });
-    socket.emit("questionUpdate", data.activateQuestion(d.lobbyId));
-  });
-
-  socket.on("joinPoll", function (lobbyId) {
-    socket.join(lobbyId);
-    socket.emit("questionUpdate", data.activateQuestion(lobbyId));
-    socket.emit("submittedAnswersUpdate", data.getSubmittedAnswers(lobbyId));
-  });
-
-  socket.on("startPoll", function (lobbyId) {
-    io.to(lobbyId).emit("startPoll");
-  });
-  socket.on("runQuestion", function (d) {
-    let question = data.activateQuestion(d.lobbyId, d.questionNumber);
-    io.to(d.lobbyId).emit("questionUpdate", question);
-    io.to(d.lobbyId).emit(
-      "submittedAnswersUpdate",
-      data.getSubmittedAnswers(d.lobbyId)
-    );
-  });
-
-  socket.on("submitAnswer", function (d) {
-    data.submitAnswer(d.lobbyId, d.answer);
-    io.to(d.lobbyId).emit(
-      "submittedAnswersUpdate",
-      data.getSubmittedAnswers(d.lobbyId)
-    );
-  });
-
   /* Connect4 Game specifig */
   socket.on("createLobby", (e) => {
     console.log("A player has created a lobby");
