@@ -1,7 +1,6 @@
 <template>
-  
   <main>
-    <div class="TESTFÖRBUTTONSATTSTARTAOMMATCHEN"> <!-- ÄNDRA SEN!!!!-->
+    <div class="topSection"> <!-- ÄNDRA SEN!!!!-->
       <button @click="restartGame()">{{uiLabels.startNewGame}}</button>
       <button @click="returnToHome()">{{uiLabels.returnToStart}}</button>
     </div>
@@ -42,10 +41,9 @@
     v-bind:boardData="boardData"
     v-on:placeBrick="placeMarker"
     />
-    <h2>
+    <!--<h2>
       {{ currentPlayer + "'s: turn" }}
-      <!-- ändra så den kan variera -->
-    </h2>
+    </h2> Tror vi kan ta bort denna? det syns ju där nere vems tur det är -->
   </div>
   <div class="versus">
     <p :class="{current: isCurrent(this.players[0].username), you: isMe(this.players[0].username)}" 
@@ -216,6 +214,10 @@ main {
   height: 100vh;
   width: 100vw;
   grid-template-columns: 1fr;
+}
+
+.topSection {
+  margin-top: 2vw;
 }
 
 

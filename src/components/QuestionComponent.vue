@@ -56,9 +56,11 @@ export default {
     margin: auto;
     border: 2px solid black;
     width: 40vw;
-    position: absolute;
-    top: calc(50% - 20vh);
-    left: calc(50% - 20vw);
+    min-width: fit-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 10;
     background-color: rgba(255, 25, 25, 0.80);
     border-radius: 15px;
