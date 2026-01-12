@@ -63,7 +63,7 @@ function sockets(io, socket, data) {
   /* Connect4 Game specifig */
   socket.on("createLobby", (e) => {
     console.log("A player has created a lobby");
-    const lobby = new Lobby(io, socket, data);
+    const lobby = new Lobby(io, socket, data, e.lang);
     socket.emit("createdLobby", {lobbyID: lobby.ID, ownerToken: lobby.owner_token});
   });
 
