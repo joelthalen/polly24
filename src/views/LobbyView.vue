@@ -204,6 +204,7 @@ export default {
     color: white;
     border-radius: 4px;
     min-height: 4vh;
+    min-width: 6vh;
   }
 
   button:hover {
