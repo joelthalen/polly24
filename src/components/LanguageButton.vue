@@ -18,9 +18,11 @@
             switchLanguage: function() {
                 if (this.lang === "en") {
                     this.lang = "sv"
+                    new Audio('/audio/Dugamladufria.wav').play()
                 }
                 else {
                     this.lang = "en"
+                    new Audio('/audio/Rulebritannia.wav').play()
                 }
                 localStorage.setItem( "lang", this.lang );
                 socket.emit( "getUILabels", this.lang );
