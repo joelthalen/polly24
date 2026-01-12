@@ -79,6 +79,7 @@ export default {
     h3 {
         text-align: center;
         margin: 2%;
+        color: white;
     }
 
     .columnsSettings{
