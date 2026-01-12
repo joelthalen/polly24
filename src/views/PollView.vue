@@ -1,11 +1,10 @@
 <template>
-  <div class="TESTFÖRBUTTONSATTSTARTAOMMATCHEN"> <!-- ÄNDRA SEN!!!!-->
-    <button @click="restartGame()">{{uiLabels.startNewGame}}</button>
-    <button @click="returnToHome()">{{uiLabels.returnToStart}}</button>
-  </div>
   
   <main>
-  <!--<h1>{{ pollId }}</h1> Visst behöver vi inte visa lobby ID i spelet eftersom man inte kan gå tillbaka till lobbyn?-->
+    <div class="TESTFÖRBUTTONSATTSTARTAOMMATCHEN"> <!-- ÄNDRA SEN!!!!-->
+      <button @click="restartGame()">{{uiLabels.startNewGame}}</button>
+      <button @click="returnToHome()">{{uiLabels.returnToStart}}</button>
+    </div>
   <div v-if="showQuestion">
     <QuestionComponent
     v-bind:title="'Question for ' + this.currentPlayer"
@@ -160,10 +159,11 @@ export default {
       setTimeout(()=>{this.hasRestartedGame=false} , 2000)
 
     })
-      
+    socket.on("lobbyNotFound", () => this.$router.push({path: "/", query: {action: "lobbyNotFound"}}));
     
-
-
+    
+    
+    
     //Från kodsklettet
     this.pollId = this.$route.params.id;
     socket.on("questionUpdate", (q) => (this.question = q));
@@ -174,6 +174,7 @@ export default {
     socket.on("uiLabels", (labels) => (this.uiLabels = labels));
     socket.emit("getUILabels", this.lang);
     socket.emit("joinPoll", this.pollId);
+    //socket.emit("joinLobby", this.pollId);
   },
 
   methods: {
@@ -231,7 +232,7 @@ main {
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   height: 8vh;
-  font-size: 2.5rem;
+  font-size: 4vh;
   font-weight: bolder;
   justify-items: center;
   padding-bottom: 2vh;
