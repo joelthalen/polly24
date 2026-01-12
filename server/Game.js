@@ -235,7 +235,6 @@ class QuestionDeck {
   constructor (deck) {
     this.deck = deck.slice();
     this.used = 0;
-    this.len = this.deck.length;
   }
 
   len() {
@@ -252,7 +251,7 @@ class QuestionDeck {
 
   swapCards(i, j) {
     const a = this.deck[i];
-    this.deck[i] = this.deck[j]
+    this.deck[i] = this.deck[j];
     this.deck[j] = a;
   }
 }
