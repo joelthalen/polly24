@@ -13,7 +13,7 @@
     </section>
     <section class="gameButtons">
       <div class="wrapper"> 
-        <button class="hostButton" @click="hostGame">{{ uiLabels.host || "HOST" }}</button>
+        <button class="hostButton" @click="hostGame">{{ uiLabels.host || "Host" }}</button>
         <form @submit.prevent="joinGame" class="join-form" label="test">
           <input class="roomCodeField" 
             type="text" 

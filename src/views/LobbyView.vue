@@ -1,14 +1,16 @@
 <template>
   <main>
-      <p>
+      <!--p>
         {{ lobbyState }}
-      </p>
+      </p-->
     <section class = "topSection">
-      <button @click="leaveLobby">{{ uiLabels.leaveLobby }}</button>
-      <div class="logoBox"><img alt="Logo"></div> <!-- Här ska loggan finnas-->
-      <div> <!--Här finns språkknappen-->
+      <div class = "leaveBox">
+        <button @click="leaveLobby">{{ uiLabels.leaveLobby }}</button>
+      </div>
+      <div class ="languageBox"> <!--Här finns språkknappen-->
           <LanguageButton/>
       </div>
+      <div class="logoBox"><img alt="Logo"></div> <!-- Här ska loggan finnas-->
     </section>
       <p class="codeBox">
         {{ uiLabels.lobbyCode }}: {{ pollId }}
@@ -36,31 +38,6 @@
               @winCondition="changeWinCondition($event)"
               @difficulty="changeDifficulty($event)"
             />
-            <!-- Gamla settingslådan
-            <h3>{{ uiLabels.settings }}</h3>
-              <div>{{ uiLabels.columns }}: 
-                <button class="columnsMinusButton" :disabled="lobbyState.columns<=4" @click="changeSize(lobbyState.columns - 1, lobbyState.rows)">-</button>
-                {{ lobbyState.columns }}
-                <button class="columnsPlusButton" :disabled="lobbyState.columns>=10" @click="changeSize(lobbyState.columns + 1, lobbyState.rows)">+</button></div>
-              <div>{{uiLabels.rows}}: <button class="rowsMinusButton" :disabled="lobbyState.rows<=4" @click="changeSize(lobbyState.columns, lobbyState.rows - 1)">-</button>
-                {{ lobbyState.rows }}
-                <button class="rowsPlusButton" :disabled="lobbyState.rows>=10" @click="changeSize(lobbyState.columns, lobbyState.rows + 1)">+</button></div>
-              <div>{{uiLabels.winCondition}}:
-                <button class="winConditionMinusButton" :disabled="(lobbyState.wincondition<=2)" @click="changeWinCondition(lobbyState.wincondition - 1)">-</button>
-                {{ lobbyState.wincondition }}
-                <button class="winConditionPlusButton" :disabled="lobbyState.wincondition>=Math.max(lobbyState.rows, lobbyState.columns)" @click="changeWinCondition(lobbyState.wincondition + 1)">+</button></div>
-              <div>
-                {{uiLabels.questionDifficulty}}: 
-                <span v-if="lobbyState.difficulty === 0">{{ uiLabels.easy }}</span>
-                <span v-else-if="lobbyState.difficulty === 1">{{ uiLabels.hard }}</span>
-                <span v-else>{{ uiLabels.unknown }}</span>
-                <button class="difficultyButton" @click="changeDifficulty(lobbyState.difficulty)">
-                  {{ uiLabels.changeDifficulty }}
-                </button>
-              
-              
-              </div>
-            -->
           </div>
           <div class="statusBox">
             <h3>{{ uiLabels.status }}</h3>
@@ -92,9 +69,7 @@
 
           </div>
         </div>
-        <p>{{ uiLabels.waitingForHost}}</p>
-        {{ participants }}
-        
+        <p>{{ uiLabels.waitingForHost}}</p>      
 
       </div>
 
@@ -210,6 +185,11 @@ export default {
   margin: 2vh;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-left: 10vw;
+  margin-right: 10vw;
   }
 
   img {
@@ -222,24 +202,69 @@ export default {
     img {
       content:url(/img/AmongUs.png);
     }
+
+    .layoutWrapper {
+      display: grid;
+      grid-template-columns: 35vw 10vw 35vw;
+      margin-left: 10vw;
+      margin-right: 10vw;
+      height: 40vh;
+    }
+
+    .settingsBox {
+      grid-column: 1;
+      }
+
+    .statusBox {
+      grid-column: 3;
+    }
   }
 
   @media (orientation: portrait){
+    
+    main  {
+    overflow-y: auto;
+    }
+
     img {
       content:url(/img/AmongUsPortrait.png);
     }
+
+    .layoutWrapper {
+      display: grid;
+      grid-template-columns: 80vw;
+      grid-template-rows: auto 5vw auto;
+      margin-left: 10vw;
+      margin-right: 10vw;
+      height: auto;
+    }
+
+    .settingsBox {
+      grid-row: 1
+    }
+    .statusBox {
+      grid-row: 3
+    }
   }
-/*Ovanför är renskrivet*/
+/*Ovanför är (var /Valdemar) renskrivet*/
 
 
   .topSection {
   height: 25vh;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 0.75rem;
+  align-items: center;
 }
 
+.leaveBox {
+justify-self: end;
+}
 
-
-
-
+.languageBox {
+justify-self: start;
+}
 
 .codeBox {
     font-size: 2em;
@@ -247,13 +272,7 @@ export default {
     text-shadow: 2px 2px 4px #000000;
 }
 
-.layoutWrapper {
-  display: grid;
-  grid-template-columns: 35vw 10vw 35vw;
-  margin-left: 10vw;
-  margin-right: 10vw;
-  height: 40vh;
-}
+
 
 .usernameBox {
   box-shadow: 0 0 10px rgb(219, 219, 219);
@@ -269,7 +288,6 @@ export default {
   box-shadow: 0 0 10px rgb(219, 219, 219);
   border-radius: 10px;
   border: solid 4px grey;
-  grid-column: 1;
   background-color: rgba(7, 7, 7, 0.8);
 }
 
@@ -277,21 +295,12 @@ export default {
   box-shadow: 0 0 10px rgb(219, 219, 219);
   border-radius: 10px;
   border: solid 4px grey;
-  grid-column: 3;
   background-color: rgba(7, 7, 7, 0.8);
 }
 
 h3 {
     color: white;
-    
 }
-
-.lobbyBox {
-    height: 20vh;
-    width: 50vw;
-    margin: 5vh;
-    background-color: rgba(255, 255, 255, 0.8);
-  }
 
 .readyButton {
     height: 5vh;
@@ -322,7 +331,7 @@ input {
 
 .playerRow {
   display: grid;
-  grid-template-columns: 15% 55% 30%;
+  grid-template-columns: 25% 50% 25%;
   margin-bottom: 5px;
   align-items: center
 }

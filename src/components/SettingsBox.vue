@@ -81,20 +81,6 @@ export default {
         margin: 2%;
     }
 
-    .wrapper {
-        height: 80%;
-        width: 95%;
-        margin: 5% auto 5% auto;
-
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 30%);
-        row-gap: 30%;
-        column-gap: 10%;
-
-        font-weight: bold;
-    }
-
     .columnsSettings{
         grid-column: 1;
         grid-row: 1;
@@ -176,6 +162,38 @@ export default {
 
     button:disabled {
         background-color: rgba(113, 113, 113, 0.1);
+    }
+
+    @media (orientation: landscape) {
+        .wrapper {
+        height: 80%;
+        width: 95%;
+        margin: 5% auto 5% auto;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 30%);
+        row-gap: 30%;
+        column-gap: 10%;
+
+        font-weight: bold;
+    }
+    }
+
+    @media (orientation: portrait) {
+        .wrapper {
+        height: 80%;
+        width: 95%;
+        margin: 5% auto 5% auto;
+
+        display: grid;
+        grid-template-columns: 1;
+        grid-template-rows: repeat(2, 30%);
+        row-gap: 30%;
+        column-gap: 10%;
+
+        font-weight: bold;
+        }
     }
 
 </style>
