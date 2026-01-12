@@ -1049,6 +1049,16 @@
     "Leading a military expedition during the Akkadian period",
     "Authoring early legal reforms in Mesopotamia" ],
     "correctAnswer": "Operating a long-distance copper trade that was criticized by his customers"
-  }
+  },
+  {
+  "q": "Which of the following is an arachnid?",
+  "a": [
+    "Ant",
+    "Butterfly",
+    "Spider",
+    "Beetle"
+  ],
+  "correctAnswer": "Spider"
+}
   ]
 ]
