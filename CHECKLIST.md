@@ -161,8 +161,6 @@ _kan kanske ligga som en komponent på lobbyn_
     - [ ] Färgval 6st tillräckligt distinkta
 
 ## Sista fix
-- [ ] Christoffer Lundh-frågan
-- [ ] Amongus-bakgrunden
 - [ ] Hantera när fler spelare joinar lobbyn (både logiskt och grafiskt)
 
 ## Checklista inför presentationen
