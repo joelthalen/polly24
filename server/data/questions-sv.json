@@ -104,11 +104,6 @@
     "correctAnswer": "4"
   },
   {
-    "q": "Vad heter världens längsta flod?",
-    "a": ["Nilen", "Amazonas", "Yangtze", "Mississippi"],
-    "correctAnswer": "Amazonas"
-  },
-  {
     "q": "Vilket språk talas mest i världen?",
     "a": ["Engelska", "Spanska", "Mandarin", "Hindi"],
     "correctAnswer": "Mandarin"

@@ -118,11 +118,6 @@
   "correctAnswer": "4"
 },
 {
-  "q": "What is the name of the longest river in the world?",
-  "a": ["Nile", "Amazon", "Yangtze", "Mississippi"],
-  "correctAnswer": "Amazon"
-},
-{
   "q": "Which language is spoken the most in the world?",
   "a": ["English", "Spanish", "Mandarin", "Hindi"],
   "correctAnswer": "Mandarin"
