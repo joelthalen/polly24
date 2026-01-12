@@ -136,6 +136,9 @@ export default {
     socket.on("joinedLobby", (e) => {
       this.isHost = e.isHost;
     })
+    socket.on("hostAssigned", () => {
+      this.isHost = true;
+    })
     socket.emit( "joinPoll", this.pollId );
     socket.emit("joinLobby", this.pollId);
     socket.emit( "getUILabels", this.lang );

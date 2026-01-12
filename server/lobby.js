@@ -150,6 +150,7 @@ class Lobby {
         if (this.players.length < 1) {this.remove();}
         else if (removedPlayerArray[0].isHost) {
           this.players[0].isHost = true;
+          this.players[0].socket.emit("hostAssigned");
         }
         removedPlayerArray[0].socket.leave(this.ID)
       }
