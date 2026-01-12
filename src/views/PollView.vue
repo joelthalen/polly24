@@ -117,6 +117,7 @@ export default {
       console.log("correctAnswer")
       this.showQuestion = false;
       this.correctAnswer = true;
+      new Audio('/audio/Correctanswer.wav').play();
       setTimeout(() => {
         this.correctAnswer = false;
       }, 2000);
@@ -125,6 +126,7 @@ export default {
     socket.on("wrongAnswer", () => {
       console.log("wrongAnswer")
       this.wrongAnswer = true;
+      new Audio('/audio/Incorrectanswer.wav').play();
       setTimeout(() => {
         this.wrongAnswer = false;
       }, 2000);
@@ -140,7 +142,7 @@ export default {
       this.showQuestion = false;  
       this.winner = winner;
       this.gameHasBeenWon = true;
-
+      new Audio('/audio/Winner.wav').play();
     });
 
     socket.on("playerLeft", () => { 
