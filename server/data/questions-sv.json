@@ -613,6 +613,451 @@
       "Eliminera variabler"
     ],
     "correctAnswer": "Verifiera fysikalisk rimlighet"
+  },
+  {
+    "q": "Vilket år antogs den svenska tryckfrihetsförordningen?",
+    "a": ["1766", "1789", "1809", "1844"],
+    "correctAnswer": "1766"
+  },
+  {
+    "q": "Vilket grundämne har atomnummer 74?",
+    "a": ["Rhenium", "Volfram", "Osmium", "Tantal"],
+    "correctAnswer": "Volfram"
+  },
+  {
+    "q": "Vilken flod rinner genom staden Bratislava?",
+    "a": ["Elbe", "Oder", "Donau", "Rhen"],
+    "correctAnswer": "Donau"
+  },
+  {
+    "q": "Vem formulerade osäkerhetsprincipen inom kvantmekaniken?",
+    "a": ["Niels Bohr", "Erwin Schrödinger", "Paul Dirac", "Werner Heisenberg"],
+    "correctAnswer": "Werner Heisenberg"
+  },
+
+  {
+    "q": "Vilket land var först med att införa papperspengar?",
+    "a": ["Kina", "Persien", "Italien", "Nederländerna"],
+    "correctAnswer": "Kina"
+  },
+  {
+    "q": "Vad är den kemiska beteckningen för ammoniak?",
+    "a": ["NH₃", "NO₂", "N₂O", "HNO₃"],
+    "correctAnswer": "NH₃"
+  },
+  {
+    "q": "Vilken av dessa städer ligger högst över havet?",
+    "a": ["Quito", "Bogotá", "La Paz", "Cusco"],
+    "correctAnswer": "La Paz"
+  },
+  {
+    "q": "Vilken bok inleder Gamla testamentet?",
+    "a": ["Psaltaren", "Exodus", "Genesis", "Predikaren"],
+    "correctAnswer": "Genesis"
+  },
+
+  {
+    "q": "Vilket år undertecknades Maastrichtfördraget?",
+    "a": ["1992", "1989", "1995", "1999"],
+    "correctAnswer": "1992"
+  },
+  {
+    "q": "Vad mäter en barometer?",
+    "a": ["Luftfuktighet", "Lufttryck", "Temperatur", "Vindhastighet"],
+    "correctAnswer": "Lufttryck"
+  },
+  {
+    "q": "Vilket språk har flest modersmålstalare?",
+    "a": ["Engelska", "Spanska", "Hindi", "Mandarin"],
+    "correctAnswer": "Mandarin"
+  },
+  {
+    "q": "Vilken metall används som standard i galvanisering?",
+    "a": ["Aluminium", "Koppar", "Nickel", "Zink"],
+    "correctAnswer": "Zink"
+  },
+
+  {
+    "q": "Vad kallas studiet av språkens historiska utveckling?",
+    "a": ["Fonetik", "Semantik", "Etymologi", "Pragmatik"],
+    "correctAnswer": "Etymologi"
+  },
+  {
+    "q": "Vilket hav har högst salthalt?",
+    "a": ["Röda havet", "Medelhavet", "Kaspiska havet", "Svarta havet"],
+    "correctAnswer": "Röda havet"
+  },
+  {
+    "q": "Vilken partikel förmedlar den starka kärnkraften?",
+    "a": ["Gluon", "Foton", "W-boson", "Higgsboson"],
+    "correctAnswer": "Gluon"
+  },
+  {
+    "q": "Vilket verk räknas som den första moderna romanen?",
+    "a": ["Robinson Crusoe", "Don Quijote", "Gullivers resor", "Decamerone"],
+    "correctAnswer": "Don Quijote"
+  },
+
+  {
+    "q": "Vilket år bildades Förenta Nationerna?",
+    "a": ["1945", "1919", "1951", "1939"],
+    "correctAnswer": "1945"
+  },
+  {
+    "q": "Vad är huvudbeståndsdelen i naturgas?",
+    "a": ["Etan", "Metan", "Propan", "Butan"],
+    "correctAnswer": "Metan"
+  },
+  {
+    "q": "Vilken av dessa filosofer var stoiker?",
+    "a": ["Epikuros", "Aristoteles", "Seneca", "Platon"],
+    "correctAnswer": "Seneca"
+  },
+  {
+    "q": "Vilket land har längst kustlinje?",
+    "a": ["Ryssland", "Indonesien", "Australien", "Kanada"],
+    "correctAnswer": "Kanada"
+  },
+
+  {
+    "q": "Vilken skala används för att mäta jordbävningars magnitud?",
+    "a": ["Richterskalan", "Mercalliskalan", "Beauforskalan", "Mohsskalan"],
+    "correctAnswer": "Richterskalan"
+  },
+  {
+    "q": "Vad betyder prefixet \"iso-\"?",
+    "a": ["Olika", "Lika", "Under", "Efter"],
+    "correctAnswer": "Lika"
+  },
+  {
+    "q": "Vilket ämne orsakar den gröna färgen i fyrverkerier?",
+    "a": ["Barium", "Koppar", "Natrium", "Strontium"],
+    "correctAnswer": "Barium"
+  },
+  {
+    "q": "Vilken stad var huvudstad i det bysantinska riket?",
+    "a": ["Aten", "Rom", "Antiochia", "Konstantinopel"],
+    "correctAnswer": "Konstantinopel"
+  },
+
+  {
+    "q": "Vilket år publicerades Darwins *On the Origin of Species*?",
+    "a": ["1859", "1848", "1871", "1866"],
+    "correctAnswer": "1859"
+  },
+  {
+    "q": "Vad är SI-enheten för elektrisk laddning?",
+    "a": ["Ampere", "Volt", "Ohm", "Coulomb"],
+    "correctAnswer": "Coulomb"
+  },
+  {
+    "q": "Vilken kemisk bindning innebär delade elektronpar?",
+    "a": ["Jonbindning", "Metallbindning", "Kovalent bindning", "Vätebindning"],
+    "correctAnswer": "Kovalent bindning"
+  },
+  {
+    "q": "Vilket imperium styrdes från Cusco?",
+    "a": ["Maya", "Aztek", "Inka", "Olmek"],
+    "correctAnswer": "Inka"
+  },
+
+  {
+    "q": "Vilken matematiker formulerade de första logaritmerna?",
+    "a": ["John Napier", "Isaac Newton", "Leonhard Euler", "René Descartes"],
+    "correctAnswer": "John Napier"
+  },
+  {
+    "q": "Vilket hav är djupast?",
+    "a": ["Atlanten", "Stilla havet", "Indiska oceanen", "Södra ishavet"],
+    "correctAnswer": "Stilla havet"
+  },
+  {
+    "q": "Vad kallas en statsform där kyrka och stat är förenade?",
+    "a": ["Teokrati", "Autokrati", "Oligarki", "Plutokrati"],
+    "correctAnswer": "Teokrati"
+  },
+  {
+    "q": "Vilken del av hjärnan ansvarar främst för balans?",
+    "a": ["Hypotalamus", "Storhjärnan", "Hjärnstammen", "Lillhjärnan"],
+    "correctAnswer": "Lillhjärnan"
+  },
+
+  {
+    "q": "Vilket år grundades Stockholms universitet?",
+    "a": ["1878", "1901", "1912", "1888"],
+    "correctAnswer": "1878"
+  },
+  {
+    "q": "Vad är huvudkomponenten i glas?",
+    "a": ["Kalciumkarbonat", "Kiseldioxid", "Aluminiumoxid", "Natriumklorid"],
+    "correctAnswer": "Kiseldioxid"
+  },
+  {
+    "q": "Vilken term beskriver läran om kunskapens natur?",
+    "a": ["Ontologi", "Epistemologi", "Axiologi", "Teleologi"],
+    "correctAnswer": "Epistemologi"
+  },
+  {
+    "q": "Vilken kontinent saknar permanent befolkning?",
+    "a": ["Arktis", "Antarktis", "Oceanien", "Grönland"],
+    "correctAnswer": "Antarktis"
+  },
+
+  {
+    "q": "Vilket år infördes den gregorianska kalendern?",
+    "a": ["1582", "1601", "1492", "1700"],
+    "correctAnswer": "1582"
+  },
+  {
+    "q": "Vad mäts i joule?",
+    "a": ["Effekt", "Energi", "Tryck", "Frekvens"],
+    "correctAnswer": "Energi"
+  },
+  {
+    "q": "Vilken gas används oftast som skyddsgas vid MIG-svetsning?",
+    "a": ["Argon", "Kväve", "Syre", "Väte"],
+    "correctAnswer": "Argon"
+  },
+  {
+    "q": "Vilket land var först att ge kvinnor rösträtt nationellt?",
+    "a": ["Nya Zeeland", "Finland", "Sverige", "Schweiz"],
+    "correctAnswer": "Nya Zeeland"
+  },
+
+  {
+    "q": "Vilken vetenskap studerar relationen mellan organismer och miljö?",
+    "a": ["Ekologi", "Etnologi", "Genetik", "Geologi"],
+    "correctAnswer": "Ekologi"
+  },
+  {
+    "q": "Vad är den kemiska beteckningen för väteperoxid?",
+    "a": ["H₂O", "H₂O₂", "HO₂", "H₃O"],
+    "correctAnswer": "H₂O₂"
+  },
+  {
+    "q": "Vilken stad kallas ofta världens äldsta kontinuerligt bebodda stad?",
+    "a": ["Damaskus", "Jerusalem", "Aten", "Ur"],
+    "correctAnswer": "Damaskus"
+  },
+  {
+    "q": "Vilken typ av tal är √2?",
+    "a": ["Heltal", "Rationellt", "Komplext", "Irrationellt"],
+    "correctAnswer": "Irrationellt"
+  },
+  
+  {
+    "q": "Vilken stad var huvudstad i det assyriska riket under kung Ashurbanipal?",
+    "a": ["Nineve", "Uruk", "Babylon", "Assur"],
+    "correctAnswer": "Nineve"
+  },
+  {
+    "q": "Vilket material användes traditionellt för att skriva kilskrift?",
+    "a": ["Papyrus", "Lertavlor", "Pergament", "Trä"],
+    "correctAnswer": "Lertavlor"
+  },
+  {
+    "q": "Vad kallades den romerska tjänsteman som ansvarade för spannmålsförsörjningen?",
+    "a": ["Praetor", "Quaestor", "Aedil", "Tribun"],
+    "correctAnswer": "Aedil"
+  },
+  {
+    "q": "Vilken ö var Napoleons första exilplats?",
+    "a": ["Sardinien", "Elba", "Korsika", "Madeira"],
+    "correctAnswer": "Elba"
+  },
+
+  {
+    "q": "Vilket språk är baskiska genetiskt sett mest känt för att vara?",
+    "a": ["Indoeuropeiskt", "Uraliskt", "Isolerat", "Semitiskt"],
+    "correctAnswer": "Isolerat"
+  },
+  {
+    "q": "Vad var en \"hansa\" ursprungligen?",
+    "a": ["En stad", "Ett handelsförbund", "En skatt", "Ett skepp"],
+    "correctAnswer": "Ett handelsförbund"
+  },
+  {
+    "q": "Vilken vetenskap studerar historiska handskrifter och skrifter?",
+    "a": ["Epigrafik", "Paleografi", "Diplomatik", "Kodicologi"],
+    "correctAnswer": "Paleografi"
+  },
+  {
+    "q": "Vilket grundämne isolerades först av Carl Wilhelm Scheele?",
+    "a": ["Klor", "Syre", "Kväve", "Fluor"],
+    "correctAnswer": "Klor"
+  },
+
+  {
+    "q": "Vad kallades den bysantinska kejsarens livvakt bestående av nordbor?",
+    "a": ["Pretorianergardet", "Hetairia", "Varjagiska gardet", "Kataphrakter"],
+    "correctAnswer": "Varjagiska gardet"
+  },
+  {
+    "q": "Vilket århundrade sammanställdes Domesday Book?",
+    "a": ["900-talet", "1000-talet", "1100-talet", "1200-talet"],
+    "correctAnswer": "1000-talet"
+  },
+  {
+    "q": "Vad var den huvudsakliga funktionen hos en medeltida skråordning?",
+    "a": ["Religiös kontroll", "Militärt försvar", "Yrkesreglering", "Skatteindrivning"],
+    "correctAnswer": "Yrkesreglering"
+  },
+  {
+    "q": "Vilken kemisk metall gav upphov till termen \"kvicksilver\"?",
+    "a": ["Bly", "Tenn", "Merkurium", "Arsenik"],
+    "correctAnswer": "Merkurium"
+  },
+
+  {
+    "q": "Vilken stad var centrum för den sumeriska civilisationen?",
+    "a": ["Ur", "Lagash", "Nippur", "Eridu"],
+    "correctAnswer": "Ur"
+  },
+  {
+    "q": "Vad kallades det medeltida dokument som reglerade en stads rättigheter?",
+    "a": ["Edikt", "Stadga", "Bulla", "Kapitulär"],
+    "correctAnswer": "Stadga"
+  },
+  {
+    "q": "Vilket instrument användes för navigation före kompassen i Europa?",
+    "a": ["Astrolabium", "Sextant", "Kvadant", "Gnomon"],
+    "correctAnswer": "Astrolabium"
+  },
+  {
+    "q": "Vilken typ av valuta användes i Kina under Songdynastin?",
+    "a": ["Silvertackor", "Kopparmynt", "Papperspengar", "Ris"],
+    "correctAnswer": "Papperspengar"
+  },
+
+  {
+    "q": "Vad betyder det latinska uttrycket \"cui bono\"?",
+    "a": ["Vem är skyldig?", "Vem vinner på det?", "Vad hände?", "Varför nu?"],
+    "correctAnswer": "Vem vinner på det?"
+  },
+  {
+    "q": "Vilken kemisk process ligger bakom framställning av stål från tackjärn?",
+    "a": ["Elektrolys", "Oxidation", "Reduktion", "Fermentering"],
+    "correctAnswer": "Oxidation"
+  },
+  {
+    "q": "Vilken vetenskaplig disciplin uppstod ur frenologin?",
+    "a": ["Neurologi", "Kriminologi", "Psykologi", "Antropologi"],
+    "correctAnswer": "Psykologi"
+  },
+  {
+    "q": "Vad kallades de lagar som styrde mongolväldet?",
+    "a": ["Sharia", "Yassa", "Code Noir", "Lex Talionis"],
+    "correctAnswer": "Yassa"
+  },
+
+  {
+    "q": "Vilket århundrade började man använda arabiska siffror i Europa?",
+    "a": ["900-talet", "1100-talet", "1300-talet", "1500-talet"],
+    "correctAnswer": "1100-talet"
+  },
+  {
+    "q": "Vilken färg var historiskt dyrast att framställa i antiken?",
+    "a": ["Purpur", "Indigo", "Scharlakansröd", "Safran"],
+    "correctAnswer": "Purpur"
+  },
+  {
+    "q": "Vad kallades det forntida grekiska systemet för stadsstater?",
+    "a": ["Imperium", "Polis", "Demos", "Ethnos"],
+    "correctAnswer": "Polis"
+  },
+  {
+    "q": "Vilken metall användes i de första legeringarna av brons?",
+    "a": ["Zink", "Tenn", "Nickel", "Järn"],
+    "correctAnswer": "Tenn"
+  },
+
+  {
+    "q": "Vilket begrepp beskriver handel längs Sidenvägen?",
+    "a": ["Triangelhandel", "Interkontinental handel", "Transkontinental handel", "Kolonialhandel"],
+    "correctAnswer": "Transkontinental handel"
+  },
+  {
+    "q": "Vilken matematisk konstant approximeras av bråket 22/7?",
+    "a": ["e", "φ", "π", "√2"],
+    "correctAnswer": "π"
+  },
+  {
+    "q": "Vad kallades den högsta samhällsklassen i det feodala Japan?",
+    "a": ["Daimyo", "Samuraj", "Shogun", "Kejsare"],
+    "correctAnswer": "Shogun"
+  },
+  {
+    "q": "Vilket ämne användes historiskt i termometrar?",
+    "a": ["Alkohol", "Bly", "Kvicksilver", "Gallium"],
+    "correctAnswer": "Kvicksilver"
+  },
+
+  {
+    "q": "Vilken vetenskap studerar gamla mynt?",
+    "a": ["Arkeologi", "Numismatik", "Heraldik", "Epigrafik"],
+    "correctAnswer": "Numismatik"
+  },
+  {
+    "q": "Vilket århundrade var den islamska guldåldern som mest framträdande?",
+    "a": ["700–900", "900–1100", "1100–1300", "1300–1500"],
+    "correctAnswer": "900–1100"
+  },
+  {
+    "q": "Vad kallades den romerska folkförsamlingen?",
+    "a": ["Senatus", "Comitia", "Curia", "Forum"],
+    "correctAnswer": "Comitia"
+  },
+  {
+    "q": "Vilket naturfenomen användes för att datera historiska träföremål?",
+    "a": ["Kol-14", "Dendrokronologi", "Stratigrafi", "Termoluminiscens"],
+    "correctAnswer": "Dendrokronologi"
+  },
+
+  {
+    "q": "Vilken gas identifierades först som \"dephlogisticated air\"?",
+    "a": ["Syre", "Väte", "Kväve", "Koldioxid"],
+    "correctAnswer": "Syre"
+  },
+  {
+    "q": "Vad kallades den medeltida filosofiska traditionen vid universiteten?",
+    "a": ["Humanism", "Skolastik", "Empirism", "Rationalism"],
+    "correctAnswer": "Skolastik"
+  },
+  {
+    "q": "Vilket forntida rike använde quipu som bokföringssystem?",
+    "a": ["Maya", "Aztek", "Inka", "Toltek"],
+    "correctAnswer": "Inka"
+  },
+  {
+    "q": "Vilken astronom föreslog först en heliocentrisk världsbild i Europa?",
+    "a": ["Galileo Galilei", "Johannes Kepler", "Tycho Brahe", "Nicolaus Copernicus"],
+    "correctAnswer": "Nicolaus Copernicus"
+  },
+
+  {
+    "q": "Vad var den huvudsakliga funktionen hos en medeltida borg?",
+    "a": ["Administration", "Religiös kult", "Militärt försvar", "Handel"],
+    "correctAnswer": "Militärt försvar"
+  },
+  {
+    "q": "Vilken metall gav namn åt planeten Venus på latin?",
+    "a": ["Guld", "Silver", "Koppar", "Tenn"],
+    "correctAnswer": "Koppar"
+  },
+  {
+    "q": "Vilken forntida region förknippas Ea-nāṣir oftast med?",
+    "a": ["Forntida Egypten", "Mesopotamien", "Antikens Grekland", "Handynastins Kina"],
+    "correctAnswer": "Mesopotamien"
+  },
+  {
+    "q": "Det berömda klagomålet riktat till Ea-nāṣir skrevs på vilket medium?",
+    "a": ["Papyrus", "Pergament", "Lertavla", "Stenstele"],
+    "correctAnswer": "Lertavla"
+  },
+  {
+    "q": "Ea-nāṣirs ryktbarhet är kopplad till handel med vilket material?",
+    "a": ["Tenn", "Koppar", "Guld", "Järn"],
+    "correctAnswer": "Koppar"
   }
   ]
 ]

@@ -615,6 +615,445 @@
       "Eliminate variables"
     ],
     "correctAnswer": "Verify physical consistency"
+  },
+
+  {
+    "q": "In which year was the Swedish Freedom of the Press Act adopted?",
+    "a": ["1766", "1789", "1809", "1844"],
+    "correctAnswer": "1766"
+  },
+  {
+    "q": "Which chemical element has atomic number 74?",
+    "a": ["Rhenium", "Tungsten", "Osmium", "Tantalum"],
+    "correctAnswer": "Tungsten"
+  },
+  {
+    "q": "Which river flows through the city of Bratislava?",
+    "a": ["Elbe", "Oder", "Danube", "Rhine"],
+    "correctAnswer": "Danube"
+  },
+  {
+    "q": "Who formulated the uncertainty principle in quantum mechanics?",
+    "a": ["Niels Bohr", "Erwin Schrödinger", "Paul Dirac", "Werner Heisenberg"],
+    "correctAnswer": "Werner Heisenberg"
+  },
+
+  {
+    "q": "Which country was the first to introduce paper money?",
+    "a": ["China", "Persia", "Italy", "The Netherlands"],
+    "correctAnswer": "China"
+  },
+  {
+    "q": "What is the chemical formula for ammonia?",
+    "a": ["NH₃", "NO₂", "N₂O", "HNO₃"],
+    "correctAnswer": "NH₃"
+  },
+  {
+    "q": "Which of these cities lies highest above sea level?",
+    "a": ["Quito", "Bogotá", "La Paz", "Cusco"],
+    "correctAnswer": "La Paz"
+  },
+  {
+    "q": "Which book opens the Old Testament?",
+    "a": ["Psalms", "Exodus", "Genesis", "Ecclesiastes"],
+    "correctAnswer": "Genesis"
+  },
+
+  {
+    "q": "In which year was the Maastricht Treaty signed?",
+    "a": ["1992", "1989", "1995", "1999"],
+    "correctAnswer": "1992"
+  },
+  {
+    "q": "What does a barometer measure?",
+    "a": ["Humidity", "Air pressure", "Temperature", "Wind speed"],
+    "correctAnswer": "Air pressure"
+  },
+  {
+    "q": "Which language has the most native speakers?",
+    "a": ["English", "Spanish", "Hindi", "Mandarin"],
+    "correctAnswer": "Mandarin"
+  },
+  {
+    "q": "Which metal is commonly used in galvanization?",
+    "a": ["Aluminum", "Copper", "Nickel", "Zinc"],
+    "correctAnswer": "Zinc"
+  },
+
+  {
+    "q": "What is the study of the historical development of languages called?",
+    "a": ["Phonetics", "Semantics", "Etymology", "Pragmatics"],
+    "correctAnswer": "Etymology"
+  },
+  {
+    "q": "Which sea has the highest salinity?",
+    "a": ["Red Sea", "Mediterranean Sea", "Caspian Sea", "Black Sea"],
+    "correctAnswer": "Red Sea"
+  },
+  {
+    "q": "Which particle mediates the strong nuclear force?",
+    "a": ["Gluon", "Photon", "W boson", "Higgs boson"],
+    "correctAnswer": "Gluon"
+  },
+  {
+    "q": "Which work is considered the first modern novel?",
+    "a": ["Robinson Crusoe", "Don Quixote", "Gulliver’s Travels", "The Decameron"],
+    "correctAnswer": "Don Quixote"
+  },
+
+  {
+    "q": "In which year were the United Nations founded?",
+    "a": ["1945", "1919", "1951", "1939"],
+    "correctAnswer": "1945"
+  },
+  {
+    "q": "What is the main component of natural gas?",
+    "a": ["Ethane", "Methane", "Propane", "Butane"],
+    "correctAnswer": "Methane"
+  },
+  {
+    "q": "Which of these philosophers was a Stoic?",
+    "a": ["Epicurus", "Aristotle", "Seneca", "Plato"],
+    "correctAnswer": "Seneca"
+  },
+  {
+    "q": "Which country has the longest coastline?",
+    "a": ["Russia", "Indonesia", "Australia", "Canada"],
+    "correctAnswer": "Canada"
+  },
+
+  {
+    "q": "Which scale is used to measure the magnitude of earthquakes?",
+    "a": ["Richter scale", "Mercalli scale", "Beaufort scale", "Mohs scale"],
+    "correctAnswer": "Richter scale"
+  },
+  {
+    "q": "What does the prefix \"iso-\" mean?",
+    "a": ["Different", "Equal", "Under", "After"],
+    "correctAnswer": "Equal"
+  },
+  {
+    "q": "Which element causes the green color in fireworks?",
+    "a": ["Barium", "Copper", "Sodium", "Strontium"],
+    "correctAnswer": "Barium"
+  },
+  {
+    "q": "Which city was the capital of the Byzantine Empire?",
+    "a": ["Athens", "Rome", "Antioch", "Constantinople"],
+    "correctAnswer": "Constantinople"
+  },
+
+  {
+    "q": "In which year was Darwin’s *On the Origin of Species* published?",
+    "a": ["1859", "1848", "1871", "1866"],
+    "correctAnswer": "1859"
+  },
+  {
+    "q": "What is the SI unit of electric charge?",
+    "a": ["Ampere", "Volt", "Ohm", "Coulomb"],
+    "correctAnswer": "Coulomb"
+  },
+  {
+    "q": "Which type of chemical bond involves shared electron pairs?",
+    "a": ["Ionic bond", "Metallic bond", "Covalent bond", "Hydrogen bond"],
+    "correctAnswer": "Covalent bond"
+  },
+  {
+    "q": "Which empire was ruled from Cusco?",
+    "a": ["Maya", "Aztec", "Inca", "Olmec"],
+    "correctAnswer": "Inca"
+  },
+
+  {
+    "q": "Which mathematician formulated the first logarithms?",
+    "a": ["John Napier", "Isaac Newton", "Leonhard Euler", "René Descartes"],
+    "correctAnswer": "John Napier"
+  },
+  {
+    "q": "Which ocean is the deepest?",
+    "a": ["Atlantic Ocean", "Pacific Ocean", "Indian Ocean", "Southern Ocean"],
+    "correctAnswer": "Pacific Ocean"
+  },
+  {
+    "q": "What is a form of government in which church and state are united called?",
+    "a": ["Theocracy", "Autocracy", "Oligarchy", "Plutocracy"],
+    "correctAnswer": "Theocracy"
+  },
+  {
+    "q": "Which part of the brain is primarily responsible for balance?",
+    "a": ["Hypothalamus", "Cerebrum", "Brainstem", "Cerebellum"],
+    "correctAnswer": "Cerebellum"
+  },
+
+  {
+    "q": "In which year was Stockholm University founded?",
+    "a": ["1878", "1901", "1912", "1888"],
+    "correctAnswer": "1878"
+  },
+  {
+    "q": "What is the main component of glass?",
+    "a": ["Calcium carbonate", "Silicon dioxide", "Aluminum oxide", "Sodium chloride"],
+    "correctAnswer": "Silicon dioxide"
+  },
+  {
+    "q": "Which term describes the study of the nature of knowledge?",
+    "a": ["Ontology", "Epistemology", "Axiology", "Teleology"],
+    "correctAnswer": "Epistemology"
+  },
+  {
+    "q": "Which continent has no permanent population?",
+    "a": ["Arctic", "Antarctica", "Oceania", "Greenland"],
+    "correctAnswer": "Antarctica"
+  },
+
+  {
+    "q": "In which year was the Gregorian calendar introduced?",
+    "a": ["1582", "1601", "1492", "1700"],
+    "correctAnswer": "1582"
+  },
+  {
+    "q": "What is measured in joules?",
+    "a": ["Power", "Energy", "Pressure", "Frequency"],
+    "correctAnswer": "Energy"
+  },
+  {
+    "q": "Which gas is most commonly used as shielding gas in MIG welding?",
+    "a": ["Argon", "Nitrogen", "Oxygen", "Hydrogen"],
+    "correctAnswer": "Argon"
+  },
+  {
+    "q": "Which country was the first to grant women the right to vote nationally?",
+    "a": ["New Zealand", "Finland", "Sweden", "Switzerland"],
+    "correctAnswer": "New Zealand"
+  },
+
+  {
+    "q": "Which science studies the relationship between organisms and their environment?",
+    "a": ["Ecology", "Ethnology", "Genetics", "Geology"],
+    "correctAnswer": "Ecology"
+  },
+  {
+    "q": "What is the chemical formula for hydrogen peroxide?",
+    "a": ["H₂O", "H₂O₂", "HO₂", "H₃O"],
+    "correctAnswer": "H₂O₂"
+  },
+  {
+    "q": "Which city is often called the world’s oldest continuously inhabited city?",
+    "a": ["Damascus", "Jerusalem", "Athens", "Ur"],
+    "correctAnswer": "Damascus"
+  },
+  {
+    "q": "What type of number is √2?",
+    "a": ["Integer", "Rational", "Complex", "Irrational"],
+    "correctAnswer": "Irrational"
+  },
+
+  {
+    "q": "Which city was the capital of the Assyrian Empire under King Ashurbanipal?",
+    "a": ["Nineveh", "Uruk", "Babylon", "Assur"],
+    "correctAnswer": "Nineveh"
+  },
+  {
+    "q": "What material was traditionally used to write cuneiform?",
+    "a": ["Papyrus", "Clay tablets", "Parchment", "Wood"],
+    "correctAnswer": "Clay tablets"
+  },
+  {
+    "q": "What was the Roman official responsible for grain supply called?",
+    "a": ["Praetor", "Quaestor", "Aedile", "Tribune"],
+    "correctAnswer": "Aedile"
+  },
+  {
+    "q": "Which island was Napoleon’s first place of exile?",
+    "a": ["Sardinia", "Elba", "Corsica", "Madeira"],
+    "correctAnswer": "Elba"
+  },
+
+  {
+    "q": "Basque is genetically classified as which type of language?",
+    "a": ["Indo-European", "Uralic", "Language isolate", "Semitic"],
+    "correctAnswer": "Language isolate"
+  },
+  {
+    "q": "What was a \"Hanse\" originally?",
+    "a": ["A city", "A trade league", "A tax", "A ship"],
+    "correctAnswer": "A trade league"
+  },
+  {
+    "q": "Which discipline studies historical manuscripts and scripts?",
+    "a": ["Epigraphy", "Palaeography", "Diplomatics", "Codicology"],
+    "correctAnswer": "Palaeography"
+  },
+  {
+    "q": "Which element was first isolated by Carl Wilhelm Scheele?",
+    "a": ["Chlorine", "Oxygen", "Nitrogen", "Fluorine"],
+    "correctAnswer": "Chlorine"
+  },
+
+  {
+    "q": "What was the Byzantine emperor’s guard composed of Norsemen called?",
+    "a": ["Praetorian Guard", "Hetairia", "Varangian Guard", "Cataphracts"],
+    "correctAnswer": "Varangian Guard"
+  },
+  {
+    "q": "In which century was the Domesday Book compiled?",
+    "a": ["10th century", "11th century", "12th century", "13th century"],
+    "correctAnswer": "11th century"
+  },
+  {
+    "q": "What was the main function of a medieval guild system?",
+    "a": ["Religious control", "Military defense", "Professional regulation", "Tax collection"],
+    "correctAnswer": "Professional regulation"
+  },
+  {
+    "q": "Which chemical metal gave rise to the term \"quicksilver\"?",
+    "a": ["Lead", "Tin", "Mercury", "Arsenic"],
+    "correctAnswer": "Mercury"
+  },
+
+  {
+    "q": "Which city was the center of Sumerian civilization?",
+    "a": ["Ur", "Lagash", "Nippur", "Eridu"],
+    "correctAnswer": "Ur"
+  },
+  {
+    "q": "What was the medieval document regulating a city’s rights called?",
+    "a": ["Edict", "Charter", "Bull", "Capitulary"],
+    "correctAnswer": "Charter"
+  },
+  {
+    "q": "Which instrument was used for navigation in Europe before the compass?",
+    "a": ["Astrolabe", "Sextant", "Quadrant", "Gnomon"],
+    "correctAnswer": "Astrolabe"
+  },
+  {
+    "q": "What type of currency was used in China during the Song dynasty?",
+    "a": ["Silver ingots", "Copper coins", "Paper money", "Rice"],
+    "correctAnswer": "Paper money"
+  },
+
+  {
+    "q": "What does the Latin expression \"cui bono\" mean?",
+    "a": ["Who is guilty?", "Who benefits?", "What happened?", "Why now?"],
+    "correctAnswer": "Who benefits?"
+  },
+  {
+    "q": "Which chemical process underlies the production of steel from pig iron?",
+    "a": ["Electrolysis", "Oxidation", "Reduction", "Fermentation"],
+    "correctAnswer": "Oxidation"
+  },
+  {
+    "q": "Which scientific discipline emerged from phrenology?",
+    "a": ["Neurology", "Criminology", "Psychology", "Anthropology"],
+    "correctAnswer": "Psychology"
+  },
+  {
+    "q": "What were the laws governing the Mongol Empire called?",
+    "a": ["Sharia", "Yassa", "Code Noir", "Lex Talionis"],
+    "correctAnswer": "Yassa"
+  },
+
+  {
+    "q": "In which century did the use of Arabic numerals begin in Europe?",
+    "a": ["10th century", "12th century", "14th century", "16th century"],
+    "correctAnswer": "12th century"
+  },
+  {
+    "q": "Which color was historically the most expensive to produce in antiquity?",
+    "a": ["Purple", "Indigo", "Scarlet", "Saffron"],
+    "correctAnswer": "Purple"
+  },
+  {
+    "q": "What was the ancient Greek system of city-states called?",
+    "a": ["Empire", "Polis", "Demos", "Ethnos"],
+    "correctAnswer": "Polis"
+  },
+  {
+    "q": "Which metal was used in the earliest bronze alloys?",
+    "a": ["Zinc", "Tin", "Nickel", "Iron"],
+    "correctAnswer": "Tin"
+  },
+
+  {
+    "q": "Which term describes trade along the Silk Road?",
+    "a": ["Triangular trade", "Intercontinental trade", "Transcontinental trade", "Colonial trade"],
+    "correctAnswer": "Transcontinental trade"
+  },
+  {
+    "q": "Which mathematical constant is approximated by the fraction 22/7?",
+    "a": ["e", "φ", "π", "√2"],
+    "correctAnswer": "π"
+  },
+  {
+    "q": "What was the highest social class in feudal Japan called?",
+    "a": ["Daimyo", "Samurai", "Shogun", "Emperor"],
+    "correctAnswer": "Shogun"
+  },
+  {
+    "q": "Which substance was historically used in thermometers?",
+    "a": ["Alcohol", "Lead", "Mercury", "Gallium"],
+    "correctAnswer": "Mercury"
+  },
+
+  {
+    "q": "Which science studies ancient coins?",
+    "a": ["Archaeology", "Numismatics", "Heraldry", "Epigraphy"],
+    "correctAnswer": "Numismatics"
+  },
+  {
+    "q": "Which period was the Islamic Golden Age most prominent?",
+    "a": ["700–900", "900–1100", "1100–1300", "1300–1500"],
+    "correctAnswer": "900–1100"
+  },
+  {
+    "q": "What was the Roman popular assembly called?",
+    "a": ["Senate", "Comitia", "Curia", "Forum"],
+    "correctAnswer": "Comitia"
+  },
+  {
+    "q": "Which natural phenomenon is used to date historical wooden objects?",
+    "a": ["Carbon-14", "Dendrochronology", "Stratigraphy", "Thermoluminescence"],
+    "correctAnswer": "Dendrochronology"
+  },
+
+  {
+    "q": "Which gas was first identified as \"dephlogisticated air\"?",
+    "a": ["Oxygen", "Hydrogen", "Nitrogen", "Carbon dioxide"],
+    "correctAnswer": "Oxygen"
+  },
+  {
+    "q": "What was the medieval philosophical tradition at universities called?",
+    "a": ["Humanism", "Scholasticism", "Empiricism", "Rationalism"],
+    "correctAnswer": "Scholasticism"
+  },
+  {
+    "q": "Which ancient empire used quipu as an accounting system?",
+    "a": ["Maya", "Aztec", "Inca", "Toltec"],
+    "correctAnswer": "Inca"
+  },
+  {
+    "q": "Which astronomer first proposed a heliocentric model in Europe?",
+    "a": ["Galileo Galilei", "Johannes Kepler", "Tycho Brahe", "Nicolaus Copernicus"],
+    "correctAnswer": "Nicolaus Copernicus"
+  },
+  {
+    "q": "What was the primary function of a medieval castle?",
+    "a": ["Administration", "Religious worship", "Military defense", "Trade"],
+    "correctAnswer": "Military defense"
+  },
+  {
+    "q": "Which metal gave its name to the planet Venus in Latin?",
+    "a": ["Gold", "Silver", "Copper", "Tin"],
+    "correctAnswer": "Copper"
+  },
+  {
+  "q": "What was Ea-nāṣir best known for in surviving historical records?", 
+  "a": [
+    "Operating a long-distance copper trade that was criticized by his customers",
+    "Serving as a high priest in the temple of the god Ea",
+    "Leading a military expedition during the Akkadian period",
+    "Authoring early legal reforms in Mesopotamia" ],
+    "correctAnswer": "Operating a long-distance copper trade that was criticized by his customers"
   }
   ]
 ]
