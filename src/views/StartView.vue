@@ -57,7 +57,7 @@
     },
     methods: {
       hostGame: function() {
-        socket.emit("createLobby");
+        socket.emit("createLobby", {lang: this.lang});
       },
       joinGame: function() {
         this.$router.push(`/lobby/${this.roomCode}`);

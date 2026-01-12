@@ -155,6 +155,7 @@ class Lobby {
         removedPlayerArray[0].socket.leave(this.ID)
       }
     }
+    this.updateLobby();
   }
 
   remove() {

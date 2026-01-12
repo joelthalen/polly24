@@ -38,7 +38,7 @@
     </div>
     <SpelPlan
     :viewportSizeMax="70"
-    :bottomMargin="10"
+    :bottomMargin="12"
     v-bind:boardData="boardData"
     v-on:placeBrick="placeMarker"
     />
