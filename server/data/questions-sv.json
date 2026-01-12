@@ -1058,6 +1058,11 @@
     "q": "Ea-nāṣirs ryktbarhet är kopplad till handel med vilket material?",
     "a": ["Tenn", "Koppar", "Guld", "Järn"],
     "correctAnswer": "Koppar"
+  },
+  {
+    "q": "Enligt Lundellhuset fakta #19, vad heter den långa respektive den korta?", 
+    "a": ["Den långa heter Jocke, den korta heter Jomby", "Den långa heter Jomby, den korta heter Jocke", "Båda heter Jocke", "Båda heter Jomby"],
+   "correctAnswer": "Den långa heter Jocke, den korta heter Jomby"
   }
   ]
 ]
