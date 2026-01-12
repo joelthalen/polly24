@@ -28,7 +28,6 @@ export default {
   name: "SpelPlan",
   data() {
     return {
-      defaultViewportMax: 80,
       height: 1,
       width: 1,
     }
@@ -41,11 +40,15 @@ export default {
     bottomMargin: {
       type: Number,
       required: true
+    },
+    viewportSizeMax: {
+      type: Number,
+      required: true
     }
   },
-  beforeMount() {
-    this.height = this.defaultViewportMax;
-    this.width = this.defaultViewportMax;
+  created() {
+    this.height = this.viewportSizeMax;
+    this.width = this.viewportSizeMax;
     if (this.size.rows > this.size.cols) {
       // if more rows than cols
       this.width = Math.floor(this.width * (this.size.cols / this.size.rows));
@@ -88,7 +91,6 @@ export default {
 <style scoped>
 
 #spelPlan { /* Måste ändra så den skalas med att sidan blir mindre och så att inte en kolumn kastas ned är webpagen blir mindre än vad spelplandens width är */
-  width: 80vmin;
   position: absolute;
   z-index: 0;
   left: 50%;
@@ -98,14 +100,20 @@ export default {
   border-radius: 1em;
   line-height: 0em; /**Spelplan object is too big if not here */
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .column {
-  display: inline-block;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
 .cell {
+  flex-grow: 1;
   width: 100%;
   aspect-ratio: 1;
 }
