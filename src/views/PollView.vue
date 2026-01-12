@@ -206,7 +206,7 @@ export default {
 main {
   display: flex;
   flex-direction: column;
-  background-image: url(/img/AmongUsWallPaper.png);
+  background-image: url(/img/AmongUsWallPaper2.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -245,6 +245,7 @@ main {
 
   .current {
     border-bottom: 0.1em solid;
+    background-color: rgb(from currentColor r g b / 0.2);
   }
 
   .you::after {

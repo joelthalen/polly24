@@ -185,7 +185,7 @@ export default {
 
 <style scoped> 
   main {
-    background-image: url(/img/AmongUsWallPaper.png);
+    background-image: url(/img/AmongUsWallPaper2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
