@@ -1,8 +1,20 @@
 :root {
   --foreground-color: white;
   --background-color: black;
+  --bg-color2: rgb(20, 20, 20);
+  --border-color: rgb(75 75 75);
   --light-blue-color: rgb(4, 162, 242);
+
+  --text-sm: 0.75rem;
+  --text-md: 1.1rem;
+  --text-lg: 1.5rem;
+  --text-xl: 2rem;
 }
+
+html {
+  font-size: 16px;
+}
+
 body {
   color: var(--foreground-color);
   background-color: var(--background-color);

@@ -17,7 +17,8 @@
         <form @submit.prevent="joinGame" class="join-form" label="test">
           <input class="roomCodeField" 
             type="text" 
-            v-model="roomCode" 
+            :value="roomCode" 
+            @input="event => roomCode = event.target.value.toUpperCase()"
             :placeholder="uiLabels.roomCode || 'Room code'"
             required
             minlength="4" maxlength="4"> 
