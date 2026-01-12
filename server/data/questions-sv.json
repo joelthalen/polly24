@@ -1,16 +1,6 @@
 [
   [
   {
-    "q": "Är Christoffer Lundh bäst?",
-    "a": ["JA", "NEJ", "KANSKE"],
-    "correctAnswer": "JA"
-  },
-  {
-    "q": "Vem skapade Gustav Vasas Bibel?",
-    "a": ["Gustav Vasa", "Carl den tredje", "GUD", "Christoffer Lundh"],
-    "correctAnswer": "GUD"
-  },
-  {
    "q": "Hur många minuter går det på en timme?",
    "a": ["30", "45", "60", "100"], 
    "correctAnswer": "60"

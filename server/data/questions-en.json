@@ -1,16 +1,6 @@
 [
   [
   {
-    "q": "Is Christoffer Lundh the best?",
-    "a": ["YES", "NO", "MAYBE"],
-    "correctAnswer": "YES"
-  },
-  {
-    "q": "Who created Gustav Vasa's Bible?",
-    "a": ["Gustav Vasa", "Carl the Third", "GOD", "Christoffer Lundh"],
-    "correctAnswer": "GOD"
-  },
-  {
     "q": "How many minutes are in an hour?",
     "a": ["30", "45", "60", "100"],
     "correctAnswer": "60"
