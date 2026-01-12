@@ -154,7 +154,7 @@ export default {
       this.joined = true;
     },
     changeTeam: function (participant) {
-      console.log(participant);
+      console.log(this.username+"is trying to change team for"+participant);
       socket.emit( "updateOtherProfiles", {pollId: this.pollId, username: participant.username, team: participant.team})
     },
     changeReady: function () {
@@ -197,6 +197,37 @@ export default {
     width: 100vw;
   }
 
+  button {
+    background-color: rgba(113, 113, 113, 0.5);
+    border: solid 2px rgb(219, 219, 219);
+    color: white;
+    border-radius: 4px;
+    min-height: 4vh;
+    min-width: 6vh;
+  }
+
+  button:hover {
+    background-color: rgba(150, 150, 150, 0.7);
+    cursor: pointer;
+  }
+
+  .leaveBox {
+    justify-self: end;
+  }
+
+  .languageBox {
+    justify-self: start;
+  }
+
+  .topSection {
+    height: 25vh;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
   .logoBox{
   margin: 2vh;
   background-color: rgba(0, 0, 0, 0.7);
@@ -213,6 +244,28 @@ export default {
     align-self: center;
   }
 
+  .codeBox {
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+  }
+
+  .usernameBox, .settingsBox, .statusBox {
+    box-shadow: 0 0 10px rgb(219, 219, 219); 
+    border-radius: 10px;
+    border: solid 4px grey;
+    background-color: rgba(7, 7, 7, 0.8);
+  }
+
+  .usernameBox {
+    margin-left: 35vw;
+    margin-right: 35vw;
+    height: 20vh;
+  }
+
+  input {
+    min-height: 3.4vh; 
+  }
 
   @media (orientation: landscape){
     img {
@@ -262,119 +315,4 @@ export default {
       grid-row: 3
     }
   }
-/*Ovanför är (var /Valdemar) renskrivet*/
-
-
-  .topSection {
-  height: 25vh;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.leaveBox {
-justify-self: end;
-}
-
-.languageBox {
-justify-self: start;
-}
-
-.codeBox {
-    font-size: 2em;
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
-}
-
-
-
-.usernameBox {
-  box-shadow: 0 0 10px rgb(219, 219, 219);
-  border-radius: 10px;
-  border: solid 4px grey;
-  margin-left: 35vw;
-  margin-right: 35vw;
-  height: 20vh;
-  background-color: rgba(7, 7, 7, 0.8);
-}
-
-.settingsBox {
-  box-shadow: 0 0 10px rgb(219, 219, 219);
-  border-radius: 10px;
-  border: solid 4px grey;
-  background-color: rgba(7, 7, 7, 0.8);
-}
-
-.statusBox {
-  box-shadow: 0 0 10px rgb(219, 219, 219);
-  border-radius: 10px;
-  border: solid 4px grey;
-  background-color: rgba(7, 7, 7, 0.8);
-}
-
-h3 {
-    color: white;
-}
-
-.readyButton {
-    height: 5vh;
-    width: 10vw;
-}
-
-.startButton {
-    height: 5vh;
-    width: 10vw;  
-}
-
-button {
-  background-color: rgba(113, 113, 113, 0.5);
-  border: solid 2px rgb(219, 219, 219);
-  color: white;
-  border-radius: 4px;
-  min-height: 4vh;
-}
-
-button:hover {
-  background-color: rgba(150, 150, 150, 0.7);
-  cursor: pointer;
-}
-
-input {
- min-height: 3.4vh; 
-}
-
-.playerRow {
-  display: grid;
-  grid-template-columns: 25% 50% 25%;
-  margin-bottom: 5px;
-  align-items: center
-}
-
-
-.playerStatus {
-  grid-column: 1;
-}
-
-.playerName {
-  grid-column: 2;
-}
-
-.playerTeam {
-  grid-column: 3;
-}
-
-select {
-  background-color: rgba(113, 113, 113, 0.5);
-  border: solid 2px rgb(219, 219, 219);
-  color: white;
-  border-radius: 4px;
-  min-height: 4vh;
-}
-
-select:hover {
-  background-color: rgba(150, 150, 150, 0.7);
-  cursor: pointer;
-}
 </style>

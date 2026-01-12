@@ -25,38 +25,38 @@ function sockets(io, socket, data) {
   });
 
   socket.on("createPoll", function (d) {
-    data.createPoll(d.pollId, d.lang);
-    socket.emit("pollData", data.getPoll(d.pollId));
+    data.createPoll(d.lobbyId, d.lang);
+    socket.emit("pollData", data.getPoll(d.lobbyId));
   });
 
    socket.on("addQuestion", function (d) {
-    data.addQuestion(d.pollId, { q: d.q, a: d.a });
-    socket.emit("questionUpdate", data.activateQuestion(d.pollId));
+    data.addQuestion(d.lobbyId, { q: d.q, a: d.a });
+    socket.emit("questionUpdate", data.activateQuestion(d.lobbyId));
   });
 
-  socket.on("joinPoll", function (pollId) {
-    socket.join(pollId);
-    socket.emit("questionUpdate", data.activateQuestion(pollId));
-    socket.emit("submittedAnswersUpdate", data.getSubmittedAnswers(pollId));
+  socket.on("joinPoll", function (lobbyId) {
+    socket.join(lobbyId);
+    socket.emit("questionUpdate", data.activateQuestion(lobbyId));
+    socket.emit("submittedAnswersUpdate", data.getSubmittedAnswers(lobbyId));
   });
 
-  socket.on("startPoll", function (pollId) {
-    io.to(pollId).emit("startPoll");
+  socket.on("startPoll", function (lobbyId) {
+    io.to(lobbyId).emit("startPoll");
   });
   socket.on("runQuestion", function (d) {
-    let question = data.activateQuestion(d.pollId, d.questionNumber);
-    io.to(d.pollId).emit("questionUpdate", question);
-    io.to(d.pollId).emit(
+    let question = data.activateQuestion(d.lobbyId, d.questionNumber);
+    io.to(d.lobbyId).emit("questionUpdate", question);
+    io.to(d.lobbyId).emit(
       "submittedAnswersUpdate",
-      data.getSubmittedAnswers(d.pollId)
+      data.getSubmittedAnswers(d.lobbyId)
     );
   });
 
   socket.on("submitAnswer", function (d) {
-    data.submitAnswer(d.pollId, d.answer);
-    io.to(d.pollId).emit(
+    data.submitAnswer(d.lobbyId, d.answer);
+    io.to(d.lobbyId).emit(
       "submittedAnswersUpdate",
-      data.getSubmittedAnswers(d.pollId)
+      data.getSubmittedAnswers(d.lobbyId)
     );
   });
 
@@ -85,7 +85,7 @@ function sockets(io, socket, data) {
     session.leaveLobby();
   });
 
-  // id: this.pollId, column: col
+  // id: this.lobbyId, column: col
   socket.on("placeMarker", (obj) => {
     const lobby = Lobby.getLobby(obj.id);
     if (lobby && lobby.game && lobby.game.isCurrentPlayer(socket.id)) {
