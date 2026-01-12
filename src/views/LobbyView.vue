@@ -1,8 +1,5 @@
 <template>
   <main>
-      <p>
-        {{ lobbyState }}
-      </p>
     <section class = "topSection">
       <div class = "leaveBox">
         <button @click="leaveLobby">{{ uiLabels.leaveLobby }}</button>

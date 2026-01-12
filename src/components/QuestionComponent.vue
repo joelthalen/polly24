@@ -51,12 +51,12 @@ export default {
   .question {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
   #questionCard {
     margin: auto;
     border: 2px solid black;
-    width: 40vw;
-    min-width: fit-content;
     position: fixed;
     top: 50%;
     left: 50%;
