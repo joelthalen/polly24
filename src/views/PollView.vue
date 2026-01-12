@@ -100,7 +100,7 @@ export default {
   data: function () {
     return {
      
-      pollId: "inactive poll",
+      lobbyId: "inactive poll",
       showQuestion: true,
       wrongAnswer: false,
       correctAnswer: false,
@@ -164,7 +164,7 @@ export default {
     
     
     //Från kodsklettet
-    this.pollId = this.$route.params.id;
+    this.lobbyId = this.$route.params.id;
     socket.on("questionUpdate", (q) => (this.question = q));
     socket.on(
       "submittedAnswersUpdate",
@@ -172,16 +172,16 @@ export default {
     );
     socket.on("uiLabels", (labels) => (this.uiLabels = labels));
     socket.emit("getUILabels", this.lang);
-    socket.emit("joinPoll", this.pollId);
-    //socket.emit("joinLobby", this.pollId);
+    socket.emit("joinPoll", this.lobbyId);
+    //socket.emit("joinLobby", this.lobbyId);
   },
 
   methods: {
     submitAnswer: function (ans) {
-      socket.emit("submitAnswer", {id: this.pollId, answer: ans });
+      socket.emit("submitAnswer", {id: this.lobbyId, answer: ans });
     },
     placeMarker: function (col) {
-      socket.emit("placeMarker", {id: this.pollId, column: col})
+      socket.emit("placeMarker", {id: this.lobbyId, column: col})
     },
     isCurrent(username) {
       return username === this.currentPlayer;
@@ -190,10 +190,10 @@ export default {
       return this.username === username;
     },
     restartGame: function () {
-      socket.emit("startNewGame", this.pollId);
+      socket.emit("startNewGame", this.lobbyId);
     },
     returnToHome: function () { //just nu så uppdateras inte players i game när någon lämnar så spelet kan inte fortsätta. 
-      socket.emit("leaveLobby", this.pollId);
+      socket.emit("leaveLobby", this.lobbyId);
       this.$router.push("/");
       //här kan man ha ett event som säger till alla andra spelare att någon lämnat gamet
     },

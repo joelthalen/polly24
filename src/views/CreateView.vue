@@ -1,7 +1,7 @@
 <template>
   <div>
     Poll link: 
-    <input type="text" v-model="pollId">
+    <input type="text" v-model="lobbyId">
     <button v-on:click="createPoll">
       Create poll
     </button>
@@ -28,7 +28,7 @@
     <button v-on:click="runQuestion">
       Run question
     </button>
-    <router-link v-bind:to="'/result/' + pollId">Check result</router-link>
+    <router-link v-bind:to="'/result/' + lobbyId">Check result</router-link>
     Data: {{ pollData }}
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
   data: function () {
     return {
       lang: localStorage.getItem("lang") || "en",
-      pollId: "",
+      lobbyId: "",
       question: "",
       answers: ["", ""],
       questionNumber: 0,
@@ -58,20 +58,20 @@ export default {
   },
   methods: {
     createPoll: function () {
-      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
-      socket.emit("joinPoll", this.pollId);
+      socket.emit("createPoll", {lobbyId: this.lobbyId, lang: this.lang })
+      socket.emit("joinPoll", this.lobbyId);
     },
     startPoll: function () {
-      socket.emit("startPoll", this.pollId)
+      socket.emit("startPoll", this.lobbyId)
     },
     addQuestion: function () {
-      socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
+      socket.emit("addQuestion", {lobbyId: this.lobbyId, q: this.question, a: this.answers } )
     },
     addAnswer: function () {
       this.answers.push("");
     },
     runQuestion: function () {
-      socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+      socket.emit("runQuestion", {lobbyId: this.lobbyId, questionNumber: this.questionNumber})
     }
   }
 }

@@ -154,7 +154,7 @@ export default {
       this.joined = true;
     },
     changeTeam: function (participant) {
-      console.log(participant);
+      console.log(this.username+"is trying to change team for"+participant);
       socket.emit( "updateOtherProfiles", {pollId: this.pollId, username: participant.username, team: participant.team})
     },
     changeReady: function () {

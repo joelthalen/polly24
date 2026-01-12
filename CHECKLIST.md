@@ -5,9 +5,9 @@
 - [x] Logga
 - [x] Host knapp
 - [x] join Code input
- - [ ] Validera så bara korrekta koder kan skrivas in. (Optional)
-  - [ ] små blir stora bokstäver, siffror ok. inget annat.
-  - [ ]4 "siffrig" kod.
+  - [x] Validera så bara korrekta koder kan skrivas in. (Optional)
+  - [x] små blir stora bokstäver, siffror ok. inget annat.
+  - [x]4 "siffrig" kod.
 - [x] Join Game knapp
   - [ ] Hantera då en lobby med kod inte finns. (På LobbyView?)
 - [ ] Grafik
@@ -40,7 +40,7 @@ _kan kanske ligga som en komponent på lobbyn_
   - [ ] Spelplan-storlek (optional)
 - [X] Join code display
   - [ ] QR-kod knapp (Optional)
-- [ ] Emojis och vibbar 😂
+- [x] Emojis och vibbar 😂
 - [ ] kicka spelare som host
 - [ ] bara starta när alla är redo
 - [ ] man lämnar spelet när man stänger fönstret
@@ -94,20 +94,20 @@ _kan kanske ligga som en komponent på lobbyn_
 
 ## Vinnare/Förlorare skärm
 
-- [ ] Visa vinnar/förlorar text i grönt/rött
-- [ ] Inte blockera spelplan
+- [x] Visa vinnar/förlorar text i grönt/rött
+- [x] Inte blockera spelplan
 - [ ] Visa vinnande marker
-- [ ] Rematch knapp
-- [ ] Leave game
+- [x] Rematch knapp
+- [x] Leave game
 
 ## Frågekomponent
 
 - [x] Fråga
 - [x] Svarsalternativ
-- [ ] Bekräftelse
-  - [ ] Grönt på rätt svar
+- [x] Bekräftelse
+  - [x] Grönt på rätt svar
   - [ ] Konfetti
-  - [ ] Rött på fel svar
+  - [x] Rött på fel svar
 
 ## 4 i rad komponent
 
