@@ -63,6 +63,16 @@
             -->
           </div>
           <div class="statusBox">
+            
+            <LobbyBox
+              :participants="lobbyState.participants"
+              :isHost="isHost"
+              :isReady="isReady"
+              @changeTeam="changeTeam($event)"
+              @changeReady="changeReady()"
+              @startGame="startGame()"
+            />
+           <!--
             <h3>{{ uiLabels.status }}</h3>
 
             <div class="playerList">
@@ -82,15 +92,16 @@
             </div>
 
             <button class="readyButton" @click="changeReady" v-if="!isHost">
-              <!-- TODO -->
+              
               <div v-if="isReady">Un-ready!</div>
-              <div v-else>Ready!</div> <!--Vad ska vi skriva här för att man ska fatta vilket läge man är i?-->
-              <!-- Kanske ändra till en checkbox? mindre oklart -->
+              <div v-else>Ready!</div>
+              
             </button>
             
             <button class="startButton" @click="startGame" v-if="isHost">{{ uiLabels.startGame }}</button>
-
+          -->
           </div>
+          
         </div>
         <p>{{ uiLabels.waitingForHost}}</p>
         {{ participants }}
@@ -106,6 +117,7 @@
 import LanguageButton from '../components/LanguageButton.vue';
 import EmojiChatComponent from '@/components/EmojiChatComponent.vue';
 import SettingsBox from '@/components/SettingsBox.vue';
+import LobbyBox from '../components/LobbyBox.vue'; 
 import { socket, state } from '../socket';
 
 export default {
@@ -114,6 +126,7 @@ export default {
     EmojiChatComponent,
     LanguageButton,
     SettingsBox,
+    LobbyBox,
   },
   computed: {
     lobbyState() {
