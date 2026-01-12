@@ -1,4 +1,5 @@
 import { Game } from "./Game.js";
+import { registerLobbyEvents } from "./sockets.js";
 
 /** @type {Map<string, Lobby>} */
 const LOBBIES = new Map();
@@ -75,50 +76,8 @@ class Lobby {
     this.players.push(player);
 
     // TODO: move or smth idk
-    this.registerPlayerSockets(playerSocket);
-    playerSocket.on("updateProfile", (p) => {
-      if ('username' in p && p.username.length > 3) {
-        player.username = p.username;
-        playerSocket.emit("newUsername", player.username);
-      }
-      player.team = p.team || player.team;
-      if ("ready" in p) {
-        player.ready = p.ready;
-      }
-      this.updateLobby();
-    });
-    playerSocket.on("updateOtherProfiles", (p) => {
-      this.updateOtherPlayer(p);
-    });
-    playerSocket.on("changeColor", (newColor) => {
-      player.color = this.colors.changeColor(player.color, newColor);
-    });
-    playerSocket.on("getUnusedColors", () => {
-      playerSocket.emit("setUnusedColors", this.colors.getUnused());
-    })
-    playerSocket.on("changeSize", (size) => { //kanske behöver ändras
-      this.columns = size.columns;
-      this.rows = size.rows;
-      if (this.wincondition > Math.max(this.columns, this.rows)) {
-        this.wincondition = Math.max(this.columns, this.rows);
-      }
-      this.updateLobby();
-    });
-    playerSocket.on("changeDifficulty", (obj) => { 
-      if (obj.difficulty === 0) {
-        this.difficulty = 1;
-      } else if (obj.difficulty === 1) { //kanske ändra till boolean eller int istället
-        this.difficulty = 0;
-      }
-      this.updateLobby();
-    });
-    playerSocket.on("changeWinCondition", (obj) => { 
-      this.wincondition = obj.wincondition;
-      this.updateLobby();
-    });
-    playerSocket.on("startGame", () => {
-      this.createGame(this.columns, this.rows); //behöver ju inte skicka med colums och rows om de finns som variabler i classen?! change setting ändrar ju this.rows och så
-    });
+    registerLobbyEvents(playerSocket, player, this);
+
     playerSocket.emit("joinedLobby", {
       success: "true",
       isHost: player.isHost,
@@ -181,12 +140,6 @@ class Lobby {
         lobbyState: {},
       });
     }
-  }
-
-  registerPlayerSockets(socket) {
-    socket.on("sendEmoji", (p) => {
-      this.io.to(this.ID).emit("sendEmoji");
-    });
   }
 
   onPlayerReady() {

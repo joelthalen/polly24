@@ -112,4 +112,54 @@ function sockets(io, socket, data) {
 
 
 }
-export { sockets };
+
+function registerLobbyEvents(socket, player, lobby) {
+
+  socket.on("updateProfile", (p) => {
+    if ('username' in p && p.username.length > 3) {
+      player.username = p.username;
+      socket.emit("newUsername", player.username);
+    }
+    player.team = p.team || player.team;
+    if ("ready" in p) {
+      player.ready = p.ready;
+    }
+    lobby.updateLobby();
+  });
+  socket.on("updateOtherProfiles", (p) => {
+    lobby.updateOtherPlayer(p);
+  });
+  socket.on("changeColor", (newColor) => {
+    player.color = lobby.colors.changeColor(player.color, newColor);
+  });
+  socket.on("getUnusedColors", () => {
+    socket.emit("setUnusedColors", lobby.colors.getUnused());
+  })
+  socket.on("changeSize", (size) => { //kanske behöver ändras
+    lobby.columns = size.columns;
+    lobby.rows = size.rows;
+    if (lobby.wincondition > Math.max(lobby.columns, lobby.rows)) {
+      lobby.wincondition = Math.max(lobby.columns, lobby.rows);
+    }
+    lobby.updateLobby();
+  });
+  socket.on("changeDifficulty", (obj) => { 
+    if (obj.difficulty === 0) {
+      lobby.difficulty = 1;
+    } else if (obj.difficulty === 1) { //kanske ändra till boolean eller int istället
+      lobby.difficulty = 0;
+    }
+    lobby.updateLobby();
+  });
+  socket.on("changeWinCondition", (obj) => { 
+    lobby.wincondition = obj.wincondition;
+    lobby.updateLobby();
+  });
+  socket.on("startGame", () => {
+    lobby.createGame(lobby.columns, lobby.rows); //behöver ju inte skicka med colums och rows om de finns som variabler i classen?! change setting ändrar ju this.rows och så
+  });
+      socket.on("sendEmoji", (p) => {
+      lobby.io.to(lobby.ID).emit("sendEmoji");
+    });
+}
+export { sockets, registerLobbyEvents };
