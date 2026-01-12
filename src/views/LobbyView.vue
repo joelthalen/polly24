@@ -7,10 +7,10 @@
       <div class = "leaveBox">
         <button @click="leaveLobby">{{ uiLabels.leaveLobby }}</button>
       </div>
-      <div class ="languageBox"> <!--Här finns språkknappen-->
+      <div class ="languageBox">
           <LanguageButton/>
       </div>
-      <div class="logoBox"><img alt="Logo"></div> <!-- Här ska loggan finnas-->
+      <div class="logoBox"><img alt="Logo"></div>
     </section>
       <p class="codeBox">
         {{ uiLabels.lobbyCode }}: {{ lobbyId }}
@@ -40,8 +40,7 @@
               @difficulty="changeDifficulty($event)"
             />
           </div>
-          <div class="statusBox">
-            
+          <div class="statusBox"> 
             <LobbyBox
               :participants="lobbyState.participants"
               :isHost="isHost"
@@ -50,34 +49,6 @@
               @changeReady="changeReady()"
               @startGame="startGame()"
             />
-           <!--
-            <h3>{{ uiLabels.status }}</h3>
-
-            <div class="playerList">
-              <div class="playerRow" v-for="participant in lobbyState.participants" :key="participant.username">
-                <div class="playerStatus">
-                  <p v-if="participant.isHost">{{ uiLabels.isHost }}</p>
-                  <p v-if="!participant.isHost">{{ participant.ready ? uiLabels.ready : uiLabels.notReady }}</p></div>
-                <div class="playerName"><p>{{ participant.username }}</p></div>
-                <div class="playerTeam">
-                  <p v-if="!isHost">{{ participant.team === 'player' ? uiLabels.player : uiLabels.spectator }}</p>
-                  <select v-model="participant.team" v-if="isHost" @change="changeTeam(participant)">
-                    <option value="player">{{ uiLabels.player }}</option>
-                    <option value="spectator">{{ uiLabels.spectator }}</option>
-                  </select>
-                </div>     
-              </div>
-            </div>
-
-            <button class="readyButton" @click="changeReady" v-if="!isHost">
-              
-              <div v-if="isReady">Un-ready!</div>
-              <div v-else>Ready!</div>
-              
-            </button>
-            
-            <button class="startButton" @click="startGame" v-if="isHost">{{ uiLabels.startGame }}</button>
-          -->
           </div>
           
         </div>
