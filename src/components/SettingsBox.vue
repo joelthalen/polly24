@@ -3,33 +3,28 @@
     <div class="wrapper">
         <div class="columnsSettings">
             <p class="textP">{{ uiLabels.columns }}</p> 
-            <button class="minusButton" :disabled="columns<=4" @click="changeColumns(-1)">-</button>
+            <button class="minusButton" :disabled="columns<=4 || !isHost" @click="changeColumns(-1)">-</button>
             <p class="amountP">{{ columns }}</p>
-            <button class="plusButton" :disabled="columns>=10" @click="changeColumns(+1)">+</button>
+            <button class="plusButton" :disabled="columns>=10 || !isHost" @click="changeColumns(+1)">+</button>
         </div>
         <div class="rowsSettings">
             <p class="textP">{{ uiLabels.rows }}</p>
-            <button class="minusButton" :disabled="rows<=4" @click="changeRows(-1)">-</button>
+            <button class="minusButton" :disabled="rows<=4 || !isHost" @click="changeRows(-1)">-</button>
             <p class="amountP">{{ rows }}</p>
-            <button class="plusButton" :disabled="rows>=10" @click="changeRows(+1)">+</button>
+            <button class="plusButton" :disabled="rows>=10 || !isHost" @click="changeRows(+1)">+</button>
         </div>
         <div class="winConditionSettings">
             <p class="textP">{{ uiLabels.winCondition }}</p>
-            <button class="minusButton" :disabled="(winCondition<=2)" @click="changeWinCondition(-1)">-</button>
+            <button class="minusButton" :disabled="(winCondition<=2) || !isHost" @click="changeWinCondition(-1)">-</button>
             <p class="amountP">{{ winCondition }}</p>
-            <button class="plusButton" :disabled="winCondition>=Math.max(rows, columns)" @click="changeWinCondition(+1)">+</button>
+            <button class="plusButton" :disabled="winCondition>=Math.max(rows, columns) || !isHost" @click="changeWinCondition(+1)">+</button>
         </div>
         <div class="difficultySettings">
             <p class="textP">{{ uiLabels.questionDifficulty }}</p>
-            <!--<p>
-                <span v-if="difficulty === 0">{{ uiLabels.easy }}</span>
-                <span v-else-if="difficulty === 1">{{ uiLabels.hard }}</span>
-                <span v-else>{{ uiLabels.unknown }}</span>
-            </p> This was here when this was just one difficulty button. Leaving here in case we want to change it back-->
-            <button class="difficultyButton" :disabled="this.difficulty === 0" @click="changeDifficulty(difficulty)">
+            <button class="difficultyButton" :class="{ 'active': this.difficulty === 0 }" :disabled="this.difficulty === 0 || !isHost" @click="changeDifficulty(difficulty)">
                 {{ uiLabels.easy }}
             </button>
-            <button class="difficultyButton" :disabled="this.difficulty === 1" @click="changeDifficulty(difficulty)">
+            <button class="difficultyButton" :class="{ 'active': this.difficulty === 1 }" :disabled="this.difficulty === 1 || !isHost" @click="changeDifficulty(difficulty)">
                 {{ uiLabels.hard }}
             </button>
         </div>
@@ -48,6 +43,7 @@ export default {
       rows: Number,
       winCondition: Number,
       difficulty: Number,
+      isHost: Boolean,
   },
   computed: {
     uiLabels() {
@@ -152,6 +148,24 @@ export default {
         
     }
 
+    .plusButton:disabled:hover, .minusButton:disabled:hover {
+        cursor: not-allowed;
+    }
+
+    button:disabled {
+        background-color: rgba(113, 113, 113, 0.1);
+    }
+
+    .difficultyButton.active {
+        box-shadow: 0 0 20px rgb(219, 219, 219); 
+    }
+
+    .difficultyButton:disabled:hover {
+        cursor: not-allowed;
+    }
+
+
+
     .difficultySettings {
         display: grid;
         grid-template-columns: repeat(2, 50%);
@@ -161,9 +175,7 @@ export default {
         row-gap: 20%;
     }
 
-    button:disabled {
-        background-color: rgba(113, 113, 113, 0.1);
-    }
+    
 
     @media (orientation: landscape) {
         .wrapper {

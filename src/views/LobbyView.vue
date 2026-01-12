@@ -33,6 +33,7 @@
               :rows="lobbyState.rows"
               :winCondition="lobbyState.wincondition"
               :difficulty="lobbyState.difficulty"
+              :isHost="isHost"
               @columns="changeSize($event, lobbyState.rows)"
               @rows="changeSize(lobbyState.columns, $event)"
               @winCondition="changeWinCondition($event)"
