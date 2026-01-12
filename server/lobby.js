@@ -119,8 +119,11 @@ class Lobby {
       if (this.players[i].socket.id === id) {
         if(this.game){
           if (this.players[i].team === "player") {  
-            this.io.to(this.ID).emit("playerLeft")
-            for(let i in this.players){ this.players[i].socket.leave(this.ID); console.log("playerRemovedfrom socket")} //verkar funka nu
+            this.io.to(this.ID).emit("playerLeft");
+            for(let j in this.players){ 
+              this.players[j].socket.leave(this.ID); 
+              console.log("playerRemovedfrom socket");
+            } //verkar funka nu
             LOBBIES.delete(this.ID)
           }
         }
