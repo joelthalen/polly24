@@ -148,8 +148,8 @@ export default {
         
     }
 
-    .plusButton:disabled:hover, .minusButton:disabled:hover {
-        cursor: not-allowed;
+    button:disabled:hover{
+        cursor: default;
     }
 
     button:disabled {
@@ -159,12 +159,6 @@ export default {
     .difficultyButton.active {
         box-shadow: 0 0 20px rgb(219, 219, 219); 
     }
-
-    .difficultyButton:disabled:hover {
-        cursor: not-allowed;
-    }
-
-
 
     .difficultySettings {
         display: grid;
