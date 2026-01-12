@@ -251,7 +251,10 @@ button {
   border: solid 2px rgb(219, 219, 219);
   color: white;
   border-radius: 4px;
-  min-height: 3vh;
+  min-height: 8vh;
+  padding: 0 2vw;
+  margin: 0 2vh;
+  font-size: 3vh;
 }
 
 button:hover {
