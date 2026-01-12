@@ -1,5 +1,4 @@
 import { Game } from "./Game.js";
-import { registerLobbyEvents } from "./sockets.js";
 
 /** @type {Map<string, Lobby>} */
 const LOBBIES = new Map();
@@ -76,14 +75,34 @@ class Lobby {
     this.players.push(player);
 
     // TODO: move or smth idk
-    registerLobbyEvents(playerSocket, player, this);
-
     playerSocket.emit("joinedLobby", {
       success: "true",
       isHost: player.isHost,
     });
     this.updateLobby(`${player.username} joined the lobby.`, 1);
     return player;
+  }
+
+  updateProfile(playerId, profile) {
+    const player = this.getPlayerById(playerId);
+    if (player) {
+      if ("username" in profile && profile.username.length > 2) {
+        player.username = profile.username;
+        player.socket.emit("newUsername", player.username);
+      }
+      player.team = profile.team || player.team;
+      if ("ready" in profile) {
+        player.ready = profile.ready;
+      }
+      this.updateLobby();
+    }
+  }
+
+  getPlayer(username) {
+    return this.players.find(p => p.username === username);
+  }
+  getPlayerById(id) {
+    return this.players.find(p => p.socket.id === id);
   }
 
   updateLobby(msg, announceLevel = 0) {
@@ -152,10 +171,17 @@ class Lobby {
     console.log(`Created Game on lobby ${this.ID}`);
   }
 
+  isAdmin(socketId) {
+    const player = this.getPlayerById(socketId);
+    return player && player.isHost;
+  }
+
   updateOtherPlayer(p) {
-    this.players.find((player) => player.username === p.username).team = p.team;
+    const player = this.getPlayer(p.username);
+    if (player) {
+      player.team = p.team;
+    }
     this.updateLobby();
-    
   }
 
   createGame() {

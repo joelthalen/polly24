@@ -13,7 +13,7 @@
       <div class="logoBox"><img alt="Logo"></div> <!-- Här ska loggan finnas-->
     </section>
       <p class="codeBox">
-        {{ uiLabels.lobbyCode }}: {{ pollId }}
+        {{ uiLabels.lobbyCode }}: {{ lobbyId }}
       </p>
       <div v-if="!joined">
         <div class="usernameBox">
@@ -33,6 +33,7 @@
               :rows="lobbyState.rows"
               :winCondition="lobbyState.wincondition"
               :difficulty="lobbyState.difficulty"
+              :isHost="isHost"
               @columns="changeSize($event, lobbyState.rows)"
               @rows="changeSize(lobbyState.columns, $event)"
               @winCondition="changeWinCondition($event)"
@@ -114,7 +115,7 @@ export default {
   data: function () {
     return {
       userName: "",
-      pollId: "inactive poll",
+      lobbyId: "inactive poll",
       joined: false,
       lang: localStorage.getItem("lang") || "en",
       participants: [],
@@ -124,12 +125,12 @@ export default {
     }
   },
   created: function () {
-    this.pollId = this.$route.params.id;
+    this.lobbyId = this.$route.params.id;
     socket.on("lobbyNotFound", () => this.$router.push({path: "/", query: {action: "lobbyNotFound"}}));
 
     socket.on( "participantsUpdate", p => this.participants = p );
-    socket.on( "startPoll", () => this.$router.push("/poll/" + this.pollId) );
-    socket.on("gameStart", () => this.$router.push(`/poll/${this.pollId}`))
+    socket.on( "startPoll", () => this.$router.push("/poll/" + this.lobbyId) );
+    socket.on("gameStart", () => this.$router.push(`/poll/${this.lobbyId}`))
     socket.on("sendEmoji", () => {
       this.emojiCounter += 1
     })
@@ -139,8 +140,8 @@ export default {
     socket.on("hostAssigned", () => {
       this.isHost = true;
     })
-    socket.emit( "joinPoll", this.pollId );
-    socket.emit("joinLobby", this.pollId);
+    socket.emit( "joinPoll", this.lobbyId );
+    socket.emit("joinLobby", this.lobbyId);
     socket.emit( "getUILabels", this.lang );
   },
   methods: {
@@ -150,36 +151,36 @@ export default {
         alert(this.uiLabels.usernameTaken);
         return;
       };
-      socket.emit( "updateProfile", {pollId: this.pollId, username: this.userName})
+      socket.emit( "lobby:updateProfile", {lobbyId: this.lobbyId, profile: {username: this.userName}})
       this.joined = true;
     },
     changeTeam: function (participant) {
       console.log(this.username+"is trying to change team for"+participant);
-      socket.emit( "updateOtherProfiles", {pollId: this.pollId, username: participant.username, team: participant.team})
+      socket.emit( "lobby:updateOtherProfiles", {lobbyId: this.lobbyId, username: participant.username, team: participant.team})
     },
     changeReady: function () {
       this.isReady = !this.isReady;
-      socket.emit( "updateProfile", {pollId: this.pollId, username: this.userName, ready: this.isReady})
+      socket.emit( "lobby:updateProfile", {lobbyId: this.lobbyId, profile: {username: this.userName, ready: this.isReady}})
       console.log("Ready status changed to " + this.isReady);
     },
     sendEmoji: function() {
-      socket.emit("sendEmoji");
+      socket.emit("lobby:sendEmoji", {lobbyId: this.lobbyId});
     },
     changeSize: function(columns, rows) {
-      socket.emit("changeSize", {pollId: this.pollId, columns: columns, rows: rows});
+      socket.emit("lobby:changeSize", {lobbyId: this.lobbyId, size: {columns: columns, rows: rows}});
     },
     changeDifficulty: function(difficulty) {
-      socket.emit("changeDifficulty", {pollId: this.pollId, difficulty: difficulty});
+      socket.emit("lobby:changeDifficulty", {lobbyId: this.lobbyId, difficulty: difficulty});
     },
     changeWinCondition: function(wincondition) {
-      socket.emit("changeWinCondition", {pollId: this.pollId, wincondition: wincondition});
+      socket.emit("lobby:changeWinCondition", {lobbyId: this.lobbyId, wincondition: wincondition});
     },
     // TODO: Method for everyone being ready to start the game exists, but cant be true
     startGame: function () {
-      socket.emit("startGame", this.pollId);
+      socket.emit("lobby:startGame", {lobbyId: this.lobbyId});
     },
     leaveLobby: function() {
-      socket.emit("leaveLobby");
+      socket.emit("lobby:leaveLobby");
       this.$router.push({path: "/", query: {action: "leftLobby"}})
     }
   }
